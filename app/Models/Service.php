@@ -5,21 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Service extends Model
 {
     protected $guarded = [];
 
     use HasFactory;
-
-    protected $table = "products";
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function category()
+    public function subcription()
     {
-        return$this->belongsTo(Category::class);
+        return $this->hasMany(Subcription::class);
     }
+
 }
