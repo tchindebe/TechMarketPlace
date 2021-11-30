@@ -72,7 +72,7 @@ class User extends Authenticatable
     {
         parent::boot();
 
-        statct::created(function($user){
+        static::created(function($user){
             $user->profile()->create([
 
             ]);
