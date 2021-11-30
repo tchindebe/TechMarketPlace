@@ -1,4 +1,4 @@
-{{-- <x-guest-layout>
+<x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
@@ -62,9 +62,9 @@
 </div>
 </form>
 </x-jet-authentication-card>
-</x-guest-layout> --}}
+</x-guest-layout>
 
-<x-guest-layout>
+{{-- <x-guest-layout>
     <div id="content" class="site-content">
         <div class="col-full">
             <div class="row">
@@ -149,4 +149,4 @@
         </div>
         <!-- .col-full -->
     </div>
-</x-guest-layout>
+</x-guest-layout> --}}

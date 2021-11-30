@@ -25,47 +25,6 @@
         <div id="page" class="hfeed site">
             <div class="top-bar top-bar-v10">
                 <div class="col-full">
-                    <ul id="menu-top-bar-left" class="nav menu-top-bar-left">
-                        <li class="menu-item animate-dropdown">
-                            <a title="TechMarket eCommerce - Always free delivery" href="contact-v1.html">TechMarket eCommerce &#8211; Always free delivery</a>
-                        </li>
-                        <li class="menu-item animate-dropdown">
-                            <a title="Quality Guarantee of products" href="shop.html">Quality Guarantee of products</a>
-                        </li>
-                        <li class="menu-item animate-dropdown">
-                            <a title="Fast returnings program" href="track-your-order.html">Fast returnings program</a>
-                        </li>
-                        <li class="menu-item animate-dropdown">
-                            <a title="No additional fees" href="contact-v2.html">No additional fees</a>
-                        </li>
-                    </ul>
-                    <!-- .nav -->
-                    <ul id="menu-top-bar-right" class="nav menu-top-bar-right">
-                        <li class="hidden-sm-down menu-item animate-dropdown">
-                            <a title="Track Your Order" href="track-your-order.html">
-                                <i class="tm tm-order-tracking"></i>Track Your Order</a>
-                        </li>
-                        <li class="menu-item menu-item-has-children animate-dropdown dropdown">
-                            <a title="Dollar (US)" data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <i class="tm tm-dollar"></i>Dollar (US)
-                                <span class="caret"></span>
-                            </a>
-                            <ul role="menu" class="dropdown-menu">
-                                <li class="menu-item animate-dropdown">
-                                    <a title="AUD" href="#">AUD</a>
-                                </li>
-                                <li class="menu-item animate-dropdown">
-                                    <a title="INR" href="#">INR</a>
-                                </li>
-                                <li class="menu-item animate-dropdown">
-                                    <a title="AED" href="#">AED</a>
-                                </li>
-                                <li class="menu-item animate-dropdown">
-                                    <a title="SGD" href="#">SGD</a>
-                                </li>
-                            </ul>
-                            <!-- .dropdown-menu -->
-                        </li>
 
                         @if (Route::has('login'))
                             @auth
@@ -131,7 +90,7 @@
                     <div class="techmarket-sticky-wrap">
                         <div class="row">
                             <div class="site-branding">
-                                <a href=/" class="custom-logo-link" rel="home">
+                                <a href="/" class="custom-logo-link" rel="home">
                                     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 166.74 28.4">
                                         <defs>
                                             <style>
@@ -1700,16 +1659,16 @@
                                                 <div class="footer-payment-icons">
                                                     <ul class="list-payment-icons nav">
                                                         <li class="nav-item">
-                                                            <img class="payment-icon-image" src="assets/images/credit-cards/mastercard.svg" alt="mastercard" />
+                                                            <img class="payment-icon-image" src="{{asset('assets/images/credit-cards/mastercard.svg')}}" alt="mastercard" />
                                                         </li>
                                                         <li class="nav-item">
-                                                            <img class="payment-icon-image" src="assets/images/credit-cards/visa.svg" alt="visa" />
+                                                            <img class="payment-icon-image" src="{{asset('assets/images/credit-cards/visa.svg')}}" alt="visa" />
                                                         </li>
                                                         <li class="nav-item">
-                                                            <img class="payment-icon-image" src="assets/images/credit-cards/paypal.svg" alt="paypal" />
+                                                            <img class="payment-icon-image" src="{{asset('assets/images/credit-cards/paypal.svg')}}" alt="paypal" />
                                                         </li>
                                                         <li class="nav-item">
-                                                            <img class="payment-icon-image" src="assets/images/credit-cards/maestro.svg" alt="maestro" />
+                                                            <img class="payment-icon-image" src="{{asset('assets/images/credit-cards/maestro.svg')}}" alt="maestro" />
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -1718,10 +1677,10 @@
                                                     <h6 class="footer-secured-by-title">Secured by:</h6>
                                                     <ul class="footer-secured-by-icons">
                                                         <li class="nav-item">
-                                                            <img class="secure-icons-image" src="assets/images/secured-by/norton.svg" alt="norton" />
+                                                            <img class="secure-icons-image" src="{{asset('assets/images/secured-by/norton.svg')}}" alt="norton" />
                                                         </li>
                                                         <li class="nav-item">
-                                                            <img class="secure-icons-image" src="assets/images/secured-by/mcafee.svg" alt="mcafee" />
+                                                            <img class="secure-icons-image" src="{{asset('assets/images/secured-by/mcafee.svg')}}" alt="mcafee" />
                                                         </li>
                                                     </ul>
                                                 </div>
