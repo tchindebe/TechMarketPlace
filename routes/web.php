@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Livewire\Admin\AdminDashboardComponemt;
+use App\Http\Livewire\Admin\ProductManagerComponent;
+use App\Http\Livewire\Admin\UsersManagerComponent;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\CheckoutComponent;
 use App\Http\Livewire\HomeComponent;
@@ -48,6 +50,24 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 // For Administrators
 Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function(){
 
-        Route::get('/admin/dashboard', AdminDashboardComponemt::class)->name('admin.dashboard');
-        
+    Route::group(['prefix' =>'admin'], function (){
+
+        Route::get('/dashboard', AdminDashboardComponemt::class)->name('admin.dashboard');
+
+        Route::group(['prefix'=>'products'], function (){
+
+            Route::get('/', ProductManagerComponent::class)->name('admin.products');
+
+        });
+
+        Route::group(['prefix'=>'users'], function (){
+
+            Route::get('/', UsersManagerComponent::class)->name('admin.users');
+
+        });
+
+
+    });
+
+
 });
