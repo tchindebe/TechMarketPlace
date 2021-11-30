@@ -1,12 +1,22 @@
 
 <x-slot name="header">
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        {{ __('Products Management') }}
-    </h2>
+    <div class="flex items-center justify-between my-4 mb-4 text-sm font-semibold text-purple-100">
+        <div class="flex items-center">
+            <span class="text-xl font-semibold leading-tight text-gray-800">
+                {{ __('Products Management') }}
+            </span>
+        </div>
+        <span>
+            <button class="px-4 py-2 text-sm leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-purple">
+                <i class="fas fa-plus"></i>
+                Add product
+            </button>
+        </span>
+    </div>
 </x-slot>
 
 <div class="py-12">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="w-full overflow-x-auto">
                 <table class="w-full whitespace-no-wrap">
