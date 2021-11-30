@@ -27,6 +27,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_photo_path',
+        'user_type',
     ];
 
     /**
@@ -58,4 +60,54 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    //fonction permettant de créer le nom de la boutique ou du service d'un particulier
+
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        statct::created(function($user){
+            $user->profile()->create([
+
+            ]);
+        });
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
+
+    public function ordereds()
+    {
+        return $this->hasMany(Ordereds::class);
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Chat::class);
+    }
+
+    public function abonners()
+    {
+        return $this->hasMany(Abonner::class);
+    }
+
+
 }
