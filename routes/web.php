@@ -43,8 +43,20 @@ Route::get('/checkout', CheckoutComponent::class);
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     Route::get('/user/dashboard', UserDashboardComponemt::class)->name('user.dashboard');
+    Route::get('/user/profile/{id}', [\App\Http\Controllers\ProfileController::class, 'showProfileUser'])->name('user.profile');
+    Route::post('/user/profile/{id}', [\App\Http\Controllers\ProfileController::class, 'update'])->name('user.profile.update');
 
+    //Route Category
+    Route::get('/user/Category', [\App\Http\Controllers\CategoryController::class, 'index'])->name('user.Category.index');
+    Route::post('/user/Category', [\App\Http\Controllers\CategoryController::class, 'store'])->name('Category.store');
+    Route::post('user/category', [\App\Http\Controllers\CategoryController::class, 'update'])->name('category.update');
 });
+
+// espace user service or shop
+
+Route::get('/user/show/{user}', [\App\Http\Controllers\SeedShopOrServiceController::class, 'show'])->name('user.shop');
+Route::get('/user/service/{user}', [\App\Http\Controllers\SeedShopOrServiceController::class, 'show'])->name('user.service');
+Route::get('/user/client/{user}', [\App\Http\Controllers\SeedShopOrServiceController::class, 'show'])->name('user.client');
 
 
 // For Administrators

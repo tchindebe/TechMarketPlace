@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {{--<!DOCTYPE html>--}}
 {{--<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">--}}
 {{--    <head>--}}
@@ -538,3 +539,9 @@
 
 </body>
 </html>
+=======
+
+            <main>
+                {{ $slot }}
+            </main>
+>>>>>>> 6952614b385e05cb3ce92dd859ae00ab9e19528d

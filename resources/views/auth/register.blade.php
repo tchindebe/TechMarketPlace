@@ -97,36 +97,44 @@
                                                 <form method="post" action="{{route('register')}}"
                                                     class="woocomerce-form woocommerce-form-login login">
                                                     @csrf
-                                                    <p class="form-row form-row-wide">
-                                                        <label for="reg_email">Name
+                                                    <p class="form-row form-row-wide ">
+                                                        <label for="reg_email">Name user
                                                             <span class="required">*</span>
                                                         </label>
-                                                        <input type="name" value="" id="email" name="name" class="woocommerce-Input woocommerce-Input--text input-text" :value="old('name')" required autofocus
+                                                        <input type="name" value="" id="email" name="name" class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" :value="old('name')" required autofocus
                                                         autocomplete="name" >
                                                     </p>
                                                     <p class="form-row form-row-wide">
                                                         <label for="reg_email">Email address
                                                             <span class="required">*</span>
                                                         </label>
-                                                        <input type="email" value="" id="email" name="email" class="woocommerce-Input woocommerce-Input--text input-text" :value="old('email')" required>
+                                                        <input type="email" value="" id="email" name="email" class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" :value="old('email')" required>
                                                     </p>
                                                     <p class="form-row form-row-wide">
                                                         <label for="reg_password">Password
                                                             <span class="required">*</span>
                                                         </label>
-                                                        <input type="password" id="reg_password" name="password" class="woocommerce-Input woocommerce-Input--text input-text" required autocomplete="new-password">
+                                                        <input type="password" id="reg_password" name="password" class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" required autocomplete="new-password">
                                                     </p>
-                                                    <p class="form-row">
-                                                        <input type="submit" class="woocommerce-Button button" name="register" value="Register">
+                                                    <p class="form-row form-row-wide">
+                                                        <label for="confirm_password">Confirm password
+                                                            <span class="required">*</span>
+                                                        </label>
+                                                        <input type="password" id="confirm_password" name="password_confirmation" class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" required autocomplete="new-password">
                                                     </p>
-                                                    <div class="register-benefits">
-                                                        <h3>Sign up today and you will be able to :</h3>
-                                                        <ul>
-                                                            <li>Speed your way through checkout</li>
-                                                            <li>Track your orders easily</li>
-                                                            <li>Keep a record of all your purchases</li>
-                                                        </ul>
-                                                    </div>
+                                                    <p class="form-row form-row-wide">
+                                                        <label for="reg_password">account type
+                                                            <span class="required">*</span>
+                                                        </label>
+                                                        <select name="user_type" class="shadow-sm" id="">
+                                                            <option class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" required value="Client">Client</option>
+                                                            <option class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" required value="Service">Service</option>
+                                                            <option class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" required value="Boutique">Boutique</option>
+                                                        </select>
+                                                    </p>
+                                                    <p class="form-row ">
+                                                        <input type="submit" class="woocommerce-Button  button" name="register" value="Register">
+                                                    </p>
                                                 </form>
                                             </div>
                                         </div>

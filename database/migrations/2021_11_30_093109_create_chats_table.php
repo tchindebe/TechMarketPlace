@@ -18,6 +18,8 @@ class CreateChatsTable extends Migration
             $table->string('message');
             $table->bigInteger('to');
             $table->bigInteger('from');
+            $table->bigInteger('like')->default(0);
+            $table->bigInteger('love')->default(0);
             $table->integer('status')->default(0);
             $table->bigInteger('user_id');
             $table->timestamps();

@@ -24,7 +24,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
         'profile_photo_path',
@@ -89,6 +89,11 @@ class User extends Authenticatable
         return $this->hasMany(Product::class);
     }
 
+    public function category()
+    {
+        return $this->hasMany(Category::class);
+    }
+
     public function services()
     {
         return $this->hasMany(Service::class);
@@ -109,5 +114,8 @@ class User extends Authenticatable
         return $this->hasMany(Abonner::class);
     }
 
-
+    public function chats()
+    {
+        return $this->hasMany(Chat::class);
+    }
 }
