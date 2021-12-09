@@ -1528,7 +1528,16 @@
             </header>
             <!-- .header-v10 -->
             <!-- ============================================================= Header End ============================================================= -->
-            {{$slot}}
+            <div id="content" class="site-content" tabindex="-1">
+                <div class="col-full">
+                    <div class="row">
+                        <div id="primary" class="content-area">
+                            <main id="main" class="site-main">
+                                @yield('content')
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- #content -->
             <footer class="site-footer footer-v1">
                 <div class="col-full">

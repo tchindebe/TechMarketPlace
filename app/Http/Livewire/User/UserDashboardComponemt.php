@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire\User;
 
+use App\Repository\Orders\OrderRepositoryInterface;
 use Livewire\Component;
 
 class UserDashboardComponemt extends Component
 {
-    public function render()
+    public function render(OrderRepositoryInterface $repository)
     {
-        return view('livewire.user.user-dashboard-componemt')->layout('layouts.base');
+        $order = $repository->show();
+        return view('livewire.user.user-dashboard-componemt', compact('order', $order))->layout('layouts.adminShop');
     }
 }

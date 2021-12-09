@@ -2362,61 +2362,61 @@
                                 <div class="products">
                                     <div class="product-category product">
                                         <a href="product-category.html">
-                                            <img width="300" height="300" alt="All in One PC" src="{{asset('assets/images/category/16.png')}}">
+                                            <img width="300" height="300" alt="All in One PC" src="{{asset('assets/images/Category/16.png')}}">
                                             <h2 class="woocommerce-loop-category__title">All in One PC </h2>
                                         </a>
                                     </div>
                                     <div class="product-category product">
                                         <a href="product-category.html">
-                                            <img width="300" height="300" alt="Audio & Music" src="{{asset('assets/images/category/17.png')}}">
+                                            <img width="300" height="300" alt="Audio & Music" src="{{asset('assets/images/Category/17.png')}}">
                                             <h2 class="woocommerce-loop-category__title">Audio & Music </h2>
                                         </a>
                                     </div>
                                     <div class="product-category product">
                                         <a href="product-category.html">
-                                            <img width="300" height="300" alt="Cells & Tablets" src="{{asset('assets/images/category/18.png')}}">
+                                            <img width="300" height="300" alt="Cells & Tablets" src="{{asset('assets/images/Category/18.png')}}">
                                             <h2 class="woocommerce-loop-category__title">Cells & Tablets </h2>
                                         </a>
                                     </div>
                                     <div class="product-category product">
                                         <a href="product-category.html">
-                                            <img width="300" height="300" alt="Computers & Laptops" src="{{asset('assets/images/category/19.png')}}">
+                                            <img width="300" height="300" alt="Computers & Laptops" src="{{asset('assets/images/Category/19.png')}}">
                                             <h2 class="woocommerce-loop-category__title">Computers & Laptops </h2>
                                         </a>
                                     </div>
                                     <div class="product-category product">
                                         <a href="product-category.html">
-                                            <img width="300" height="300" alt="Desktop PCs" src="{{asset('assets/images/category/20.png')}}">
+                                            <img width="300" height="300" alt="Desktop PCs" src="{{asset('assets/images/Category/20.png')}}">
                                             <h2 class="woocommerce-loop-category__title">Desktop PCs </h2>
                                         </a>
                                     </div>
                                     <div class="product-category product">
                                         <a href="product-category.html">
-                                            <img width="300" height="300" alt="Digital Cameras" src="{{asset('assets/images/category/21.png')}}">
+                                            <img width="300" height="300" alt="Digital Cameras" src="{{asset('assets/images/Category/21.png')}}">
                                             <h2 class="woocommerce-loop-category__title">Digital Cameras </h2>
                                         </a>
                                     </div>
                                     <div class="product-category product">
                                         <a href="product-category.html">
-                                            <img width="300" height="300" alt="Games & Consoles" src="{{asset('assets/images/category/22.png')}}">
+                                            <img width="300" height="300" alt="Games & Consoles" src="{{asset('assets/images/Category/22.png')}}">
                                             <h2 class="woocommerce-loop-category__title">Games & Consoles </h2>
                                         </a>
                                     </div>
                                     <div class="product-category product">
                                         <a href="product-category.html">
-                                            <img width="300" height="300" alt="Headphones" src="{{asset('assets/images/category/23.png')}}">
+                                            <img width="300" height="300" alt="Headphones" src="{{asset('assets/images/Category/23.png')}}">
                                             <h2 class="woocommerce-loop-category__title">Headphones </h2>
                                         </a>
                                     </div>
                                     <div class="product-category product">
                                         <a href="product-category.html">
-                                            <img width="300" height="300" alt="Home Entertainment" src="{{asset('assets/images/category/24.png')}}">
+                                            <img width="300" height="300" alt="Home Entertainment" src="{{asset('assets/images/Category/24.png')}}">
                                             <h2 class="woocommerce-loop-category__title">Home Entertainment </h2>
                                         </a>
                                     </div>
                                     <div class="product-category product">
                                         <a href="product-category.html">
-                                            <img width="300" height="300" alt="Home Theater & Audio" src="{{asset('assets/images/category/20.png')}}">
+                                            <img width="300" height="300" alt="Home Theater & Audio" src="{{asset('assets/images/Category/20.png')}}">
                                             <h2 class="woocommerce-loop-category__title">Home Theater & Audio </h2>
                                         </a>
                                     </div>
