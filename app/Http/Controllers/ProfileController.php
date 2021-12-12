@@ -13,7 +13,7 @@ class ProfileController
     {
         $profile = $repository->getById($id);
 
-        return view('user.profile', compact('profile', $profile));
+        return view('user.profile', compact('profile', $profile))->layout('layouts.app');
     }
 
     /**
