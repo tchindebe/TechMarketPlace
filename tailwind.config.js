@@ -204,7 +204,7 @@ module.exports = {
         boxShadow: ['focus', 'dark:focus'],
     },
     plugins: [
-        // require('@tailwindcss/forms'),
+        require('@tailwindcss/forms'),
         require('@tailwindcss/typography'),
         require('tailwindcss-multi-theme'),
         require('@tailwindcss/custom-forms'),

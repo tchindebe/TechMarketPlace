@@ -68,9 +68,27 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function(){
 
         Route::group(['prefix'=>'products'], function (){
 
+            //Route for products admin
             Route::get('/', ProductManagerComponent::class)->name('admin.products');
+            Route::get('/add', ProductManagerComponent::class)->name('product.add');
+
+            //Route for category admin products
+            Route::group(['prefix' => 'category'], function (){
+                Route::post('/store', [\App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('store.category');
+                Route::post('/remove', [\App\Http\Controllers\Admin\CategoryController::class, 'remove'])->name('remove.category');
+                Route::post('/update', [\App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('update.category');
+            });
 
         });
+
+        Route::group(['prefix'=>'store'], function (){
+
+            //Route for products admin
+            Route::get('/', \App\Http\Livewire\Admin\StoreComponent::class)->name('admin.store');
+            Route::get('/add', ProductManagerComponent::class)->name('product.add');
+        });
+
+
 
         Route::group(['prefix'=>'users'], function (){
 

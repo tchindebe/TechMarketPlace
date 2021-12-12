@@ -1,9 +1,6 @@
-<div class="py-6">
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        {{ __('Users Management') }}
-    </h2>
-</div>
-
+<h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+    Tables
+</h2>
 <div class="py-2">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="w-full overflow-hidden rounded-lg shadow">
@@ -18,21 +15,20 @@
                     </tr>
                     </thead>
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                    @foreach( $users as $user)
                         <tr class="text-gray-700 dark:text-gray-400">
                             <td class="px-4 py-3">
                                 <div class="flex items-center text-sm">
                                     <div>
-                                        <p class="font-semibold">{{ $user->username }}</p>
+                                        <p class="font-semibold"></p>
                                     </div>
                                 </div>
                             </td>
                             <td class="px-4 py-3 text-sm">
-                                {{ $user->email }}
+                                email
                             </td>
                             <td class="px-4 py-3 text-xs">
                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
-                          {{ $user->user_type }}
+                          type
                         </span>
                             </td>
                             <td class="px-4 py-3 text-sm">
@@ -49,13 +45,12 @@
                                 </div>
                             </td>
                         </tr>
-                    @endforeach
                     </tbody>
                 </table>
             </div>
             <div class="px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 border-t bg-gray-50 sm:grid-cols-9">
                 <!-- Pagination -->
-                {{ $users->links() }}
+
             </div>
         </div>
     </div>
