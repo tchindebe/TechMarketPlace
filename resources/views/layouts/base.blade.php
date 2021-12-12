@@ -25,7 +25,6 @@
         <div id="page" class="hfeed site">
             <div class="top-bar top-bar-v10">
                 <div class="col-full">
-
                         @if (Route::has('login'))
                             @auth
                                 @if (Auth::user()->user_type === 'admin')

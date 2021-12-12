@@ -23,108 +23,6 @@
     </head>
     <body class="woocommerce-active page-template-template-homepage-v12">
         <div id="page" class="hfeed site">
-            <div class="top-bar top-bar-v10">
-                <div class="col-full">
-                    <ul id="menu-top-bar-left" class="nav menu-top-bar-left">
-                        <li class="menu-item animate-dropdown">
-                            <a title="TechMarket eCommerce - Always free delivery" href="contact-v1.html">TechMarket eCommerce &#8211; Always free delivery</a>
-                        </li>
-                        <li class="menu-item animate-dropdown">
-                            <a title="Quality Guarantee of products" href="shop.html">Quality Guarantee of products</a>
-                        </li>
-                        <li class="menu-item animate-dropdown">
-                            <a title="Fast returnings program" href="track-your-order.html">Fast returnings program</a>
-                        </li>
-                        <li class="menu-item animate-dropdown">
-                            <a title="No additional fees" href="contact-v2.html">No additional fees</a>
-                        </li>
-                    </ul>
-                    <!-- .nav -->
-                    <ul id="menu-top-bar-right" class="nav menu-top-bar-right">
-                        <li class="hidden-sm-down menu-item animate-dropdown">
-                            <a title="Track Your Order" href="track-your-order.html">
-                                <i class="tm tm-order-tracking"></i>Track Your Order</a>
-                        </li>
-                        <li class="menu-item menu-item-has-children animate-dropdown dropdown">
-                            <a title="Dollar (US)" data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <i class="tm tm-dollar"></i>Dollar (US)
-                                <span class="caret"></span>
-                            </a>
-                            <ul role="menu" class="dropdown-menu">
-                                <li class="menu-item animate-dropdown">
-                                    <a title="AUD" href="#">AUD</a>
-                                </li>
-                                <li class="menu-item animate-dropdown">
-                                    <a title="INR" href="#">INR</a>
-                                </li>
-                                <li class="menu-item animate-dropdown">
-                                    <a title="AED" href="#">AED</a>
-                                </li>
-                                <li class="menu-item animate-dropdown">
-                                    <a title="SGD" href="#">SGD</a>
-                                </li>
-                            </ul>
-                            <!-- .dropdown-menu -->
-                        </li>
-
-                        @if (Route::has('login'))
-                            @auth
-                                @if (Auth::user()->user_type === 'admin')
-                                    <li class="menu-item menu-item-has-children animate-dropdown dropdown">
-                                        <a title="My Account" data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                            My account ({{Auth::user()->name}})
-                                            <span class="caret"></span>
-                                        </a>
-                                        <ul role="menu" class="dropdown-menu">
-                                            <li class="menu-item animate-dropdown">
-                                                <a title="Dashboard" href="{{route('admin.dashboard')}}">Dashboard</a>
-                                            </li>
-                                            <li class="menu-item animate-dropdown">
-                                                <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">logout</a>
-                                            </li>
-                                            <form id="logout-form" action="{{route('logout')}}" method="post">
-                                                @csrf
-                                            </form>
-                                        </ul>
-                                        <!-- .dropdown-menu -->
-                                    </li>
-                                @else
-                                    <li class="menu-item menu-item-has-children animate-dropdown dropdown">
-                                        <a title="My Account" data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                            My account ({{Auth::user()->name}})
-                                            <span class="caret"></span>
-                                        </a>
-                                        <ul role="menu" class="dropdown-menu">
-                                            <li class="menu-item animate-dropdown">
-                                                <a title="Dashboard" href="{{route('user.dashboard')}}">Dashboard</a>
-                                            </li>
-                                            <li class="menu-item animate-dropdown">
-                                                <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">logout</a>
-                                            </li>
-                                            <form id="logout-form" action="{{route('logout')}}" method="post">
-                                                @csrf
-                                            </form>
-                                        </ul>
-                                        <!-- .dropdown-menu -->
-                                    </li>
-                                @endif
-
-                            @else
-                                <li class="menu-item">
-                                    <a class="btn" title="My Account" href="{{route('login')}}">
-                                        Sign in</a>
-                                </li>
-                                <li>
-                                    <a class="btn" title="My Account" href="{{route('register')}}">
-                                        Register</a>
-                                </li>
-                            @endauth
-                        @endif
-                    </ul>
-                    <!-- .nav -->
-                </div>
-                <!-- .col-full -->
-            </div>
             <!-- .top-bar-v2 -->
             <header id="masthead" class="site-header header-v10" style="background-image: none; ">
                 <div class="col-full desktop-only">
@@ -755,6 +653,76 @@
                                     <!-- .dropdown-menu-mini-cart -->
                                 </li>
                             </ul>
+
+                            <ul class="header-wishlist nav navbar-nav">
+                                <li class="nav-item dropdown no-arrow">
+                                    @if (Route::has('login'))
+                                        @auth
+                                            @if (Auth::user()->user_type === 'admin')
+                                                <li class="menu-item menu-item-has-children animate-dropdown dropdown">
+                                                    <a title="My Account" data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                                        My account ({{Auth::user()->name}})
+                                                        <span class="caret"></span>
+                                                    </a>
+                                                    <ul role="menu" class="dropdown-menu">
+                                                        <li class="menu-item animate-dropdown">
+                                                            <a title="Dashboard" href="{{route('admin.dashboard')}}">Dashboard</a>
+                                                        </li>
+                                                        <li class="menu-item animate-dropdown">
+                                                            <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">logout</a>
+                                                        </li>
+                                                        <form id="logout-form" action="{{route('logout')}}" method="post">
+                                                            @csrf
+                                                        </form>
+                                                    </ul>
+                                                    <!-- .dropdown-menu -->
+                                                </li>
+                                            @else
+                                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+{{--                                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">My account ({{Auth::user()->name}})</span><span class="caret"></span>--}}
+                                                    <img class="img-profile rounded-circle " style="height: 40px" src="{{asset('assets/images/team-member/1.jpg')}}">
+                                                </a>
+                                                <!-- Dropdown - User Information -->
+                                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                                     aria-labelledby="userDropdown">
+                                                    <a class="dropdown-item" href="{{route('user.dashboard')}}">
+                                                        <i class="fa fa-user mr-2 text-gray-400"></i>
+                                                        Profile
+                                                    </a>
+                                                    <a class="dropdown-item" href="#">
+                                                        <i class="fa fa-cogs fax2 mr-2 "></i>
+                                                        Settings
+                                                    </a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item">
+                                                        <i class="fa fa-sign-out-alt mr-2 text-gray-400"></i>
+                                                        Logout
+                                                    </a>
+                                                    <form id="logout-form" action="{{route('logout')}}" method="post">
+                                                        @csrf
+                                                    </form>
+                                                </div>
+                                            @endif
+                                        @else
+                                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                                 aria-labelledby="userDropdown">
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="fa fa-user mr-2 text-gray-400"></i>
+                                                    Sign In
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="fa fa-cogs mr-2 text-gray-400"></i>
+                                                    Register
+                                                </a>
+                                            </div>
+                                        @endauth
+                                    @endif
+                                </li>
+                            </ul>
+
+
+
                             <!-- .site-header-cart -->
                         </div>
                         <!-- /.row -->
@@ -1741,7 +1709,7 @@
                             <!-- .footer-contact -->
                             <div class="footer-widgets">
                                 <div class="columns">
-                                    <aside class="widget clearfix">
+                                    <aside class="clearfix widget">
                                         <div class="body">
                                             <h4 class="widget-title">Find it Fast</h4>
                                             <div class="menu-footer-menu-1-container">
@@ -1774,7 +1742,7 @@
                                 </div>
                                 <!-- .columns -->
                                 <div class="columns">
-                                    <aside class="widget clearfix">
+                                    <aside class="clearfix widget">
                                         <div class="body">
                                             <h4 class="widget-title">&nbsp;</h4>
                                             <div class="menu-footer-menu-2-container">
@@ -1807,7 +1775,7 @@
                                 </div>
                                 <!-- .columns -->
                                 <div class="columns">
-                                    <aside class="widget clearfix">
+                                    <aside class="clearfix widget">
                                         <div class="body">
                                             <h4 class="widget-title">Customer Care</h4>
                                             <div class="menu-footer-menu-3-container">
