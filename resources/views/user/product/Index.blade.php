@@ -3,6 +3,12 @@
 @section('contents')
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="col-lg-12">
+            @if(session('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
+            @if(session('error'))
+                <div class="alert alert-danger">{{ session('error') }}</div>
+            @endif
             <div class="ibox float-e-margins">
                 <a href="{{route('user.product.create')}}" class="btn btn-primary btn-sm float-left">Add new product</a>
                 <div class="ibox-title">
@@ -47,33 +53,27 @@
                                 <td>{{$product->slug}}</td>
                                 <td>{{$product->regular_price}}</td>
                                 <td>{{$product->sale_price}}</td>
-                                <td>{{$product->quantity}}</td>
+                                <td @if($product->quantity > 10) style="color:green; font-weight: bold;" @else style="color:red; font-weight: bold;"@endif>{{$product->quantity}}</td>
                                 <td><img alt="image" class="img-responsive" style="width: 50px; height: 40px;" src="{{asset('storage') . '/' . $product->image}}"></td>
                                 <td>
                                     <a href="{{route('user.product.update', $product->id)}}" class="btn btn-warning btn-sm " data-toggle="modal">Edit</a>
+                                    <a href="#modal-form{{$product->id}}" data-toggle="modal" class="btn btn-danger btn-sm">Delete</a>
                                     <div id="modal-form{{$product->id}}" class="modal fade" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-body">
-                                                    <div class="row">
+                                                    <div class="row mb-5">
                                                         <div class="b-r"><h3 class="m-t-none m-b">Edit category</h3>
-                                                            <p>Edit ths category here</p>
-                                                            <form role="form" action="{{route('category.update')}}" method="post">
-                                                                @csrf
-                                                                <div class="form-group"><label>Name</label> <input type="text" name="name" placeholder="{{$product->name}}" class="form-control"></div>
-                                                                <div class="form-group"><label>Slug</label> <input type="text" name="slug" placeholder="{{$product->slug}}" class="form-control"></div>
-                                                                <input type="hidden" value="{{$product->id}}" name="id">
-                                                                <div>
-                                                                    <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>Edit this category</strong></button>
-                                                                </div>
-                                                            </form>
+                                                            <p>Delete this category here</p>
+                                                            <p>You want to delete product : {{$product->name}}</p>
+                                                            <img alt="image" class="img-responsive mb-5" style="width: 110px; height: 100px;" src="{{asset('storage') . '/' . $product->image}}">
                                                         </div>
                                                     </div>
+                                                    <a href="{{route('product/delete', $product->id)}}" class="btn btn-danger mt-5">Delete this product</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="#modal-form{{$product->id}}" class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
                         @endforeach

@@ -41,6 +41,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/user/product/create', [\App\Http\Controllers\Product\ProductController::class, 'create'])->name('user.product.create');
     Route::post('/user/product/create', [\App\Http\Controllers\Product\ProductController::class, 'store'])->name('product.store');
     Route::get('/user/product/update/{id}', [\App\Http\Controllers\Product\ProductController::class, 'show'])->name('user.product.update');
+    Route::post('/user/product/update', [\App\Http\Controllers\Product\ProductController::class, 'update'])->name('product.update');
+    Route::get('/user/product/delete/{id}', [\App\Http\Controllers\Product\ProductController::class, 'delete'])->name('product/delete');
 });
 
 // espace user service or shop

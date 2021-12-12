@@ -10,24 +10,29 @@ class ProductEloquent implements ProductRepositoryInterface
 {
     public function create(array $data)
     {
-        $image1 = $data['image1']->store('img/shop/product', 'public');
-        $image2 = $data['image2']->store('img/shop/product', 'public');
+        if ($data['regular_price'] >= $data['sale_price'])
+        {
+            $image1 = $data['image1']->store('img/shop/product', 'public');
+            $image2 = $data['image2']->store('img/shop/product', 'public');
 
-        $product = Product::create([
-            'name' => $data['name'],
-            'slug' => $data['slug'],
-            'regular_price' => $data['regular_price'],
-            'sale_price' => $data['sale_price'],
-            'quantity' => $data['quantity'],
-            'image' => $image1,
-            'images' => $image2,
-            'short_description' => $data['short_description'],
-            'description' => $data['description'],
-            'category_id' => $data['category'],
-            'user_id' => Auth::user()->id,
-        ]);
+            $product = Product::create([
+                'name' => $data['name'],
+                'slug' => $data['slug'],
+                'regular_price' => $data['regular_price'],
+                'sale_price' => $data['sale_price'],
+                'quantity' => $data['quantity'],
+                'image' => $image1,
+                'images' => $image2,
+                'short_description' => $data['short_description'],
+                'description' => $data['description'],
+                'category_id' => $data['category'],
+                'user_id' => Auth::user()->id,
+            ]);
 
-        return $product;
+            return $product;
+        }
+        return false;
+
     }
 
     public function getById(int $id)
@@ -40,6 +45,45 @@ class ProductEloquent implements ProductRepositoryInterface
     public function update(array $data)
     {
         $product = Product::where('id', $data['id'])->firstOrFail();
+
+        if ($data['image1'] != null && $data['image2'] != null)
+        {
+            $image1 = $data['image1']->store('img/shop/product', 'public');
+            $image2 = $data['image2']->store('img/shop/product', 'public');
+
+            $product->update([
+                'name' => $data['name'],
+                'slug' => $data['slug'],
+                'regular_price' => $data['regular_price'],
+                'sale_price' => $data['sale_price'],
+                'quantity' => $data['quantity'],
+                'image' => $image1,
+                'images' => $image2,
+                'short_description' => $data['short_description'],
+                'description' => $data['description'],
+                'category_id' => $data['category'],
+                'user_id' => Auth::user()->id,
+            ]);
+
+            return $product;
+        }
+
+        if ($data['image1'] == null && $data['image2'] == null)
+        {
+            $product->update([
+                'name' => $data['name'],
+                'slug' => $data['slug'],
+                'regular_price' => $data['regular_price'],
+                'sale_price' => $data['sale_price'],
+                'quantity' => $data['quantity'],
+                'short_description' => $data['short_description'],
+                'description' => $data['description'],
+                'category_id' => $data['category'],
+                'user_id' => Auth::user()->id,
+            ]);
+
+            return $product;
+        }
 
         if ($data['image1'] != null)
         {
@@ -78,43 +122,13 @@ class ProductEloquent implements ProductRepositoryInterface
 
             return $product;
         }
+    }
 
-        if ($data['image2'] != null && $data['image2'] != null)
-        {
-            $image1 = $data['image1']->store('img/shop/product', 'public');
-            $image2 = $data['image2']->store('img/shop/product', 'public');
-            $$product->update([
-                'name' => $data['name'],
-                'slug' => $data['slug'],
-                'regular_price' => $data['regular_price'],
-                'sale_price' => $data['sale_price'],
-                'quantity' => $data['quantity'],
-                'image' => $image1,
-                'images' => $image2,
-                'short_description' => $data['short_description'],
-                'description' => $data['description'],
-                'category_id' => $data['category'],
-                'user_id' => Auth::user()->id,
-            ]);
+    public function delete(int $id)
+    {
+        $product = Product::where('id', $id)->where('user_id', Auth::user()->id)->firstOrFail();
+        Product::destroy($product->id);
 
-            return $product;
-        }
-
-        if ($data['image2'] == null && $data['image2'] == null)
-        {
-            $product->update([
-                'name' => $data['name'],
-                'slug' => $data['slug'],
-                'regular_price' => $data['regular_price'],
-                'sale_price' => $data['sale_price'],
-                'quantity' => $data['quantity'],
-                'short_description' => $data['short_description'],
-                'description' => $data['description'],
-                'category_id' => $data['category'],
-                'user_id' => Auth::user()->id,
-            ]);
-
-            return $product;
-        }
+        return true;
     }
 }

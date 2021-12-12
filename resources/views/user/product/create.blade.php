@@ -13,7 +13,7 @@
                             <div class="alert alert-danger">{{ session('error') }}</div>
                         @endif
                         <div class="ibox-title">
-                            <h5>Add product<small>please choose beautiful images</small></h5>
+                            <h5>Add product<small> please choose beautiful images</small></h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -38,7 +38,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Name</label>
                                     <div class="col-sm-10">
-                                        <input type="text"  name="name" class="form-control @error('name') is-invalid @enderror">
+                                        <input type="text"  name="name" value="{{ (old('name')) }}" class="form-control @error('name') is-invalid @enderror">
                                         @error('name')
                                             <span class="invalid-feedback" style="color: red;" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -49,7 +49,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Slug</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="slug" class="form-control @error('slug') is-invalid @enderror">
+                                        <input type="text" value="{{ (old('slug')) }}" name="slug" class="form-control @error('slug') is-invalid @enderror">
                                         @error('slug')
                                             <span class="invalid-feedback" style="color: red;" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -60,7 +60,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Regular price</label>
                                     <div class="col-sm-10">
-                                        <input type="number" name="regular_price" class="form-control @error('regular_price') is-invalid @enderror">
+                                        <input type="number"  value="{{ (old('regular_price')) }}" name="regular_price" class="form-control @error('regular_price') is-invalid @enderror">
                                         @error('regular_price')
                                             <span class="invalid-feedback" style="color: red;" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -71,7 +71,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Sale price</label>
                                     <div class="col-sm-10">
-                                        <input type="number" name="sale_price" class="form-control @error('sale_price') is-invalid @enderror">
+                                        <input type="number" value="{{ (old('sale_price')) }}" name="sale_price" class="form-control @error('sale_price') is-invalid @enderror">
                                         @error('sale_price')
                                             <span class="invalid-feedback" style="color: red;" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -82,7 +82,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Quantity in stock</label>
                                     <div class="col-sm-10">
-                                        <input type="number" name="quantity" class="form-control @error('quantity') is-invalid @enderror">
+                                        <input type="number" value="{{ (old('quantity')) }}" name="quantity" class="form-control @error('quantity') is-invalid @enderror">
                                         @error('quantity')
                                             <span class="invalid-feedback" style="color: red;" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -93,7 +93,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Short description</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="short_description" class="form-control @error('short_description') is-invalid @enderror">
+                                        <input type="text" value="{{ (old('short_description')) }}" name="short_description" class="form-control @error('short_description') is-invalid @enderror">
                                         @error('short_description')
                                             <span class="invalid-feedback" style="color: red;" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -104,7 +104,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Description</label>
                                     <div class="col-sm-10">
-                                        <textarea type="text" name="description" class="form-control @error('description') is-invalid @enderror"></textarea>
+                                        <textarea type="text" name="description" class="form-control @error('description') is-invalid @enderror">{{ (old('description')) }}</textarea>
                                         @error('description')
                                             <span class="invalid-feedback" style="color: red;" role="alert">
                                                 <strong>{{ $message }}</strong>
