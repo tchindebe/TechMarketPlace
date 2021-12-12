@@ -10,21 +10,6 @@ use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\User\UserDashboardComponemt;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', HomeComponent::class);
 
 Route::get('/shop', ShopComponent::class);
@@ -50,6 +35,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/user/Category', [\App\Http\Controllers\CategoryController::class, 'index'])->name('user.Category.index');
     Route::post('/user/Category', [\App\Http\Controllers\CategoryController::class, 'store'])->name('Category.store');
     Route::post('user/category', [\App\Http\Controllers\CategoryController::class, 'update'])->name('category.update');
+
+    //Route products
+    Route::get('/user/product', [\App\Http\Controllers\Product\ProductController::class, 'index'])->name('user.product.index');
+    Route::get('/user/product/create', [\App\Http\Controllers\Product\ProductController::class, 'create'])->name('user.product.create');
+    Route::post('/user/product/create', [\App\Http\Controllers\Product\ProductController::class, 'store'])->name('product.store');
+    Route::get('/user/product/update/{id}', [\App\Http\Controllers\Product\ProductController::class, 'show'])->name('user.product.update');
 });
 
 // espace user service or shop
