@@ -13,7 +13,7 @@ class ProductRequest extends  FormRequest
             'slug' => 'required',
             'regular_price' => 'required',
             'sale_price' => 'required',
-            'quantity',
+            'quantity'=> 'required',
             'image1' => 'required',
             'image2' => 'required',
             'short_description' => 'required',

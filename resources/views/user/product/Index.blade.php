@@ -12,7 +12,7 @@
             <div class="ibox float-e-margins">
                 <a href="{{route('user.product.create')}}" class="btn btn-primary btn-sm float-left">Add new product</a>
                 <div class="ibox-title">
-                    <h5>Table products for you</h5>
+                    <h5>Table products for you, you have <strong style="color: green;">{{Auth::user()->products->count()}}</strong> Product(s)</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -35,7 +35,6 @@
                     <table class="table table-striped table-bordered table-hover dataTables-example" >
                         <thead>
                         <tr>
-                            <th>#</th>
                             <th>Name</th>
                             <th>Slug</th>
                             <th>Regular price</th>
@@ -48,7 +47,6 @@
                         <tbody>
                         @foreach(Auth::user()->products as $product)
                             <tr class="gradeX">
-                                <td>{{$product->id}}</td>
                                 <td>{{$product->name}}</td>
                                 <td>{{$product->slug}}</td>
                                 <td>{{$product->regular_price}}</td>

@@ -4,5 +4,5 @@ namespace App\Repository\Orders;
 
 interface OrderRepositoryInterface
 {
-    public function show();
+    public function getById(int $id);
 }

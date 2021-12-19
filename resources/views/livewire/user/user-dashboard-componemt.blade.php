@@ -423,6 +423,5 @@
         </div>
     </div>
 
-    </div>
 @endsection
 @endif
