@@ -84,7 +84,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Basic Data Tables example with responsive plugin</h5>
+                    <h5>Table category for you, you have <strong style="color: green;">{{Auth::user()->category->count()}}</strong> Category(s)</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -107,7 +107,6 @@
                     <table class="table table-striped table-bordered table-hover dataTables-example" >
                         <thead>
                             <tr>
-                                <th>#</th>
                                 <th>Name category</th>
                                 <th>Slug Category</th>
                                 <th>Action</th>
@@ -116,7 +115,6 @@
                         <tbody>
                             @foreach(Auth::user()->category as $category)
                                 <tr class="gradeX">
-                                    <td>{{$category->id}}</td>
                                     <td>{{$category->name}}</td>
                                     <td>{{$category->slug}}</td>
                                     <td>
@@ -152,63 +150,4 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-    <!-- Mainly scripts -->
-    <script src="{{asset('assets/shop/js/jquery-2.1.1.js')}}"></script>
-    <script src="{{asset('assets/shop/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/shop/js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
-    <script src="{{asset('assets/shop/js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
-    <script src="{{asset('assets/shop/js/plugins/jeditable/jquery.jeditable.js')}}"></script>
-
-    <!-- Data Tables -->
-    <script src="{{asset('assets/shop/js/plugins/dataTables/jquery.dataTables.js')}}"></script>
-    <script src="{{asset('assets/shop/js/plugins/dataTables/dataTables.bootstrap.js')}}"></script>
-    <script src="{{asset('assets/shop/js/plugins/dataTables/dataTables.responsive.js')}}"></script>
-    <script src="{{asset('assets/shop/js/plugins/dataTables/dataTables.tableTools.min.js')}}"></script>
-
-    <!-- Custom and plugin javascript -->
-    <script src="{{asset('assets/shop/js/inspinia.js')}}"></script>
-    <script src="{{asset('assets/shop/js/plugins/pace/pace.min.js')}}"></script>
-
-    <!-- Page-Level Scripts -->
-    <script>
-        $(document).ready(function() {
-            $('.dataTables-example').dataTable({
-                responsive: true,
-                "dom": 'T<"clear">lfrtip',
-                "tableTools": {
-                    "sSwfPath": "js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
-                }
-            });
-
-            /* Init DataTables */
-            var oTable = $('#editable').dataTable();
-
-            /* Apply the jEditable handlers to the table */
-            oTable.$('td').editable( '../example_ajax.php', {
-                "callback": function( sValue, y ) {
-                    var aPos = oTable.fnGetPosition( this );
-                    oTable.fnUpdate( sValue, aPos[0], aPos[1] );
-                },
-                "submitdata": function ( value, settings ) {
-                    return {
-                        "row_id": this.parentNode.getAttribute('id'),
-                        "column": oTable.fnGetPosition( this )[2]
-                    };
-                },
-                "width": "90%",
-                "height": "100%"
-            } );
-        });
-        function fnClickAddRow() {
-            $('#editable').dataTable().fnAddData( [
-                "Custom row",
-                "New row",
-                "New row",
-                "New row",
-                "New row" ] );
-        }
-    </script>
-
 @endsection

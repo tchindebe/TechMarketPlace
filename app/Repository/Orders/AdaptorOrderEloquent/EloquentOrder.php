@@ -8,9 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class EloquentOrder implements OrderRepositoryInterface
 {
-    public function show()
+
+    public function getById(int $id)
     {
-        $order = Ordereds::where('id', Auth::user()->id)->get();
+        $order = Ordereds::where('id', $id)->firstOrFail();
+
         return $order;
     }
+
+
 }

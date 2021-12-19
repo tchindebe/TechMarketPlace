@@ -43,6 +43,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/user/product/update/{id}', [\App\Http\Controllers\Product\ProductController::class, 'show'])->name('user.product.update');
     Route::post('/user/product/update', [\App\Http\Controllers\Product\ProductController::class, 'update'])->name('product.update');
     Route::get('/user/product/delete/{id}', [\App\Http\Controllers\Product\ProductController::class, 'delete'])->name('product/delete');
+
+    //Route orders
+    Route::get('/user/order', [\App\Http\Controllers\Orders\OrderController::class, 'index'])->name('user.order.index');
+    Route::get('/user/order/getOrder/{id}', [\App\Http\Controllers\Orders\OrderController::class, 'findById'])->name('user.order.findOrder');
 });
 
 // espace user service or shop
