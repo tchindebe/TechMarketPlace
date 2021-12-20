@@ -19,11 +19,6 @@ Route::get('/cart', CartComponent::class);
 Route::get('/checkout', CheckoutComponent::class);
 
 
-
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard');
-
 // For Users or Customers
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 

@@ -137,6 +137,21 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                        <div class="form-group"><label class="col-sm-2 control-label">Product quality</label>
+                                            <div class="col-sm-10">
+                                                <select class="form-control m-b @error('category') is-invalid @enderror" name="type">
+                                                    <option value="1">Featured product</option>
+                                                    <option value="2">Product in promotion</option>
+                                                    <option value="3">Low price product</option>
+                                                    <option value="4">Others</option>
+                                                </select>
+                                                @error('type')
+                                                <span class="invalid-feedback" style="color: red;" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                                @enderror
+                                            </div>
+                                        </div>
                                         <div class="form-group"><label class="col-sm-2 control-label">Select</label>
                                             <div class="col-sm-10">
                                                 <select class="form-control m-b @error('category') is-invalid @enderror" name="category">
@@ -170,7 +185,17 @@
                                                 <h5><strong>Quantity in stock :  <span @if($product->quantity > 10) style="color:green; font-weight: bold;" @else style="color:red; font-weight: bold;"@endif>{{$product->quantity}}</span></strong></h5>
                                                 <h5><strong>Category :  {{$product->category->name}}</strong></h5>
                                                 <p> Short description :  {{$product->short_description}}</p>
-
+                                                <p>Product quality :
+                                                    @if($product->SKU == 1)
+                                                        Featured product
+                                                    @elseif($product->SKU == 2)
+                                                        Product in promotion
+                                                    @elseif($product->SKU == 3)
+                                                        Low price product
+                                                    @else
+                                                        Others
+                                                    @endif
+                                                </p>
                                                 <p>
                                                     Description : {{$product->description}}
                                                 </p>
@@ -189,7 +214,6 @@
                                     </div>
                                 </div>
                             </div>
-
                     </div>
                 </div>
             </div>

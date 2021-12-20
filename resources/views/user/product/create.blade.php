@@ -134,7 +134,22 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-group"><label class="col-sm-2 control-label">Select</label>
+                                <div class="form-group"><label class="col-sm-2 control-label">Product quality</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control m-b @error('category') is-invalid @enderror" name="type">
+                                                <option value="1">Featured product</option>
+                                                <option value="2">Product in promotion</option>
+                                                <option value="3">Low price product</option>
+                                                <option value="4">Others</option>
+                                        </select>
+                                        @error('type')
+                                        <span class="invalid-feedback" style="color: red;" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">Select category</label>
                                     <div class="col-sm-10">
                                         <select class="form-control m-b @error('category') is-invalid @enderror" name="category">
                                             @foreach(Auth::user()->category as $category)
