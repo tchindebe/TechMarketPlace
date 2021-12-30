@@ -44,10 +44,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/user/order/getOrder/{id}', [\App\Http\Controllers\Orders\OrderController::class, 'findById'])->name('user.order.findOrder');
 });
 
-// espace user service or shop
-
+// Route shop
 Route::get('/user/show/{user}', [\App\Http\Controllers\SeedShopOrServiceController::class, 'show'])->name('user.shop');
+Route::get('/user/shop/product/{id}', [\App\Http\Controllers\shop\ProductController::class, 'index'])->name('user.shop.product.detailProduct');
+
+//Route service
 Route::get('/user/service/{user}', [\App\Http\Controllers\SeedShopOrServiceController::class, 'show'])->name('user.service');
+
+//Route client
 Route::get('/user/client/{user}', [\App\Http\Controllers\SeedShopOrServiceController::class, 'show'])->name('user.client');
 
 
