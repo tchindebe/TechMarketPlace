@@ -140,4 +140,25 @@ class ProductEloquent implements ProductRepositoryInterface
 
         return true;
     }
+
+    public function show(int $id)
+    {
+        $product = Product::where('category_id', $id)->get();
+
+        return $product;
+    }
+
+    public function allProductByCategory(int $id)
+    {
+        $products = Product::where('category_id', '!=', $id)->get();
+
+        return $products;
+    }
+
+    public function allproduct()
+    {
+        $allProducts = Product::all();
+
+        return $allProducts;
+    }
 }

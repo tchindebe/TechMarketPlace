@@ -47,6 +47,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 // Route shop
 Route::get('/user/show/{user}', [\App\Http\Controllers\SeedShopOrServiceController::class, 'show'])->name('user.shop');
 Route::get('/user/shop/product/{id}', [\App\Http\Controllers\shop\ProductController::class, 'index'])->name('user.shop.product.detailProduct');
+Route::get('/user/shop/product{id}/', [\App\Http\Controllers\shop\ProductController::class, 'show'])->name('user.shop.product.productCategory');
 
 //Route service
 Route::get('/user/service/{user}', [\App\Http\Controllers\SeedShopOrServiceController::class, 'show'])->name('user.service');
