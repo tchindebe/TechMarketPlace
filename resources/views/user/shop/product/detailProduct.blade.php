@@ -159,47 +159,38 @@
                                                 <a href="#tab-reviews">Reviews (1)</a>
                                             </li>
                                         </ul>
-                                        <!-- /.ec-tabs -->
-                                        <div class="accessories">
-                                            <div class="accessories-wrapper">
-                                                <div class="accessories-product columns-4">
-                                                    <div class="products">
-                                                        @foreach($allProducts as $allProducts)
-                                                            <div class="product">
-                                                                <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link" href="{{route('user.shop.product.detailProduct', $allProducts->id)}}">
-                                                                    <img width="224" height="197" alt="" class="attachment-shop_catalog size-shop_catalog wp-post-image" src="{{asset('storage') . '/' . $allProducts->images}}">
-                                                                    <span class="price">
-                                                                    <del>
-                                                                        <span class="woocommerce-Price-amount amount">
-                                                                            {{$allProducts->regular_price}}
-                                                                            <span class="woocommerce-Price-currencySymbol"> FCFA</span>
-                                                                        </span>
-                                                                    </del>
-                                                                    <ins>
-                                                                        <span class="woocommerce-Price-amount amount">
-                                                                            {{$allProducts->sale_price}}
-                                                                            <span class="woocommerce-Price-currencySymbol"> FCFA</span>
-                                                                        </span>
-                                                                    </ins>
-                                                                </span>
-                                                                    <h2 class="woocommerce-loop-product__title">{{$allProducts->name}}</h2>
-                                                                </a>
-                                                                <div class="checkbox accessory-checkbox">
-                                                                    <label>
-                                                                        <input type="checkbox" data-product-type="simple" data-product-id="185" data-price="997.00" class="product-check" checked=""> Remove
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        @endforeach
+                                    </div>
 
+                                    <div class="tm-related-products-carousel section-products-carousel" id="tm-related-products-carousel" data-ride="tm-slick-carousel" data-wrap=".products" data-slick="{&quot;slidesToShow&quot;:7,&quot;slidesToScroll&quot;:7,&quot;dots&quot;:true,&quot;arrows&quot;:true,&quot;prevArrow&quot;:&quot;&lt;a href=\&quot;#\&quot;&gt;&lt;i class=\&quot;tm tm-arrow-left\&quot;&gt;&lt;\/i&gt;&lt;\/a&gt;&quot;,&quot;nextArrow&quot;:&quot;&lt;a href=\&quot;#\&quot;&gt;&lt;i class=\&quot;tm tm-arrow-right\&quot;&gt;&lt;\/i&gt;&lt;\/a&gt;&quot;,&quot;appendArrows&quot;:&quot;#tm-related-products-carousel .custom-slick-nav&quot;,&quot;responsive&quot;:[{&quot;breakpoint&quot;:767,&quot;settings&quot;:{&quot;slidesToShow&quot;:1,&quot;slidesToScroll&quot;:1}},{&quot;breakpoint&quot;:780,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesToScroll&quot;:3}},{&quot;breakpoint&quot;:1200,&quot;settings&quot;:{&quot;slidesToShow&quot;:4,&quot;slidesToScroll&quot;:4}},{&quot;breakpoint&quot;:1400,&quot;settings&quot;:{&quot;slidesToShow&quot;:5,&quot;slidesToScroll&quot;:5}}]}">
+                                        <section class="related">
+                                            <header class="section-header">
+                                                <h2 class="section-title">Others products</h2>
+                                                <nav class="custom-slick-nav"></nav>
+                                            </header>
+                                            <!-- .section-header -->
+                                            <div class="products">
+                                                @foreach($allProducts as $allProducts)
+                                                    <div class="product">
+                                                        <a href="{{route('user.shop.product.detailProduct', $allProducts->id)}}" class="woocommerce-LoopProduct-link">
+                                                            <img src="{{asset('storage') . '/' . $allProducts->images}}" width="224" height="197" class="wp-post-image" alt="">
+                                                            <span class="price">
+                                                            <ins>
+                                                                <span class="amount"> </span>
+                                                            </ins>
+                                                            <span class="amount"> {{$allProducts->sale_price}} FCFA</span>
+                                                        </span>
+                                                            <!-- /.price -->
+                                                            <h2 class="woocommerce-loop-product__title">{{$allProducts->name}}</h2>
+                                                        </a>
+                                                        <div class="hover-area">
+                                                            <a class="button add_to_cart_button" href="cart.html" rel="nofollow">Add to cart</a>
+                                                            <a class="add-to-compare-link" href="compare.html">Add to compare</a>
+                                                        </div>
                                                     </div>
-                                                    <!-- /.products -->
-                                                </div>
-                                                <!-- .row -->
+                                                @endforeach
                                             </div>
-                                            <!-- .accessories-wrapper -->
-                                        </div>
-                                        <!-- .accessories -->
+                                        </section>
+                                        <!-- .single-product-wrapper -->
                                     </div>
                                     <!-- .tab-content -->
                                 </div>
