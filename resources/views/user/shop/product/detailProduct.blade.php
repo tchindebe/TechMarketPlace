@@ -307,36 +307,6 @@
                                                 </div>
                                                 <!-- /.advanced-review-comment -->
                                             </div>
-                                            <!-- /.advanced-review -->
-                                            <div id="comments">
-                                                <ol class="commentlist">
-                                                    <li id="li-comment-83" class="comment byuser comment-author-admin bypostauthor even thread-even depth-1">
-                                                        <div class="comment_container" id="comment-83">
-                                                            <div class="comment-text">
-                                                                <div class="star-rating">
-                                                                    <span style="width:100%">Rated
-                                                                        <strong class="rating">5</strong> out of 5
-                                                                    </span>
-                                                                </div>
-                                                                <p class="meta">
-                                                                    <strong itemprop="author" class="woocommerce-review__author">first last</strong>
-                                                                    <span class="woocommerce-review__dash">&ndash;</span>
-                                                                    <time datetime="2017-06-21T08:05:40+00:00" itemprop="datePublished" class="woocommerce-review__published-date">June 21, 2017</time>
-                                                                </p>
-                                                                <div class="description">
-                                                                    <p>Wow great product</p>
-                                                                </div>
-                                                                <!-- /.description -->
-                                                            </div>
-                                                            <!-- /.comment-text -->
-                                                        </div>
-                                                        <!-- /.comment_container -->
-                                                    </li>
-                                                    <!-- /.comment -->
-                                                </ol>
-                                                <!-- /.commentlist -->
-                                            </div>
-                                            <!-- /#comments -->
                                         </div>
                                         <!-- /.techmarket-advanced-reviews -->
                                     </div>

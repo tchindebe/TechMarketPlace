@@ -16,5 +16,5 @@ interface ProductRepositoryInterface
 
     public function allProductByCategory(int $id);
 
-    public function allproduct();
+    public function allproduct(int $id);
 }
