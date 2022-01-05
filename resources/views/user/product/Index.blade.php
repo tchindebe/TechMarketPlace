@@ -40,6 +40,7 @@
                             <th>Regular price</th>
                             <th>Sale price</th>
                             <th>Stock</th>
+                            <th>Quality</th>
                             <th>Image</th>
                             <th>Action</th>
                         </tr>
@@ -52,6 +53,17 @@
                                 <td>{{$product->regular_price}}</td>
                                 <td>{{$product->sale_price}}</td>
                                 <td @if($product->quantity > 10) style="color:green; font-weight: bold;" @else style="color:red; font-weight: bold;"@endif>{{$product->quantity}}</td>
+                                <td>
+                                    @if($product->SKU == 1)
+                                        Featured product
+                                    @elseif($product->SKU == 2)
+                                        Product in promotion
+                                    @elseif($product->SKU == 3)
+                                        Low price product
+                                    @else
+                                        Others
+                                    @endif
+                                </td>
                                 <td><img alt="image" class="img-responsive" style="width: 50px; height: 40px;" src="{{asset('storage') . '/' . $product->image}}"></td>
                                 <td>
                                     <a href="{{route('user.product.update', $product->id)}}" class="btn btn-warning btn-sm " data-toggle="modal">Edit</a>

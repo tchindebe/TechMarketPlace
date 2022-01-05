@@ -29,4 +29,16 @@ class AdaptorEloquentCategory implements CategoryRepositoryInterface
 
         return $category;
     }
+
+    public function fetById(int $id)
+    {
+        $category = Category::where('id', $id)->firstOrFail();
+
+        return $category;
+    }
+
+    public function AllCategory()
+    {
+        // TODO: Implement AllCategory() method.
+    }
 }

@@ -26,6 +26,7 @@ class ProductEloquent implements ProductRepositoryInterface
                 'short_description' => $data['short_description'],
                 'description' => $data['description'],
                 'category_id' => $data['category'],
+                'SKU' => $data['type'],
                 'user_id' => Auth::user()->id,
             ]);
 
@@ -63,6 +64,7 @@ class ProductEloquent implements ProductRepositoryInterface
                     'images' => $image2,
                     'short_description' => $data['short_description'],
                     'description' => $data['description'],
+                    'SKU' => $data['type'],
                     'category_id' => $data['category'],
                     'user_id' => Auth::user()->id,
                 ]);
@@ -80,6 +82,7 @@ class ProductEloquent implements ProductRepositoryInterface
                     'quantity' => $data['quantity'],
                     'short_description' => $data['short_description'],
                     'description' => $data['description'],
+                    'SKU' => $data['type'],
                     'category_id' => $data['category'],
                     'user_id' => Auth::user()->id,
                 ]);
@@ -99,6 +102,7 @@ class ProductEloquent implements ProductRepositoryInterface
                     'image' => $image1,
                     'short_description' => $data['short_description'],
                     'description' => $data['description'],
+                    'SKU' => $data['type'],
                     'category_id' => $data['category'],
                     'user_id' => Auth::user()->id,
                 ]);
@@ -118,6 +122,7 @@ class ProductEloquent implements ProductRepositoryInterface
                     'images' => $image2,
                     'short_description' => $data['short_description'],
                     'description' => $data['description'],
+                    'SKU' => $data['type'],
                     'category_id' => $data['category'],
                     'user_id' => Auth::user()->id,
                 ]);
@@ -134,5 +139,26 @@ class ProductEloquent implements ProductRepositoryInterface
         Product::destroy($product->id);
 
         return true;
+    }
+
+    public function show(int $id)
+    {
+        $product = Product::where('category_id', $id)->get();
+
+        return $product;
+    }
+
+    public function allProductByCategory(int $id)
+    {
+        $products = Product::where('category_id', '!=', $id)->get();
+
+        return $products;
+    }
+
+    public function allproduct()
+    {
+        $allProducts = Product::all();
+
+        return $allProducts;
     }
 }
