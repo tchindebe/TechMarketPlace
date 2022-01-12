@@ -14,6 +14,8 @@ use App\Repository\Orders\OrderRepositoryInterface;
 use App\Repository\Product\AdaptorEloquentProduct\ProductEloquent;
 use App\Repository\Product\ProductRepositoryInterface;
 use App\Repository\UserRepositoryInterface;
+use Darryldecode\Cart\Cart;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -56,5 +58,19 @@ class AppServiceProvider extends ServiceProvider
     {
         $orders = Ordereds::all();
         view()->share('orders', $orders);
+
+//        $cartCount = Cart::getTotalQuantity();
+//        view()->share('cartCount', $cartCount);
+//
+//        $cartTotal = Cart::getTotal();
+//        view()->share('cartTotal', $cartTotal);
+
+        View::composer(['layouts.guest', 'product-component'], function ($view) {
+            $view->with([
+//                'cartCount' => Cart::getTotalQuantity(),
+//                'cartTotal' => Cart::getTotal(),
+            ]);
+        });
+
     }
 }

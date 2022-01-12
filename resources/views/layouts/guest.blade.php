@@ -604,15 +604,24 @@
                                 <li class="animate-dropdown dropdown ">
                                     <a class="cart-contents" href="cart.html" data-toggle="dropdown" title="View your shopping cart">
                                         <i class="tm tm-shopping-bag"></i>
-                                        <span class="count">2</span>
-                                        <span class="amount">
-                                            <span class="price-label">Your Cart</span>&#036;136.99</span>
+{{--                                        @if($cartCount)--}}
+{{--                                        <span class="count">--}}
+{{--                                            {{ $cartCount }}--}}
+{{--                                        </span>--}}
+{{--                                        @endif--}}
+{{--                                        @if($cartTotal)--}}
+{{--                                        <span class="amount">--}}
+{{--                                            <span class="price-label">Your Cart</span>&#036;--}}
+{{--                                            {{ $cartTotal }}--}}
+{{--                                        </span>--}}
+{{--                                        @endif--}}
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-mini-cart">
                                         <li>
                                             <div class="widget woocommerce widget_shopping_cart">
                                                 <div class="widget_shopping_cart_content">
                                                     <ul class="woocommerce-mini-cart cart_list product_list_widget ">
+
                                                         <li class="woocommerce-mini-cart-item mini_cart_item">
                                                             <a href="#" class="remove" aria-label="Remove this item" data-product_id="65" data-product_sku="">×</a>
                                                             <a href="single-product-sidebar.html">
@@ -623,16 +632,7 @@
                                                                     <span class="woocommerce-Price-currencySymbol">$</span>64.99</span>
                                                             </span>
                                                         </li>
-                                                        <li class="woocommerce-mini-cart-item mini_cart_item">
-                                                            <a href="#" class="remove" aria-label="Remove this item" data-product_id="27" data-product_sku="">×</a>
-                                                            <a href="single-product-sidebar.html">
-                                                                <img src="{{asset('assets/images/products/mini-cart2.jpg')}}" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="">Gear Virtual Reality 3D with Bluetooth Glasses&nbsp;
-                                                            </a>
-                                                            <span class="quantity">1 ×
-                                                                <span class="woocommerce-Price-amount amount">
-                                                                    <span class="woocommerce-Price-currencySymbol">$</span>72.00</span>
-                                                            </span>
-                                                        </li>
+
                                                     </ul>
                                                     <!-- .cart_list -->
                                                     <p class="woocommerce-mini-cart__total total">
@@ -641,7 +641,7 @@
                                                             <span class="woocommerce-Price-currencySymbol">$</span>136.99</span>
                                                     </p>
                                                     <p class="woocommerce-mini-cart__buttons buttons">
-                                                        <a href="cart.html" class="button wc-forward">View cart</a>
+                                                        <a href="{{ route('cart') }}" class="button wc-forward">View cart</a>
                                                         <a href="checkout.html" class="button checkout wc-forward">Checkout</a>
                                                     </p>
                                                 </div>
@@ -654,15 +654,14 @@
                                 </li>
                             </ul>
 
-                            <ul class="header-wishlist nav navbar-nav">
+                            <ul class="nav">
                                 <li class="nav-item dropdown no-arrow">
                                     @if (Route::has('login'))
                                         @auth
                                             @if (Auth::user()->user_type === 'admin')
-                                                <li class="menu-item menu-item-has-children animate-dropdown dropdown">
+                                                <li class="menu-item  dropdown no-arrow">
                                                     <a title="My Account" data-toggle="dropdown" class="dropdown-toggle" href="#">
                                                         My account ({{Auth::user()->name}})
-                                                        <span class="caret"></span>
                                                     </a>
                                                     <ul role="menu" class="dropdown-menu">
                                                         <li class="menu-item animate-dropdown">
@@ -670,10 +669,11 @@
                                                         </li>
                                                         <li class="menu-item animate-dropdown">
                                                             <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">logout</a>
+                                                            <form id="logout-form" action="{{route('logout')}}" method="post">
+                                                                @csrf
+                                                            </form>
                                                         </li>
-                                                        <form id="logout-form" action="{{route('logout')}}" method="post">
-                                                            @csrf
-                                                        </form>
+
                                                     </ul>
                                                     <!-- .dropdown-menu -->
                                                 </li>
@@ -747,50 +747,8 @@
                                                         <div class="tm-mega-menu">
                                                             <div class="widget widget_nav_menu">
                                                                 <ul class="menu">
-                                                                    <li class="nav-title menu-item">
-                                                                        <a href="#">Home Pages</a>
-                                                                    </li>
-                                                                    <li class="menu-item">
-                                                                        <a href="home-v1.html">Home v1</a>
-                                                                    </li>
-                                                                    <li class="menu-item">
-                                                                        <a href="home-v2.html">Home v2</a>
-                                                                    </li>
-                                                                    <li class="menu-item">
-                                                                        <a href="home-v3.html">Home v3</a>
-                                                                    </li>
-                                                                    <li class="menu-item">
-                                                                        <a href="home-v4.html">Home v4</a>
-                                                                    </li>
-                                                                    <li class="menu-item">
-                                                                        <a href="home-v5.html">Home v5</a>
-                                                                    </li>
-                                                                    <li class="menu-item">
-                                                                        <a href="home-v6.html">Home v6</a>
-                                                                    </li>
-                                                                    <li class="menu-item">
-                                                                        <a href="home-v7.html">Home v7</a>
-                                                                    </li>
-                                                                    <li class="menu-item">
-                                                                        <a href="home-v8.html">Home v8</a>
-                                                                    </li>
-                                                                    <li class="menu-item">
-                                                                        <a href="home-v9.html">Home v9</a>
-                                                                    </li>
-                                                                    <li class="menu-item">
-                                                                        <a href="home-v10.html">Home v10</a>
-                                                                    </li>
-                                                                    <li class="menu-item">
-                                                                        <a href="home-v11.html">Home v11</a>
-                                                                    </li>
-                                                                    <li class="menu-item">
-                                                                        <a href="home-v12.html">Home v12</a>
-                                                                    </li>
-                                                                    <li class="menu-item">
-                                                                    <a href="home-v13.html">Home v13</a>
-                                                                </li>
                                                                 <li class="menu-item">
-                                                                    <a href="home-v14.html">Home v14</a>
+                                                                    <a href="{{ route('home') }}">Home</a>
                                                                 </li>
                                                                 </ul>
                                                                 <!-- .menu -->

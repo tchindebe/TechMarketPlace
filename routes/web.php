@@ -10,11 +10,20 @@ use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\User\UserDashboardComponemt;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', HomeComponent::class);
+Route::get('/', HomeComponent::class)->name('home');
 
 Route::get('/shop', ShopComponent::class);
 
-Route::get('/cart', CartComponent::class);
+//Route::get('/cart', CartComponent::class)->name('cart');
+//Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name(['', '', '', 'destroy']);
+//Route::post('/cart/{}', [\App\Http\Controllers\CartController::class, 'store'])->name(['', 'store', 'update', '']);
+//Route::post('/cart', [\App\Http\Controllers\CartController::class, 'update'])->name(['', 'store', 'update', 'destroy']);
+//Route::resource('/cart', [\App\Http\Controllers\CartController::class, 'destroy'])->name(['', 'store', 'update', 'destroy']);
+
+Route::resource('cart', \App\Http\Controllers\CartController::class)->only(['index', 'store', 'update', 'destroy']);
+//Route::get('product/{id}', \App\Http\Livewire\ProductComponent::class)->name('product.show');
+Route::name('product.show')->get('produits/{produit}', \App\Http\Livewire\ProductComponent::class);
+
 
 Route::get('/checkout', CheckoutComponent::class);
 
