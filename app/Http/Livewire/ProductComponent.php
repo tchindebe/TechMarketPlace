@@ -9,12 +9,8 @@ use Livewire\Component;
 class ProductComponent extends Component
 {
 
-    public function render(Request $request, Product $product)
+    public function render()
     {
-        if($product->active === 'instock') {
-            return view('product.show', compact('product'));
-        }
-
-        return redirect(route('home'));
+            return view('livewire.product-component')->layout('layouts.guest');
     }
 }

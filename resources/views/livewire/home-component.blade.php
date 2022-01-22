@@ -1,3 +1,6 @@
+@extends('layouts.guest')
+
+@section('content')
 <div id="content" class="site-content" tabindex="-1">
     <div class="col-full">
         <div class="row">
@@ -97,6 +100,27 @@
                         </div>
                         <!-- .banners-block -->
                     </div>
+                    @if(session()->has('cart'))
+                        <div class="modal" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content center-align">
+                                    <h5>Produit ajouté au panier avec succès</h5>
+                                    <hr>
+                                    <p>Il y a  dans votre panier pour un total de <strong>{{ number_format($cartTotal, 2, ',', ' ') }} € TTC</strong> hors frais de port.</p>
+                                    <p><em>Vous avez la possibilité de venir chercher vos produits sur place, dans ce cas vous cocherez la case correspondante lors de la confirmation de votre commande et aucun frais de port ne vous sera facturé.</em></p>
+                                    <div class="modal-footer">
+                                        <button class="modal-close btn waves-effect waves-light left" id="continue">
+                                            Continuer mes achats
+                                        </button>
+                                        <a href="{{ route('cart.index') }}" class="btn waves-effect waves-light">
+                                            <i class="material-icons left">check</i>
+                                            Commander
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                @endif
                     <!-- .homev12-slider-with-banners -->
                     <section class="section-products-carousel" id="homev12-carousel-1">
                         <header class="section-header">
@@ -134,8 +158,12 @@
                                                 </h2>
                                             </a>
                                             <div class="hover-area">
-                                                <a class="button add_to_cart_button" href="cart.html" rel="nofollow">Add to cart</a>
-                                                <a class="add-to-compare-link" href="compare.html">Add to compare</a>
+                                                <form method="post" action="{{ route('cart.store') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{ $product->id }}">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <button class="button add_to_cart_button" style="width:100%" type="submit" id="addcart">Add to cart</button>
+                                                </form>
                                             </div>
                                         </div>
                                         @endforeach
@@ -5257,3 +5285,4 @@
     </div>
     <!-- .col-full -->
 </div>
+@endsection

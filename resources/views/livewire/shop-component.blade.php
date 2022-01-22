@@ -1,3 +1,6 @@
+@extends('layouts.guest')
+
+@section('content')
 <div id="content" class="site-content" tabindex="-1">
     <div class="col-full">
         <div class="row">
@@ -3198,3 +3201,4 @@
     </section>
     <!-- .brands-carousel -->
 </div>
+@endsection

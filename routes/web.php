@@ -3,30 +3,16 @@
 use App\Http\Livewire\Admin\AdminDashboardComponemt;
 use App\Http\Livewire\Admin\ProductManagerComponent;
 use App\Http\Livewire\Admin\UsersManagerComponent;
-use App\Http\Livewire\CartComponent;
-use App\Http\Livewire\CheckoutComponent;
-use App\Http\Livewire\HomeComponent;
-use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\User\UserDashboardComponemt;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', HomeComponent::class)->name('home');
+Route::get('/', [\App\Http\Controllers\MainController::class, 'index'])->name('home');
 
-Route::get('/shop', ShopComponent::class);
+Route::resource('/cart', \App\Http\Controllers\CartController::class)->only(['index', 'store', 'update', 'destroy']);
 
-//Route::get('/cart', CartComponent::class)->name('cart');
-//Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name(['', '', '', 'destroy']);
-//Route::post('/cart/{}', [\App\Http\Controllers\CartController::class, 'store'])->name(['', 'store', 'update', '']);
-//Route::post('/cart', [\App\Http\Controllers\CartController::class, 'update'])->name(['', 'store', 'update', 'destroy']);
-//Route::resource('/cart', [\App\Http\Controllers\CartController::class, 'destroy'])->name(['', 'store', 'update', 'destroy']);
+Route::get('product/{produit}', \App\Http\Livewire\ProductComponent::class)->name('product.show');
 
-Route::resource('cart', \App\Http\Controllers\CartController::class)->only(['index', 'store', 'update', 'destroy']);
-//Route::get('product/{id}', \App\Http\Livewire\ProductComponent::class)->name('product.show');
-Route::name('product.show')->get('produits/{produit}', \App\Http\Livewire\ProductComponent::class);
-
-
-Route::get('/checkout', CheckoutComponent::class);
-
+Route::get('/checkout', [\App\Http\Controllers\CheckoutController::class]);
 
 // For Users or Customers
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
@@ -64,10 +50,8 @@ Route::get('/user/service/{user}', [\App\Http\Controllers\SeedShopOrServiceContr
 //Route client
 Route::get('/user/client/{user}', [\App\Http\Controllers\SeedShopOrServiceController::class, 'show'])->name('user.client');
 
-
 // For Administrators
 Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function(){
-
     Route::group(['prefix' =>'admin'], function (){
 
         Route::get('/dashboard', AdminDashboardComponemt::class)->name('admin.dashboard');
@@ -104,6 +88,4 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function(){
 
 
     });
-
-
 });

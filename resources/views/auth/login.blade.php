@@ -49,7 +49,9 @@
 </x-jet-authentication-card>
 </x-guest-layout> --}}
 
-<x-guest-layout>
+@extends('layouts.guest')
+
+@section('content')
     <div id="content" class="site-content">
         <div class="col-full">
             <div class="row">
@@ -132,4 +134,4 @@
         </div>
         <!-- .col-full -->
     </div>
-</x-guest-layout>
+@endsection

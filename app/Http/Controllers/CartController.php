@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Repository\Category\CartRepositoryInterface;
-use Darryldecode\Cart\Cart;
+use Cart;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -17,9 +17,14 @@ class CartController extends Controller
     public function index()
     {
         $content = Cart::getContent();
-        $total = Cart::getTotal();
 
-        return view('livewire.cart-component', compact('content', 'total'));
+        $total = $content->count();
+
+//        dd($content);
+
+        return view('livewire.cart-component')
+            ->with('content', $content)
+            ->with('total', $total);
     }
 
     /**
@@ -30,12 +35,13 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+
         $product = Product::findOrFail($request->id);
 
         Cart::add([
                 'id' => $product->id,
                 'name' => $product->name,
-                'sale_price' => $product->price,
+                'price' => $product->sale_price,
                 'quantity' => $request->quantity,
                 'featured' => [],
                 'associatedModel' => $product,
@@ -58,7 +64,7 @@ class CartController extends Controller
             'quantity' => ['relative' => false, 'value' => $request->quantity],
         ]);
 
-        return redirect(route('panier.index'));
+        return redirect(route('cart.index'));
     }
 
     /**
@@ -69,8 +75,9 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
+        dd($id);
         Cart::remove($id);
 
-        return redirect(route('panier.index'));
+        return redirect(route('cart.index'));
     }
 }
