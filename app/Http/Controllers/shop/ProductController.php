@@ -12,7 +12,7 @@ class ProductController extends Controller
     public function index(ProductRepositoryInterface $repository, $id)
     {
         $product = $repository->getById($id);
-        $allProducts = $repository->allproduct();
+        $allProducts = $repository->allproduct($id);
 
         return view('user.shop.product.detailProduct', compact('product', $product))->with('allProducts', $allProducts);
     }
@@ -20,7 +20,7 @@ class ProductController extends Controller
     public function show(ProductRepositoryInterface $repository, CategoryRepositoryInterface $categoryRepository, $id)
     {
         $product = $repository->show($id);
-        $products = $repository->allProduct($id);
+        $products = $repository->allProductByCategory($id);
         $category = $categoryRepository->fetById($id);
 
         if ($product && $category)
