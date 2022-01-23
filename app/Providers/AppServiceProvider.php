@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Http\Livewire\Admin\ProductManagerComponent;
 use App\Models\Ordereds;
 use App\Repository\AdapterEloquent\EloquentProfileUserAdaptor;
 use App\Repository\Admin\Orders\EloquentOrdersAdaptor;
@@ -15,6 +14,7 @@ use App\Repository\Product\AdaptorEloquentProduct\ProductEloquent;
 use App\Repository\Product\ProductRepositoryInterface;
 use App\Repository\UserRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
+use Cart;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -56,5 +56,12 @@ class AppServiceProvider extends ServiceProvider
     {
         $orders = Ordereds::all();
         view()->share('orders', $orders);
+
+        $cartCount = Cart::getTotalQuantity();
+        view()->share('cartCount', $cartCount);
+
+        $cartTotal = Cart::getTotal();
+        view()->share('cartTotal', $cartTotal);
+
     }
 }
