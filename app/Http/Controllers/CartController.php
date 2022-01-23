@@ -18,7 +18,7 @@ class CartController extends Controller
         $content = Cart::getContent();
         $total = Cart::getTotal();
 
-        return view('livewire.cart-component', compact('content', 'total'));
+        return view('livewire.cart-component', compact('content', $content), compact( 'total', $total))->layout('layouts.base');
     }
 
     /**
@@ -29,12 +29,14 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Product::findOrFail($request->id);
+        $product = Product::findOrFail($request->product_id);
+
+//        dd($request, $product);
 
         Cart::add([
                 'id' => $product->id,
                 'name' => $product->name,
-                'sale_price' => $product->price,
+                'price' => $product->sale_price,
                 'quantity' => $request->quantity,
                 'featured' => [],
                 'associatedModel' => $product,

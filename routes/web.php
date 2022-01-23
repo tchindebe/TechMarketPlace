@@ -14,7 +14,7 @@ Route::get('/', HomeComponent::class);
 
 Route::get('/shop', ShopComponent::class);
 
-Route::get('/cart', CartComponent::class);
+Route::resource('/cart', \App\Http\Controllers\CartController::class, ['index', 'update', 'destroy']);
 
 Route::get('/checkout', CheckoutComponent::class);
 

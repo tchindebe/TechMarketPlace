@@ -128,7 +128,8 @@
                                             </span>
                                         </p>
                                         <!-- .price -->
-                                        <form class="variations_form cart">
+                                        <form action="{{ route('cart.store') }}" method="post" class="variations_form cart">
+                                            @csrf
                                             <div class="single_variation_wrap">
                                                 <div class="woocommerce-variation-add-to-cart variations_button woocommerce-variation-add-to-cart-disabled">
                                                     <div class="quantity">
@@ -136,9 +137,8 @@
                                                         <input id="quantity-input" type="number" name="quantity" value="1" title="Qty" class="input-text qty text" size="4">
                                                     </div>
                                                     <button class="single_add_to_cart_button button alt wc-variation-selection-needed" type="submit">Add to cart</button>
-                                                    <input type="hidden" value="2471" name="add-to-cart">
-                                                    <input type="hidden" value="2471" name="product_id">
-                                                    <input type="hidden" value="0" class="variation_id" name="variation_id">
+                                                    <input type="hidden" value="{{ $product->id }}" name="add-to-cart">
+                                                    <input type="hidden" value="{{ $product->id }}" name="product_id">
                                                 </div>
                                             </div>
                                             <!-- .single_variation_wrap -->
