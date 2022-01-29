@@ -665,7 +665,7 @@
                         <li class="animate-dropdown dropdown ">
                             <a class="cart-contents" href="cart.html" data-toggle="dropdown" title="View your shopping cart">
                                 <i class="tm tm-shopping-bag"></i>
-                                <span class="count">{{ $cartCount }}</span>
+                                <span class="count">{{ Cart::getContent()->count() }}</span>
                                 <span class="amount">
                                     <span class="price-label">Your Cart</span>
                                     {{ Cart::getTotal() }} FCFA
@@ -675,9 +675,9 @@
                                 <li>
                                     <div class="widget woocommerce widget_shopping_cart">
                                         <div class="widget_shopping_cart_content">
-                                            @if($cartCount)
+                                            @if(Cart::getContent()->count())
                                                 <ul class="woocommerce-mini-cart cart_list product_list_widget ">
-                                                    @foreach ($content as $item)
+                                                    @foreach (Cart::getContent() as $item)
                                                         <li class="woocommerce-mini-cart-item mini_cart_item">
                                                             <a href="#" class="remove" aria-label="Remove this item" data-product_id="65" data-product_sku="">×</a>
                                                             <a href="single-product-sidebar.html">
@@ -704,6 +704,7 @@
                                                     </span>
                                                 </p>
                                                 <p class="woocommerce-mini-cart__buttons buttons">
+
                                                     <a href="{{ route('cart.index') }}" class="button wc-forward">View cart</a>
                                                     <a href="#" class="button checkout wc-forward">Checkout</a>
                                                 </p>

@@ -33,7 +33,6 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-
                                                     @foreach ($content as $item)
                                                         <tr>
                                                             <td class="product-remove">
@@ -70,14 +69,10 @@
                                                                 </div>
                                                             </td>
                                                             <td data-title="Total" class="product-subtotal">
-                                                                    <span class="woocommerce-Price-amount amount">
-                                                                        {{ number_format($item->quantity * $item->price) }} <span class="woocommerce-Price-currencySymbol">FCFA</span>
-                                                                    </span>
-                                                                {{--                                                                <form action="{{ route('cart.destroy', $item->id) }}" method="POST">--}}
-                                                                {{--                                                                    @csrf--}}
-                                                                {{--                                                                    @method('DELETE')--}}
+                                                                <span class="woocommerce-Price-amount amount">
+                                                                    {{ number_format($item->quantity * $item->price) }} <span class="woocommerce-Price-currencySymbol">FCFA</span>
+                                                                </span>
 
-                                                                {{--                                                                </form>--}}
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -90,7 +85,7 @@
                                             <div id="loader" class="hide">
                                                 <div class="loader"></div>
                                             </div>
-                                            <!-- .shop_table shop_table_responsive -->
+                                                <!-- .shop_table shop_table_responsive -->
                                         </form>
                                         <!-- .woocommerce-cart-form -->
                                         <div class="cart-collaterals">

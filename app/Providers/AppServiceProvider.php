@@ -56,12 +56,5 @@ class AppServiceProvider extends ServiceProvider
     {
         $orders = Ordereds::all();
         view()->share('orders', $orders);
-
-        $cartCount = Cart::getTotalQuantity();
-        view()->share('cartCount', $cartCount);
-
-        $cartTotal = Cart::getTotal();
-        view()->share('cartTotal', $cartTotal);
-
     }
 }
