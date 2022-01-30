@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en-US" itemscope="itemscope" itemtype="http://schema.org/WebPage">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    <title>Techmarket HTML</title>
+    <title>Easy Market</title>
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/font-awesome.min.css')}}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap-grid.min.css')}}" media="all" />
@@ -16,7 +15,6 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/animate.min.css')}}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/colors/blue.css')}}" media="all" />
-    @livewireStyles
 
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,900" rel="stylesheet">
     <link rel="shortcut icon" href="assets/images/fav-icon.png">
@@ -25,62 +23,61 @@
 <div id="page" class="hfeed site">
     <div class="top-bar top-bar-v10">
         <div class="col-full">
+            <ul class="menu-item menu-item-object-static_block">
+                @if (Route::has('login'))
+                    @auth
+                        @if (Auth::user()->user_type === 'admin')
+                            <li class="menu-item menu-item-has-children animate-dropdown dropdown">
+                                <a title="My Account" data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                    My account ({{Auth::user()->name}})
+                                    <span class="caret"></span>
+                                </a>
+                                <ul role="menu" class="dropdown-menu">
+                                    <li class="menu-item animate-dropdown">
+                                        <a title="Dashboard" href="{{route('admin.dashboard')}}">Dashboard</a>
+                                    </li>
+                                    <li class="menu-item animate-dropdown">
+                                        <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">logout</a>
+                                    </li>
+                                    <form id="logout-form" action="{{route('logout')}}" method="post">
+                                        @csrf
+                                    </form>
+                                </ul>
+                                <!-- .dropdown-menu -->
+                            </li>
+                        @else
+                            <li class="menu-item menu-item-has-children animate-dropdown dropdown">
+                                <a title="My Account" data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                    My account ({{Auth::user()->name}})
+                                    <span class="caret"></span>
+                                </a>
+                                <ul role="menu" class="dropdown-menu">
+                                    <li class="menu-item animate-dropdown">
+                                        <a title="Dashboard" href="{{route('user.dashboard')}}">Dashboard</a>
+                                    </li>
+                                    <li class="menu-item animate-dropdown">
+                                        <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">logout</a>
+                                    </li>
+                                    <form id="logout-form" action="{{route('logout')}}" method="post">
+                                        @csrf
+                                    </form>
+                                </ul>
+                                <!-- .dropdown-menu -->
+                            </li>
+                        @endif
 
-            @if (Route::has('login'))
-                @auth
-                    @if (Auth::user()->user_type === 'admin')
-                        <li class="menu-item menu-item-has-children animate-dropdown dropdown">
-                            <a title="My Account" data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                My account ({{Auth::user()->name}})
-                                <span class="caret"></span>
-                            </a>
-                            <ul role="menu" class="dropdown-menu">
-                                <li class="menu-item animate-dropdown">
-                                    <a title="Dashboard" href="{{route('admin.dashboard')}}">Dashboard</a>
-                                </li>
-                                <li class="menu-item animate-dropdown">
-                                    <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">logout</a>
-                                </li>
-                                <form id="logout-form" action="{{route('logout')}}" method="post">
-                                    @csrf
-                                </form>
-                            </ul>
-                            <!-- .dropdown-menu -->
-                        </li>
                     @else
-                        <li class="menu-item menu-item-has-children animate-dropdown dropdown">
-                            <a title="My Account" data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                My account ({{Auth::user()->name}})
-                                <span class="caret"></span>
-                            </a>
-                            <ul role="menu" class="dropdown-menu">
-                                <li class="menu-item animate-dropdown">
-                                    <a title="Dashboard" href="{{route('user.dashboard')}}">Dashboard</a>
-                                </li>
-                                <li class="menu-item animate-dropdown">
-                                    <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">logout</a>
-                                </li>
-                                <form id="logout-form" action="{{route('logout')}}" method="post">
-                                    @csrf
-                                </form>
-                            </ul>
-                            <!-- .dropdown-menu -->
+                        <li class="menu-item menu-item-has-children">
+                            <a class="btn" title="My Account" href="{{route('login')}}">
+                                Sign in</a>
                         </li>
-                    @endif
-
-                @else
-                    <li class="menu-item">
-                        <a class="btn" title="My Account" href="{{route('login')}}">
-                            Sign in</a>
-                    </li>
-                    <li>
-                        <a class="btn" title="My Account" href="{{route('register')}}">
-                            Register</a>
-                    </li>
-                    @endauth
-                    @endif
-                    </ul>
-                    <!-- .nav -->
+                        <li class="menu-item menu-item-has-children">
+                            <a class="btn" title="My Account" href="{{route('register')}}">
+                                Register</a>
+                        </li>
+                        @endauth
+                @endif
+            </ul>
         </div>
         <!-- .col-full -->
     </div>
@@ -1444,16 +1441,10 @@
                             <span class="count">2</span>
                         </a>
                     </div>
-                    <!-- /.row -->
                 </div>
-                <!-- .techmarket-sticky-wrap -->
             </div>
-            <!-- .handheld-header -->
         </div>
-        <!-- .handheld-only -->
     </header>
-    <!-- .header-v10 -->
-    <!-- ============================================================= Header End ============================================================= -->
     <div id="content" class="site-content" tabindex="-1">
         <div class="col-full">
             <div class="row">
@@ -1464,7 +1455,6 @@
             </div>
         </div>
     </div>
-    <!-- #content -->
     <footer class="site-footer footer-v1">
         <div class="col-full">
             <div class="before-footer-wrap">
@@ -1477,8 +1467,8 @@
                                     <div class="newsletter-header">
                                         <h5 class="newsletter-title">Sign up to Newsletter</h5>
                                         <span class="newsletter-marketing-text">...and receive
-                                                    <strong>$20 coupon for first shopping</strong>
-                                                </span>
+                                            <strong>$20 coupon for first shopping</strong>
+                                        </span>
                                     </div>
                                     <!-- .newsletter-header -->
                                     <div class="newsletter-body">
@@ -1569,9 +1559,9 @@
                         <div class="contact-payment-wrap">
                             <div class="footer-contact-info">
                                 <div class="media">
-                                            <span class="media-left icon media-middle">
-                                                <i class="tm tm-call-us-footer"></i>
-                                            </span>
+                                    <span class="media-left icon media-middle">
+                                        <i class="tm tm-call-us-footer"></i>
+                                    </span>
                                     <div class="media-body">
                                         <span class="call-us-title">Got Questions ? Call us 24/7!</span>
                                         <span class="call-us-text">(800) 8001-8588, (0600) 874 548</span>
@@ -1586,9 +1576,9 @@
                             <!-- .footer-contact-info -->
                             <div class="footer-payment-info">
                                 <div class="media">
-                                            <span class="media-left icon media-middle">
-                                                <i class="tm tm-safe-payments"></i>
-                                            </span>
+                                    <span class="media-left icon media-middle">
+                                        <i class="tm tm-safe-payments"></i>
+                                    </span>
                                     <div class="media-body">
                                         <h5 class="footer-payment-info-title">We are using safe payments</h5>
                                         <div class="footer-payment-icons">
@@ -1762,7 +1752,6 @@
 <script type="text/javascript" src="{{asset('assets/js/jquery-migrate.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/hidemaxlistitem.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/jquery-ui.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets/js/hidemaxlistitem.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/jquery.easing.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/scrollup.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/jquery.waypoints.min.js')}}"></script>
@@ -1770,7 +1759,5 @@
 <script type="text/javascript" src="{{asset('assets/js/pace.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/slick.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/scripts.js')}}"></script>
-@livewireScripts
-
 </body>
 </html>

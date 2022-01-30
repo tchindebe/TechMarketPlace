@@ -15,10 +15,14 @@ class CartController extends Controller
      */
     public function index()
     {
+//        Cart::clear();
         $content = Cart::getContent();
         $total = Cart::getTotal();
+        $subTotal = Cart::getSubTotal();
 
-        return view('livewire.cart-component', compact('content', $content), compact( 'total', $total))->layout('layouts.base');
+        return view('livewire.cart-component', compact('content', $content), compact( 'total', $total))
+            ->with('subTotal', $subTotal)
+            ->layout('layouts.base');
     }
 
     /**
@@ -31,7 +35,7 @@ class CartController extends Controller
     {
         $product = Product::findOrFail($request->product_id);
 
-//        dd($request, $product);
+//        dd($request->quantity, $product);
 
         Cart::add([
                 'id' => $product->id,
@@ -59,7 +63,7 @@ class CartController extends Controller
             'quantity' => ['relative' => false, 'value' => $request->quantity],
         ]);
 
-        return redirect(route('panier.index'));
+        return redirect(route('cart.index'));
     }
 
     /**
@@ -72,6 +76,6 @@ class CartController extends Controller
     {
         Cart::remove($id);
 
-        return redirect(route('panier.index'));
+        return redirect(route('cart.index'));
     }
 }

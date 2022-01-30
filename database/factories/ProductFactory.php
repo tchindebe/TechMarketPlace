@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -22,7 +23,7 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
-        $category_name = $this->faker->unique()->words($nb=4, $asText=true);
+        $category_name = $this->faker->unique()->words($nb=6, $asText=true);
         $slug = Str::slug($category_name);
         return [
             'name' => $category_name,
@@ -30,11 +31,13 @@ class ProductFactory extends Factory
             'short_description' => $this->faker->text(200),
             'description' => $this->faker->text(500),
             'regular_price' => $this->faker->numberBetween(10,500),
+            'sale_price' => $this->faker->numberBetween(10,500),
             'SKU' => 'DIGI'.$this->faker->unique()->numberBetween(100,500),
             'stock_status' => 'instock',
             'quantity' => $this->faker->numberBetween(100,200),
-            'image' => 'digital_'.$this->faker->unique()->numberBetween(1,22).'.jpg',
-            'category_id' => $this->faker->numberBetween(1,5),
+            'image' => 'digital_'.$this->faker->numberBetween(1,22).'.jpg',
+            'user_id' => rand(1, User::count()),
+            'category_id' => rand(1, Product::count())
         ];
     }
 }

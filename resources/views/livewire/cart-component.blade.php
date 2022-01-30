@@ -97,7 +97,7 @@
                                                         <th>Subtotal</th>
                                                         <td data-title="Subtotal">
                                                             <span class="woocommerce-Price-amount amount">
-                                                                {{ Cart::getSubTotal() }}
+                                                                {{ $subTotal }}
                                                                 <span class="woocommerce-Price-currencySymbol">FCFA</span>
                                                             </span>
                                                         </td>
@@ -111,7 +111,7 @@
                                                         <td data-title="Total">
                                                             <strong>
                                                                 <span class="woocommerce-Price-amount amount">
-                                                                    {{ Cart::getSubTotal() }}
+                                                                    {{ $subTotal }}
                                                                     <span class="woocommerce-Price-currencySymbol">FCFA</span>
                                                                 </span>
                                                             </strong>
