@@ -14,7 +14,11 @@ Route::get('/', HomeComponent::class);
 
 Route::get('/shop', ShopComponent::class);
 
-Route::resource('/cart', \App\Http\Controllers\CartController::class, ['index', 'store', 'update', 'destroy']);
+//Route::resource('/cart', \App\Http\Controllers\CartController::class, ['index', 'store', 'update']);
+Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/store', [\App\Http\Controllers\CartController::class, 'store'])->name('cart.store');
+Route::get('/cart/{id}/update', [\App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
+Route::get('/cart/{id}/destroy', [\App\Http\Controllers\CartController::class, 'destroy'])->name('cart.remove');
 
 Route::get('/checkout', CheckoutComponent::class);
 

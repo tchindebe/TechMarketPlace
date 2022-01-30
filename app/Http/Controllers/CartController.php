@@ -62,7 +62,6 @@ class CartController extends Controller
         Cart::update($id, [
             'quantity' => ['relative' => false, 'value' => $request->quantity],
         ]);
-
         return redirect(route('cart.index'));
     }
 
@@ -75,7 +74,6 @@ class CartController extends Controller
     public function destroy($id)
     {
         Cart::remove($id);
-
         return redirect(route('cart.index'));
     }
 }

@@ -17,27 +17,23 @@
                         <div class="type-page hentry">
                             <div class="entry-content">
                                 <div class="woocommerce">
-                                    <div class="cart-wrapper">
-
+                                    <div id="cart-wrapper" class="cart-wrapper">
                                         <form method="post" action="#" class="woocommerce-cart-form">
                                             @if($total)
                                                 <table class="shop_table shop_table_responsive cart">
                                                     <thead>
                                                     <tr>
-                                                        <th class="product-remove">&nbsp;</th>
                                                         <th class="product-thumbnail">&nbsp;</th>
                                                         <th class="product-name">Product</th>
                                                         <th class="product-price">Price</th>
                                                         <th class="product-quantity">Quantity</th>
                                                         <th class="product-subtotal">Total</th>
+                                                        <th class="remove"></th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
                                                     @foreach ($content as $item)
                                                         <tr>
-                                                            <td class="product-remove">
-                                                                <a class="remove" href="#">×</a>
-                                                            </td>
                                                             <td class="product-thumbnail">
                                                                 <a href="single-product-fullwidth.html">
                                                                     <img width="180" height="180" alt="" class="wp-post-image" src="single-product-fullwidth.html">
@@ -64,7 +60,7 @@
                                                                         @csrf
                                                                         @method('PUT')
                                                                         <label for="quantity">Quantity</label>
-                                                                        <input id="quantity" min="1" type="number" name="quantity" value="{{ $item->quantity }}" title="Qty" class="input-text qty text" size="4">
+                                                                        <input id="quantity" oninput="updateFunction({{route('cart.update', $item->id)}})" min="1" type="number" name="quantity" value="{{ $item->quantity }}" title="Qty" class="input-text qty text" size="4">
                                                                     </form>
                                                                 </div>
                                                             </td>
@@ -74,18 +70,14 @@
                                                                 </span>
 
                                                             </td>
+                                                            <td data-title="Total" class="remove"><a href="{{ route('cart.remove', $item->id) }}" class="remove">×</a></td>
                                                         </tr>
                                                     @endforeach
-
                                                     </tbody>
                                                 </table>
                                             @else
                                                 <p class="alert alert-warning">Your shopping cart is empty.</p>
                                             @endif
-                                            <div id="loader" class="hide">
-                                                <div class="loader"></div>
-                                            </div>
-                                                <!-- .shop_table shop_table_responsive -->
                                         </form>
                                         <!-- .woocommerce-cart-form -->
                                         <div class="cart-collaterals">
@@ -211,6 +203,9 @@
                                         </div>
                                         <!-- .cart-collaterals -->
                                     </div>
+                                    <div id="loader" class="hide">
+                                        <div class="loader"></div>
+                                    </div>
                                     <!-- .cart-wrapper -->
                                 </div>
                                 <!-- .woocommerce -->
@@ -227,4 +222,33 @@
         </div>
         <!-- .col-full -->
     </div>
+@endsection
+@section('javascript')
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', () => {
+            const quantities = document.querySelectorAll('input[name="quantity"]');
+            quantities.forEach( input => {
+                input.addEventListener('input', e => {
+                    if(e.target.value < 1) {
+                        e.target.value = 1;
+                    } else {
+                        e.target.parentNode.parentNode.submit();
+                        document.querySelector('#cart-wrapper').classList.add('hide');
+                        document.querySelector('#action').classList.add('hide');
+                        document.querySelector('#loader').classList.remove('hide');
+                    }
+                });
+            });
+
+            const deletes = document.querySelectorAll('.deleteItem');
+            deletes.forEach( icon => {
+                icon.addEventListener('click', e => {
+                    e.target.parentNode.parentNode.submit();
+                    document.querySelector('#cart-wrapper').classList.add('hide');
+                    document.querySelector('#loader').classList.remove('hide');
+                });
+            });
+        });
+
+    </script>
 @endsection

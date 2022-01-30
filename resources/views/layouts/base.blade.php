@@ -676,8 +676,8 @@
                                                 <ul class="woocommerce-mini-cart cart_list product_list_widget ">
                                                     @foreach (Cart::getContent() as $item)
                                                         <li class="woocommerce-mini-cart-item mini_cart_item">
-                                                            <a href="#" class="remove" aria-label="Remove this item" data-product_id="65" data-product_sku="">×</a>
-                                                            <a href="single-product-sidebar.html">
+                                                            <a href="{{ route('cart.remove', $item->id) }}" class="remove">×</a>
+                                                            <a href="{{ route('user.shop.product.detailProduct', $item->id) }}">
                                                                 <img src="{{asset('assets/images/products/mini-cart1.jpg')}}" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="">
                                                                 {{ $item->name }}&nbsp;
                                                             </a>
@@ -1746,6 +1746,7 @@
     <!-- .site-footer -->
 </div>
 
+@yield('javascript')
 <script type="text/javascript" src="{{asset('assets/js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/tether.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/bootstrap.min.js')}}"></script>
