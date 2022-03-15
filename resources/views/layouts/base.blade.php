@@ -678,7 +678,7 @@
                                                         <li class="woocommerce-mini-cart-item mini_cart_item">
                                                             <a href="{{ route('cart.remove', $item->id) }}" class="remove">×</a>
                                                             <a href="{{ route('user.shop.product.detailProduct', $item->id) }}">
-                                                                <img src="{{asset('assets/images/products/mini-cart1.jpg')}}" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="">
+                                                                <img src="{{asset('storage') . '/' . $item->model->image}}" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="">
                                                                 {{ $item->name }}&nbsp;
                                                             </a>
                                                             <span class="quantity">
@@ -703,7 +703,7 @@
                                                 <p class="woocommerce-mini-cart__buttons buttons">
 
                                                     <a href="{{ route('cart.index') }}" class="button wc-forward">View cart</a>
-                                                    <a href="#" class="button checkout wc-forward">Checkout</a>
+                                                    <a href="{{route('livewire.checkout')}}" class="button checkout wc-forward">Checkout</a>
                                                 </p>
                                             @else
                                                 <p class="text-center p-2">Your shopping cart is empty.</p>

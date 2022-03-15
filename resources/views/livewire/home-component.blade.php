@@ -113,8 +113,8 @@
                                     <div class="products">
                                         @foreach($products as $product)
                                             <div class="product">
-                                                <a href="#" class="woocommerce-LoopProduct-link">
-                                                    <img src="{{ $product->image }}" width="224" height="197" class="wp-post-image" alt="">
+                                                <a href="{{route('user.shop.product.detailProduct', $product->id)}}" class="woocommerce-LoopProduct-link">
+                                                    <img src="{{asset('storage') . '/' . $product->images}}" width="224" height="197" class="wp-post-image" alt="">
                                                     <span class="price">
                                                     <ins>
                                                         <span class="amount"> </span>

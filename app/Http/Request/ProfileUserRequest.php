@@ -23,9 +23,9 @@ class ProfileUserRequest extends  FormRequest {
             'country' => 'required',
             'city' => 'required',
             'phone' => 'required',
-            'description' => 'required',
+            'description',
             'bp' => 'required',
-            'slogan' => 'required',
+            'slogan',
             'log'
         ];
     }

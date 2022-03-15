@@ -43,9 +43,36 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::post('/user/product/update', [\App\Http\Controllers\Product\ProductController::class, 'update'])->name('product.update');
     Route::get('/user/product/delete/{id}', [\App\Http\Controllers\Product\ProductController::class, 'delete'])->name('product/delete');
 
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////   Routes customers  /////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //Route profile
+    Route::get('user/customers/{id}', [\App\Http\Controllers\ProfileCustomers\ProfileController::class, 'showProfileUser'])->name('user.customers.profile');
+    Route::post('/user/customers/{id}', [\App\Http\Controllers\ProfileCustomers\ProfileController::class, 'update'])->name('user.customers.update');
+
     //Route orders
     Route::get('/user/order', [\App\Http\Controllers\Orders\OrderController::class, 'index'])->name('user.order.index');
     Route::get('/user/order/getOrder/{id}', [\App\Http\Controllers\Orders\OrderController::class, 'findById'])->name('user.order.findOrder');
+    Route::get('/user/order/allOrders', [\App\Http\Controllers\Orders\OrderController::class, 'allOrder'])->name('user.order.all');
+    Route::get('/user/order/orderProgress', [\App\Http\Controllers\Orders\OrderController::class, 'orderByProgress'])->name('user.order.index');
+    Route::get('/user/order/unpaid', [\App\Http\Controllers\Orders\OrderController::class, 'orderByUnpaid'])->name('user.order.unpaid');
+
+    //route checkout
+    Route::get('livewire/checkout', [\App\Http\Controllers\CheckoutController::class, 'index'])->name("livewire.checkout");
+    Route::post('livewire/checkout', [\App\Http\Controllers\CheckoutController::class, 'store'])->name('livewire.store');
+
+    //route tank you for place order
+    Route::get('livewire/tankYou', [\App\Http\Controllers\CheckoutController::class, 'thank'])->name('livewire.thankyou');
+
+    //routes orders custumer
+    Route::get('livewire/orders/{bill}/{subtotal}', [UserDashboardComponemt::class, 'showByBill'])->name('livewire.bill');
+    Route::get('livewire/orders/{billNumber}', [UserDashboardComponemt::class, 'validateOrderCustomer'])->name('livewire.validateOrdersCustumer');
+
+    //Routes chat customers shop
+    Route::get('client/chat/customer/{id}', [\App\Http\Controllers\Chat\Customer_shop\ChatController::class, 'index'])->name('client.chat.customers.index');
+    Route::get('client/chat/customers/{id}', [\App\Http\Controllers\Chat\Customer_shop\ChatController::class, 'create'])->name('client.chat.customers.create');
+    Route::post('client/chat/customers/{id}', [\App\Http\Controllers\Chat\Customer_shop\ChatController::class, 'store'])->name('client.chat.customers.store');
 });
 
 // Route shop

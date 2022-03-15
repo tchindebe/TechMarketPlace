@@ -4,8 +4,8 @@ namespace App\Http\Request;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductRequest extends  FormRequest
-{
+class ProductRequest extends  FormRequest{
+
     public function rules()
     {
         return [

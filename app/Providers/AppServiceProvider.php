@@ -8,11 +8,18 @@ use App\Repository\Admin\Orders\EloquentOrdersAdaptor;
 use App\Repository\Admin\Orders\OrderInterfaceRepository;
 use App\Repository\Category\AdaptorEloquentCategory\AdaptorEloquentCategory;
 use App\Repository\Category\CategoryRepositoryInterface;
+use App\Repository\Chat\Customers\AdaptorEloquentChat;
+use App\Repository\Chat\Customers\ChatRepositoryInterface;
 use App\Repository\Orders\AdaptorOrderEloquent\EloquentOrder;
 use App\Repository\Orders\OrderRepositoryInterface;
 use App\Repository\Product\AdaptorEloquentProduct\ProductEloquent;
 use App\Repository\Product\ProductRepositoryInterface;
+use App\Repository\ProfileCustomers\AdaptorEloquentRequest\ProfilEloquent;
+use App\Repository\ProfileCustomers\ProfilRepositoryInterface;
+use App\Repository\UserRepository\AdaptorEloquentRepository\UserEloquent;
+use App\Repository\UserRepository\UserInterfaceRepository;
 use App\Repository\UserRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Cart;
 
@@ -45,6 +52,18 @@ class AppServiceProvider extends ServiceProvider
             OrderInterfaceRepository::class,
             EloquentOrdersAdaptor::class
         );
+        $this->app->bind(
+            ProfilRepositoryInterface::class,
+            ProfilEloquent::class
+        );
+        $this->app->bind(
+            ChatRepositoryInterface::class,
+            AdaptorEloquentChat::class
+        );
+        $this->app->bind(
+            UserInterfaceRepository::class,
+            UserEloquent::class
+        );
     }
 
     /**
@@ -56,5 +75,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $orders = Ordereds::all();
         view()->share('orders', $orders);
+
+        $lastOrderCustomers = Ordereds::where('user_id', 3)
+            ->where('status', 0)
+            ->latest()
+            ->first();
     }
 }

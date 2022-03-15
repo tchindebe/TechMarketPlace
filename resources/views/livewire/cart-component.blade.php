@@ -42,7 +42,7 @@
                                                             <td data-title="Product" class="product-name">
                                                                 <div class="media cart-item-product-detail">
                                                                     <a href="single-product-fullwidth.html">
-                                                                        <img width="180" height="180" alt="" class="wp-post-image" src="assets/images/products/cart-1.jpg">
+                                                                        <img width="180" height="180" alt="" class="wp-post-image" src="{{asset('storage') . '/' . $item->model->image}}">
                                                                     </a>
                                                                     <div class="media-body align-self-center">
                                                                         <a href="single-product-fullwidth.html">{{ $item->name }}</a>
@@ -193,9 +193,13 @@
                                                         </div>
                                                     </form>
                                                     <!-- .wc-proceed-to-checkout -->
-                                                    <a class="checkout-button button alt wc-forward" href="checkout.html">
-                                                        Proceed to checkout</a>
-                                                    <a class="back-to-shopping" href="shop.html">Back to Shopping</a>
+                                                    @if(Cart::getContent()->count())
+                                                        <a class="checkout-button button alt wc-forward" href="{{route('livewire.checkout')}}">
+                                                            Proceed to checkout
+                                                        </a>
+                                                    @endif
+
+                                                    <a class="back-to-shopping" href="/">Back to Shopping</a>
                                                 </div>
                                                 <!-- .wc-proceed-to-checkout -->
                                             </div>
