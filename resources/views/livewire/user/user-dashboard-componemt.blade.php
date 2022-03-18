@@ -409,11 +409,7 @@
             </div>
 
         </div>
-
-
     </div>
-
-
     <div class="footer">
         <div class="pull-right">
             10GB of <strong>250GB</strong> Free.
@@ -424,4 +420,10 @@
     </div>
 
 @endsection
+@endif
+
+@if(Auth::user()->user_type == "Service")
+    @section('contents')
+
+    @endsection
 @endif
