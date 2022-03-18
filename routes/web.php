@@ -56,7 +56,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/user/order/getOrder/{id}', [\App\Http\Controllers\Orders\OrderController::class, 'findById'])->name('user.order.findOrder');
     Route::get('/user/order/allOrders', [\App\Http\Controllers\Orders\OrderController::class, 'allOrder'])->name('user.order.all');
     Route::get('/user/order/orderProgress', [\App\Http\Controllers\Orders\OrderController::class, 'orderByProgress'])->name('user.order.index');
-    Route::get('/user/order/unpaid', [\App\Http\Controllers\Orders\OrderController::class, 'orderByUnpaid'])->name('user.order.unpaid');
+    Route::get('/user/order/unpaid', [\App\Http\Controroller::class, 'orderByUnpaid'])->name('user.order.unpaid');
 
     //route checkout
     Route::get('livewire/checkout', [\App\Http\Controllers\CheckoutController::class, 'index'])->name("livewire.checkout");
