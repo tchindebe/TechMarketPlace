@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use App\Models\Ordereds;
 use App\Repository\AdapterEloquent\EloquentProfileUserAdaptor;
 use App\Repository\Admin\Orders\EloquentOrdersAdaptor;
@@ -73,12 +74,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $categories = Category::all();
+        $Allcategories = Category::all();
+        $Allcategorys = Category::all();
+
         $orders = Ordereds::all();
-        view()->share('orders', $orders);
 
         $lastOrderCustomers = Ordereds::where('user_id', 3)
             ->where('status', 0)
             ->latest()
             ->first();
+
+        view()->share('categories', $categories);
+        view()->share('allCategories', $Allcategories);
+        view()->share('allCategory', $Allcategorys);
     }
 }

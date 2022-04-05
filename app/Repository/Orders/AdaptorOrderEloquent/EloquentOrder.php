@@ -74,6 +74,7 @@ class EloquentOrder implements OrderRepositoryInterface
 
     }
 
+
     public function show()
     {
         $orders = Ordereds::where('user_id', Auth::User()->id)->get();

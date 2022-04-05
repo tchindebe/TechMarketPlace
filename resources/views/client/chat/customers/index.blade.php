@@ -34,7 +34,7 @@
                                                 <img src="{{asset('storage') . '/' . $users->profile->logo}}" alt="user-img" class="img-circle">
                                             @endif
                                             @if($users->profile->logo == null)
-                                                <img src="{{asset('assets/clientAsset/plugins/images/users/profile.jpg')}}" alt="user-img" class="img-circle">
+                                                <img src="{{asset('assets/clientAsset/plugins/images/users/shop.png')}}" alt="user-img" class="img-circle">
                                             @endif
                                             <span>{{$users->username}}
                                                 @if(Cache::has('user-is-online-' . $users->id))

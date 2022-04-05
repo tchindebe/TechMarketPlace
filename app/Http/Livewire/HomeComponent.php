@@ -9,7 +9,10 @@ class HomeComponent extends Component
 {
     public function render()
     {
-        $products = Product::all();
-        return view('livewire.home-component')->layout('layouts.base')->with('products', $products);
+        $products = Product::where('SKU', 1)->get();
+        $promo = Product::where('SKU', 2)->get();
+        return view('livewire.home-component')->layout('layouts.base')
+            ->with('promo', $promo)
+            ->with('products', $products);
     }
 }
