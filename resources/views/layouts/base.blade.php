@@ -350,7 +350,7 @@
                                     <a title="CAR ELECTRONIC &amp; GPS" href="product-category.html">CAR ELECTRONIC &#038; GPS</a>
                                 </li>
                                 <li class="menu-item animate-dropdown">
-                                    <a title="ACCESORIES" href="product-category.html">ACCESORIES</a>
+                                    <a title="Services" href="{{ route('home-services') }}">SERVICES</a>
                                 </li>
                                 <li class="techmarket-flex-more-menu-item dropdown">
                                     <a title="..." href="#" data-toggle="dropdown" class="dropdown-toggle">...</a>
