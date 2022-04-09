@@ -76,7 +76,7 @@
                                                 <img src="{{asset('storage') . '/' . Auth::User()->profile->logo}}" alt="Female">
                                             @endif
                                             @if(Auth::User()->profile->logo == null)
-                                                <img src="{{asset('assets/clientAsset/plugins/images/users/profile.jpg')}}" alt="user-img" class="img-circle">
+                                                <img src="{{asset('assets/clientAsset/plugins/images/users/shop.png')}}" alt="user-img" class="img-circle">
                                             @endif
                                         </div>
                                         <div class="chat-body">

@@ -100,11 +100,7 @@
                             <span>All Departments</span>
                         </button>
                         <ul id="menu-departments-menu" class="dropdown-menu yamm departments-menu-dropdown">
-                            @foreach($Allcategory as $Allcategory)
-                                <li class="highlight menu-item animate-dropdown">
-                                    <a title="{{$Allcategory->slug}}" href="home-v2.html">{{$Allcategory->slug}}</a>
-                                </li>
-                            @endforeach
+
                         </ul>
                     </div>
                     <!-- .departments-menu -->
