@@ -14,6 +14,13 @@ Route::get('/', HomeComponent::class);
 
 Route::get('/shop', ShopComponent::class);
 
+Route::get('/login_or_register', function (){
+    if (auth()->user()){
+        return redirect('/');
+    }
+    return view('auth.login_or_register');
+});
+
 //Route::resource('/cart', \App\Http\Controllers\CartController::class, ['index', 'store', 'update']);
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/store', [\App\Http\Controllers\CartController::class, 'store'])->name('cart.store');
@@ -73,6 +80,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('client/chat/customer/{id}', [\App\Http\Controllers\Chat\Customer_shop\ChatController::class, 'index'])->name('client.chat.customers.index');
     Route::get('client/chat/customers/{id}', [\App\Http\Controllers\Chat\Customer_shop\ChatController::class, 'create'])->name('client.chat.customers.create');
     Route::post('client/chat/customers/{id}', [\App\Http\Controllers\Chat\Customer_shop\ChatController::class, 'store'])->name('client.chat.customers.store');
+
+    //Route service
+    Route::get('/service/profile', [\App\Http\Controllers\Services\ServicesController::class, 'profile'])->name('service-setting');
+    Route::get('/service/user', [\App\Http\Controllers\Services\ServicesController::class, 'user_profile'])->name('service-profile');
+
 });
 
 // Route shop
@@ -82,6 +94,8 @@ Route::get('/user/shop/product{id}/', [\App\Http\Controllers\shop\ProductControl
 
 //Route service
 Route::get('/user/service/{user}', [\App\Http\Controllers\SeedShopOrServiceController::class, 'show'])->name('user.service');
+Route::get('/user/services', [\App\Http\Controllers\Services\ServicesController::class, 'index'])->name('services-home');
+
 
 //Route client
 Route::get('/user/client/{user}', [\App\Http\Controllers\SeedShopOrServiceController::class, 'show'])->name('user.client');

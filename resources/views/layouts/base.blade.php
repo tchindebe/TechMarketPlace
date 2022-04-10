@@ -160,6 +160,42 @@
                                             </form>
                                         </ul>
                                     </li>
+                                @elseif(Auth::user()->user_type === 'Service')
+                                    <li class="menu-item menu-item-has-children animate-dropdown dropdown">
+                                        <a title="My account" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="true">
+                                            {{Auth::user()->username}}
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="overflow-items dropdown-menu " x-placement="bottom-start" style="position: absolute; transform: translate3d(8px, 20px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                            <li class="menu-item" style="padding: 10px;">
+                                                <a title="Dashboard" href="{{route('service-profile')}}">My account</a>
+                                            </li>
+                                            <li class="menu-item" style="padding: 10px;">
+                                                <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">logout</a>
+                                            </li>
+                                            <form id="logout-form" action="{{route('logout')}}" method="post">
+                                                @csrf
+                                            </form>
+                                        </ul>
+                                    </li>
+                                @elseif(Auth::user()->user_type === 'Boutique')
+                                    <li class="menu-item menu-item-has-children animate-dropdown dropdown">
+                                        <a title="My account" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="true">
+                                            {{Auth::user()->username}}
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="overflow-items dropdown-menu " x-placement="bottom-start" style="position: absolute; transform: translate3d(8px, 20px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                            <li class="menu-item" style="padding: 10px;">
+                                                <a title="Dashboard" href="{{route('user.dashboard')}}">My account</a>
+                                            </li>
+                                            <li class="menu-item" style="padding: 10px;">
+                                                <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">logout</a>
+                                            </li>
+                                            <form id="logout-form" action="{{route('logout')}}" method="post">
+                                                @csrf
+                                            </form>
+                                        </ul>
+                                    </li>
                                 @else
                                     <li class="menu-item menu-item-has-children animate-dropdown dropdown">
                                         <a title="My account" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="true">
@@ -181,8 +217,9 @@
                                 @endif
                             @else
                                 <li class="menu-item menu-item-has-children">
-                                    <a class="banner-action button" title="My Account" href="{{route('login')}}">
-                                        Sign in</a>
+                                    <a class="banner-action button" title="My Account" href="/login_or_register">
+                                        Sign in or Register
+                                    </a>
                                 </li>
                             @endauth
                         @endif
@@ -216,7 +253,7 @@
                                     <a title="CAR ELECTRONIC &amp; GPS" href="product-category.html">CAR ELECTRONIC &#038; GPS</a>
                                 </li>
                                 <li class="menu-item animate-dropdown">
-                                    <a title="Services" href="#">SERVICES</a>
+                                    <a title="Services" href="{{ route('services-home') }}">SERVICES</a>
                                 </li>
                                 <li class="techmarket-flex-more-menu-item dropdown">
                                     <a title="..." href="#" data-toggle="dropdown" class="dropdown-toggle">...</a>
@@ -352,26 +389,20 @@
                                 <div class="clearfix">
                                     <div class="newsletter-header">
                                         <h5 class="newsletter-title">Sign up to Newsletter</h5>
-                                        <span class="newsletter-marketing-text">...and receive
-                                            <strong>$20 coupon for first shopping</strong>
+                                        <span class="newsletter-marketing-text"> receive
+                                            <strong> coupon for first shopping</strong>
                                         </span>
                                     </div>
-                                    <!-- .newsletter-header -->
                                     <div class="newsletter-body">
                                         <form class="newsletter-form">
                                             <input type="text" placeholder="Enter your email address">
                                             <button class="button" type="button">Sign up</button>
                                         </form>
                                     </div>
-                                    <!-- .newsletter body -->
                                 </div>
-                                <!-- .clearfix -->
                             </div>
-                            <!-- .media-body -->
                         </div>
-                        <!-- .media -->
                     </div>
-                    <!-- .footer-newsletter -->
                     <div class="footer-social-icons">
                         <ul class="social-icons nav">
                             <li class="nav-item">
@@ -396,11 +427,8 @@
                             </li>
                         </ul>
                     </div>
-                    <!-- .footer-social-icons -->
                 </div>
-                <!-- .col-full -->
             </div>
-            <!-- .before-footer-wrap -->
             <div class="footer-widgets-block">
                 <div class="row">
                     <div class="footer-contact">

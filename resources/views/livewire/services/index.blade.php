@@ -1,4 +1,4 @@
-@extends('layouts.adminShop')
+@extends('layouts.services_app')
 
 @section('contents')
     <div class="search-sec">
@@ -76,49 +76,7 @@
                                             <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                         </form>
                                     </div>
-                                    {{--                                    <div class="filter-dd">--}}
-                                    {{--                                        <div class="filter-ttl">--}}
-                                    {{--                                            <h3>Pay Rate / Hr ($)</h3>--}}
-                                    {{--                                            <a href="#" title="">Clear</a>--}}
-                                    {{--                                        </div>--}}
-                                    {{--                                        <div class="rg-slider">--}}
-                                    {{--                                            <input class="rn-slider slider-input" type="hidden" value="5,50" style="display: none;"><div class="slider-container theme-green" style="width: 300px;">			<div class="back-bar">                <div class="selected-bar" style="width: 93px; left: 10.5px;"></div>                <div class="pointer low" style="left: 4px;"></div><div class="pointer-label low" style="left: 0px;">5</div>                <div class="pointer high" style="left: 97px;"></div><div class="pointer-label high" style="left: 78px;">50</div>                <div class="clickable-dummy"></div>            </div>            <div class="scale"></div>		</div>--}}
-                                    {{--                                        </div>--}}
-                                    {{--                                        <div class="rg-limit">--}}
-                                    {{--                                            <h4>1</h4>--}}
-                                    {{--                                            <h4>100+</h4>--}}
-                                    {{--                                        </div>--}}
-                                    {{--                                    </div>--}}
-                                    {{--                                    <div class="filter-dd">--}}
-                                    {{--                                        <div class="filter-ttl">--}}
-                                    {{--                                            <h3>Experience Level</h3>--}}
-                                    {{--                                            <a href="#" title="">Clear</a>--}}
-                                    {{--                                        </div>--}}
-                                    {{--                                        <form class="job-tp">--}}
-                                    {{--                                            <select>--}}
-                                    {{--                                                <option>Select a experience level</option>--}}
-                                    {{--                                                <option>3 years</option>--}}
-                                    {{--                                                <option>4 years</option>--}}
-                                    {{--                                                <option>5 years</option>--}}
-                                    {{--                                            </select>--}}
-                                    {{--                                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>--}}
-                                    {{--                                        </form>--}}
-                                    {{--                                    </div>--}}
-                                    {{--                                    <div class="filter-dd">--}}
-                                    {{--                                        <div class="filter-ttl">--}}
-                                    {{--                                            <h3>Countries</h3>--}}
-                                    {{--                                            <a href="#" title="">Clear</a>--}}
-                                    {{--                                        </div>--}}
-                                    {{--                                        <form class="job-tp">--}}
-                                    {{--                                            <select>--}}
-                                    {{--                                                <option>Select a country</option>--}}
-                                    {{--                                                <option>United Kingdom</option>--}}
-                                    {{--                                                <option>United States</option>--}}
-                                    {{--                                                <option>Russia</option>--}}
-                                    {{--                                            </select>--}}
-                                    {{--                                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>--}}
-                                    {{--                                        </form>--}}
-                                    {{--                                    </div>--}}
+
                                 </div>
                             </div>
                         </div>

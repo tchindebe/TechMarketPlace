@@ -83,12 +83,13 @@
                                                 <form method="post" action="{{route('login')}}" class="woocomerce-form woocommerce-form-login login">
                                                     @csrf
                                                     <p class="form-row form-row-wide">
-                                                        <label for="username">Email address
+                                                        <label for="email">Email address
                                                             <span class="required">*</span>
                                                         </label>
                                                         <input type="email" class="input-text" name="email" id="email"
-                                                            placeholder="Enter your email address" :value="old('email')"
-                                                            required autofocus>
+                                                               placeholder="Enter your email address"
+                                                               value="old('email')"
+                                                               required autofocus>
                                                     </p>
                                                     <p class="form-row form-row-wide">
                                                         <label for="password">Password
@@ -101,7 +102,7 @@
                                                     <p class="form-row">
                                                         <input class="woocommerce-Button button" type="submit"
                                                             value="Login" name="login">
-                                                        <label for="rememberme"
+                                                        <label for="remember"
                                                             class="woocommerce-form__label woocommerce-form__label-for-checkbox inline">
                                                             <input
                                                                 class="woocommerce-form__input woocommerce-form__input-checkbox"
