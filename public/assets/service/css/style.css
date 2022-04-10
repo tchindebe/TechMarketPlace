@@ -537,14 +537,12 @@ nav > ul > li > a:hover {
 .user-account {
 	float: right;
 	width: 110px;
-	border-left: 1px solid #093e92;
-	border-right: 1px solid #093e92;
 	box-sizing: border-box;
 	position: relative;
 }
 .user-info {
-	float: left;
-	width: 100%;
+	float: right;
+	width: 67%;
 	padding: 13px 10px;
 	position: relative;
 }

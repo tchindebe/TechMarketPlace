@@ -12,7 +12,7 @@ class ProductController
 {
     public function index()
     {
-        return view('user.product.index');
+        return view('user.product.Index');
     }
 
     public function create()

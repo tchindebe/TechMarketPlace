@@ -498,7 +498,7 @@
                     <nav>
                         <ul>
                             <li>
-                                <a href="index.html" title="">
+                                <a href="{{ route('home-services') }}" title="">
                                     <span><img src="{{asset('assets/service/images/icon1.png')}}" alt=""></span>
                                     Home
                                 </a>
@@ -637,47 +637,17 @@
                             </li>
                         </ul>
                     </nav>
-                    <div class="menu-btn">
-                        <a href="#" title=""><i class="fa fa-bars"></i></a>
-                    </div>
                     <div class="user-account">
                         <div class="user-info">
                             <img src="{{asset('assets/service/images/resources/user.png')}}" alt="">
-                            <a href="#" title="">{{ auth()->user()->username }}</a>
+{{--                            <a href="#" title="">{{ auth()->user()->username }}</a>--}}
                             <i class="la la-sort-down"></i>
                         </div>
                         <div class="user-account-settingss" id="users">
-                            <h3>Online Status</h3>
-                            <ul class="on-off-status">
-                                <li>
-                                    <div class="fgt-sec">
-                                        <input type="radio" name="cc" id="c5">
-                                        <label for="c5">
-                                            <span></span>
-                                        </label>
-                                        <small>Online</small>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="fgt-sec">
-                                        <input type="radio" name="cc" id="c6">
-                                        <label for="c6">
-                                            <span></span>
-                                        </label>
-                                        <small>Offline</small>
-                                    </div>
-                                </li>
-                            </ul>
-                            <h3>Custom Status</h3>
-                            <div class="search_form">
-                                <form>
-                                    <input type="text" name="search">
-                                    <button type="submit">Ok</button>
-                                </form>
-                            </div>
-                            <h3>Setting</h3>
+                            <h3>{{ auth()->user()->username }}</h3>
                             <ul class="us-links">
-                                <li><a href="profile-account-setting.html" title="">Account Setting</a></li>
+                                <li><a href="{{ route('service.user.profile') }}" title="">My profile</a></li>
+                                <li><a href="{{ route('service-setting') }}" title="">Account Setting</a></li>
                                 <li><a href="#" title="">Privacy</a></li>
                                 <li><a href="#" title="">Faqs</a></li>
                                 <li><a href="#" title="">Terms & Conditions</a></li>
@@ -688,9 +658,7 @@
                 </div>
             </div>
         </header>
-        <main>
-            @yield('contents')
-        </main>
+        @yield('contents')
         <div class="post-popup pst-pj">
             <div class="post-project">
                 <h3>Post a project</h3>

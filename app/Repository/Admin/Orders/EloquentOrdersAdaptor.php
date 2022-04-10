@@ -19,7 +19,7 @@ class EloquentOrdersAdaptor implements OrderInterfaceRepository {
 
     public function showByClient(int $id)
     {
-        $ordersByClient = DB::table('Ordereds')
+        $ordersByClient = DB::table('ordereds')
             ->where('user_id', $id)
             ->where('status', 0)
             ->select('billNumber', 'subtotal', 'status')
@@ -30,7 +30,7 @@ class EloquentOrdersAdaptor implements OrderInterfaceRepository {
 
     public function showByBill(string $bill)
     {
-        $order = DB::table('Ordereds')
+        $order = DB::table('ordereds')
             ->where('billNumber', $bill)
             ->get();
 

@@ -21,67 +21,6 @@
 </head>
 <body class="woocommerce-active page-template-template-homepage-v12">
 <div id="page" class="hfeed site">
-    <div class="top-bar top-bar-v10">
-        <div class="col-full">
-            <ul class="menu-item menu-item-object-static_block">
-                @if (Route::has('login'))
-                    @auth
-                        @if (Auth::user()->user_type === 'admin')
-                            <li class="menu-item menu-item-has-children animate-dropdown dropdown">
-                                <a title="My Account" data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                    My account ({{Auth::user()->name}})
-                                    <span class="caret"></span>
-                                </a>
-                                <ul role="menu" class="dropdown-menu">
-                                    <li class="menu-item animate-dropdown">
-                                        <a title="Dashboard" href="{{route('admin.dashboard')}}">Dashboard</a>
-                                    </li>
-                                    <li class="menu-item animate-dropdown">
-                                        <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">logout</a>
-                                    </li>
-                                    <form id="logout-form" action="{{route('logout')}}" method="post">
-                                        @csrf
-                                    </form>
-                                </ul>
-                                <!-- .dropdown-menu -->
-                            </li>
-                        @else
-                            <li class="menu-item menu-item-has-children animate-dropdown dropdown">
-                                <a title="My Account" data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                    My account ({{Auth::user()->name}})
-                                    <span class="caret"></span>
-                                </a>
-                                <ul role="menu" class="dropdown-menu">
-                                    <li class="menu-item animate-dropdown">
-                                        <a title="Dashboard" href="{{route('user.dashboard')}}">Dashboard</a>
-                                    </li>
-                                    <li class="menu-item animate-dropdown">
-                                        <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">logout</a>
-                                    </li>
-                                    <form id="logout-form" action="{{route('logout')}}" method="post">
-                                        @csrf
-                                    </form>
-                                </ul>
-                                <!-- .dropdown-menu -->
-                            </li>
-                        @endif
-
-                    @else
-                        <li class="menu-item menu-item-has-children">
-                            <a class="btn" title="My Account" href="{{route('login')}}">
-                                Sign in</a>
-                        </li>
-                        <li class="menu-item menu-item-has-children">
-                            <a class="btn" title="My Account" href="{{route('register')}}">
-                                Register</a>
-                        </li>
-                        @endauth
-                @endif
-            </ul>
-        </div>
-        <!-- .col-full -->
-    </div>
-    <!-- .top-bar-v2 -->
     <header id="masthead" class="site-header header-v10" style="background-image: none; ">
         <div class="col-full desktop-only">
             <div class="techmarket-sticky-wrap">
@@ -90,10 +29,7 @@
                         <a href="/" class="custom-logo-link" rel="home">
                             <img src="{{asset('assets/images/logo.png')}}" style="height: 100px; width: 100px;" st alt="" class="responsive">
                         </a>
-                        <!-- /.custom-logo-link -->
                     </div>
-                    <!-- /.site-branding -->
-                    <!-- ============================================================= End Header Logo ============================================================= -->
                     <div id="departments-menu" class="dropdown departments-menu">
                         <button class="btn dropdown-toggle btn-block" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="tm tm-departments-thin"></i>
@@ -103,7 +39,6 @@
 
                         </ul>
                     </div>
-                    <!-- .departments-menu -->
                     <form class="navbar-search" method="get" action="home-v1.html">
                         <label class="sr-only screen-reader-text" for="search">Search for:</label>
                         <div class="input-group">
@@ -116,7 +51,6 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <!-- .input-group-addon -->
                             <div class="input-group-btn input-group-append">
                                 <input type="hidden" id="search-param" name="post_type" value="product" />
                                 <button type="submit" class="btn btn-primary">
@@ -124,11 +58,8 @@
                                     <span class="search-btn">Search</span>
                                 </button>
                             </div>
-                            <!-- .input-group-btn -->
                         </div>
-                        <!-- .input-group -->
                     </form>
-                    <!-- .navbar-search -->
                     <ul class="header-compare nav navbar-nav">
                         <li class="nav-item">
                             <a href="compare.html" class="nav-link">
@@ -137,7 +68,6 @@
                             </a>
                         </li>
                     </ul>
-                    <!-- .header-compare -->
                     <ul class="header-wishlist nav navbar-nav">
                         <li class="nav-item">
                             <a href="wishlist.html" class="nav-link">
@@ -146,7 +76,6 @@
                             </a>
                         </li>
                     </ul>
-                    <!-- .header-wishlist -->
                     <ul id="site-header-cart" class="site-header-cart menu">
                         <li class="animate-dropdown dropdown ">
                             <a class="cart-contents" href="cart.html" data-toggle="dropdown" title="View your shopping cart">
@@ -210,11 +139,56 @@
                             <!-- .dropdown-menu-mini-cart -->
                         </li>
                     </ul>
-                    <!-- .site-header-cart -->
+                    <ul class="header-wishlist nav navbar-nav">
+                        @if (Route::has('login'))
+                            @auth
+                                @if (Auth::user()->user_type === 'admin')
+                                    <li class="menu-item menu-item-has-children animate-dropdown dropdown">
+                                        <a title="My Account" data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                            {{Auth::user()->username}}
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul role="menu" class="dropdown-menu">
+                                            <li class="menu-item animate-dropdown">
+                                                <a title="Dashboard" href="{{route('admin.dashboard')}}">Dashboard</a>
+                                            </li>
+                                            <li class="menu-item animate-dropdown">
+                                                <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">logout</a>
+                                            </li>
+                                            <form id="logout-form" action="{{route('logout')}}" method="post">
+                                                @csrf
+                                            </form>
+                                        </ul>
+                                    </li>
+                                @else
+                                    <li class="menu-item menu-item-has-children animate-dropdown dropdown">
+                                        <a title="My account" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="true">
+                                            {{Auth::user()->username}}
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="overflow-items dropdown-menu " x-placement="bottom-start" style="position: absolute; transform: translate3d(8px, 20px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                            <li class="menu-item" style="padding: 10px;">
+                                                <a title="Dashboard" href="{{route('user.dashboard')}}">My account</a>
+                                            </li>
+                                            <li class="menu-item" style="padding: 10px;">
+                                                <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">logout</a>
+                                            </li>
+                                            <form id="logout-form" action="{{route('logout')}}" method="post">
+                                                @csrf
+                                            </form>
+                                        </ul>
+                                    </li>
+                                @endif
+                            @else
+                                <li class="menu-item menu-item-has-children">
+                                    <a class="banner-action button" title="My Account" href="{{route('login')}}">
+                                        Sign in</a>
+                                </li>
+                            @endauth
+                        @endif
+                    </ul>
                 </div>
-                <!-- /.row -->
             </div>
-            <!-- /.techmarket-sticky-wrap -->
             <div class="stretched-row">
                 <div class="col-full">
                     <div class="row">
@@ -226,122 +200,14 @@
                                 <li class="menu-item animate-dropdown">
                                     <a title="COMPUTERS &amp; LAPTOPS" href="product-category.html">COMPUTERS &#038; LAPTOPS</a>
                                 </li>
-                                <li class="yamm-fw menu-item menu-item-has-children animate-dropdown dropdown">
-                                    <a title="Pages" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true" href="#">Pages <span class="caret"></span></a>
-                                    <ul role="menu" class=" dropdown-menu">
-                                        <li class="menu-item menu-item-object-static_block animate-dropdown">
-                                            <div class="yamm-content">
-                                                <div class="tm-mega-menu">
-                                                    <div class="widget widget_nav_menu">
-                                                        <ul class="menu">
-                                                            <li class="nav-title menu-item">
-                                                                <a href="#">Home Pages</a>
-                                                            </li>
-                                                        </ul>
-                                                        <!-- .menu -->
-                                                    </div>
-                                                    <!-- .widget_nav_menu -->
-                                                    <div class="widget widget_nav_menu">
-                                                        <ul class="menu">
-                                                            <li class="nav-title menu-item">
-                                                                <a href="#">Single Product Pages</a>
-                                                            </li>
-                                                            <li class="menu-item menu-item-object-product">
-                                                                <a href="single-product-sidebar.html">Single Product Sidebar</a>
-                                                            </li>
-                                                            <li class="menu-item menu-item-object-product">
-                                                                <a href="single-product-fullwidth.html">Single Product Fullwidth</a>
-                                                            </li>
-                                                            <li class="menu-item menu-item-object-product">
-                                                                <a href="single-product-extended.html">Single Product Extended</a>
-                                                            </li>
-                                                            <li class="nav-title menu-item">
-                                                                <a href="#">Ecommerce Pages</a>
-                                                            </li>
-                                                            <li class="menu-item">
-                                                                <a href="cart.html">Cart</a>
-                                                            </li>
-                                                            <li class="menu-item">
-                                                                <a href="checkout.html">Checkout</a>
-                                                            </li>
-                                                            <li class="menu-item">
-                                                                <a href="login-and-register.html">My Account</a>
-                                                            </li>
-                                                            <li class="menu-item">
-                                                                <a href="compare.html">Compare</a>
-                                                            </li>
-                                                            <li class="menu-item">
-                                                                <a href="wishlist.html">Wishlist</a>
-                                                            </li>
-                                                            <li class="menu-item">
-                                                                <a href="track-your-order.html">Track Order</a>
-                                                            </li>
-                                                            <li class="menu-item">
-                                                                <a href="terms-and-conditions.html">Terms and Conditions</a>
-                                                            </li>
-                                                        </ul>
-                                                        <!-- .menu -->
-                                                    </div>
-                                                    <!-- .widget_nav_menu -->
-                                                    <div class="widget widget_nav_menu">
-                                                        <ul class="menu">
-                                                            <li class="nav-title menu-item">
-                                                                <a href="#">Blog Pages</a>
-                                                            </li>
-                                                            <li class="menu-item">
-                                                                <a href="blog-v1.html">Blog v1</a>
-                                                            </li>
-                                                            <li class="menu-item">
-                                                                <a href="blog-v2.html">Blog v2</a>
-                                                            </li>
-                                                            <li class="menu-item">
-                                                                <a href="blog-v3.html">Blog v3</a>
-                                                            </li>
-                                                            <li class="menu-item">
-                                                                <a href="blog-fullwidth.html">Blog Full Width</a>
-                                                            </li>
-                                                            <li class="menu-item">
-                                                                <a href="blog-single.html">Single Blog Post</a>
-                                                            </li>
-                                                            <li class="nav-title menu-item">
-                                                                <a href="#">Other Pages</a>
-                                                            </li>
-                                                            <li class="menu-item">
-                                                                <a href="about.html">About Us</a>
-                                                            </li>
-                                                            <li class="menu-item">
-                                                                <a href="contact-v1.html">Contact v1</a>
-                                                            </li>
-                                                            <li class="menu-item">
-                                                                <a href="contact-v2.html">Contact v2</a>
-                                                            </li>
-                                                            <li class="menu-item">
-                                                                <a href="faq.html">FAQ</a>
-                                                            </li>
-                                                            <li class="menu-item">
-                                                                <a href="404.html">404</a>
-                                                            </li>
-                                                        </ul>
-                                                        <!-- .menu -->
-                                                    </div>
-                                                    <!-- .widget_nav_menu -->
-                                                </div>
-                                                <!-- .tm-mega-menu -->
-                                            </div>
-                                            <!-- .yamm-content -->
-                                        </li>
-                                        <!-- .menu-item -->
-                                    </ul>
-                                    <!-- .dropdown-menu -->
+                                <li class="menu-item animate-dropdown">
+                                    <a title="CAMERAS &amp; PHOTO" href="#">CAMERAS &#038; PHOTO</a>
                                 </li>
                                 <li class="menu-item animate-dropdown">
-                                    <a title="CAMERAS &amp; PHOTO" href="product-category.html">CAMERAS &#038; PHOTO</a>
+                                    <a title="PHONES &amp; TABLETS" href="#">PHONES &#038; TABLETS</a>
                                 </li>
                                 <li class="menu-item animate-dropdown">
-                                    <a title="PHONES &amp; TABLETS" href="product-category.html">PHONES &#038; TABLETS</a>
-                                </li>
-                                <li class="menu-item animate-dropdown">
-                                    <a title="GAMES &amp; CONSOLES" href="product-category.html">GAMES &#038; CONSOLES</a>
+                                    <a title="GAMES  CONSOLES" href="#">GAMES  CONSOLES</a>
                                 </li>
                                 <li class="menu-item animate-dropdown">
                                     <a title="TV &amp; AUDIO" href="product-category.html">TV &#038; AUDIO</a>
@@ -350,29 +216,23 @@
                                     <a title="CAR ELECTRONIC &amp; GPS" href="product-category.html">CAR ELECTRONIC &#038; GPS</a>
                                 </li>
                                 <li class="menu-item animate-dropdown">
-                                    <a title="Services" href="{{ route('home-services') }}">SERVICES</a>
+                                    <a title="Services" href="#">SERVICES</a>
                                 </li>
                                 <li class="techmarket-flex-more-menu-item dropdown">
                                     <a title="..." href="#" data-toggle="dropdown" class="dropdown-toggle">...</a>
                                     <ul class="overflow-items dropdown-menu"></ul>
                                 </li>
                             </ul>
-                            <!-- .nav -->
                         </nav>
-                        <!-- .navbar-primary -->
                     </div>
-                    <!-- .row -->
                 </div>
-                <!-- .col-full -->
             </div>
-            <!-- .stretched-row -->
         </div>
-        <!-- .col-full -->
         <div class="col-full handheld-only">
             <div class="handheld-header">
                 <div class="row">
                     <div class="site-branding">
-                        <a href="home-v1.html" class="custom-logo-link" rel="home">
+                        <a href="/" class="custom-logo-link" rel="home">
                             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 166.74 28.4">
                                 <defs>
                                     <style>
@@ -407,35 +267,29 @@
                                 <path class="cls-3" d="M93.87,28.67A0.92,0.92,0,0,1,93.59,28V1.91a0.91,0.91,0,0,1,.28-0.7A1,1,0,0,1,94.55.95h3.84a1,1,0,0,1,.7.26,1,1,0,0,1,.26.7V28a1,1,0,0,1-.26.68,0.91,0.91,0,0,1-.7.28H94.55A0.93,0.93,0,0,1,93.87,28.67Z" transform="translate(-1.59 -0.95)"></path>
                             </svg>
                         </a>
-                        <!-- /.custom-logo-link -->
                     </div>
-                    <!-- /.site-branding -->
-                    <!-- ============================================================= End Header Logo ============================================================= -->
                     <div class="handheld-header-links">
                         <ul class="columns-3">
                             <li class="my-account">
-                                <a href="login-and-register.html" class="has-icon">
+                                <a href="{{ route('register') }}" class="has-icon">
                                     <i class="tm tm-login-register"></i>
                                 </a>
                             </li>
                             <li class="wishlist">
-                                <a href="wishlist.html" class="has-icon">
+                                <a href="#" class="has-icon">
                                     <i class="tm tm-favorites"></i>
                                     <span class="count">3</span>
                                 </a>
                             </li>
                             <li class="compare">
-                                <a href="compare.html" class="has-icon">
+                                <a href="#" class="has-icon">
                                     <i class="tm tm-compare"></i>
                                     <span class="count">3</span>
                                 </a>
                             </li>
                         </ul>
-                        <!-- .columns-3 -->
                     </div>
-                    <!-- .handheld-header-links -->
                 </div>
-                <!-- /.row -->
                 <div class="techmarket-sticky-wrap">
                     <div class="row">
                         <nav id="handheld-navigation" class="handheld-navigation" aria-label="Handheld Navigation">
@@ -458,7 +312,7 @@
                         <!-- .handheld-navigation -->
                         <div class="site-search">
                             <div class="widget woocommerce widget_product_search">
-                                <form role="search" method="get" class="woocommerce-product-search" action="home-v1.html">
+                                <form role="search" method="get" class="woocommerce-product-search" action="/">
                                     <label class="screen-reader-text" for="woocommerce-product-search-field-0">Search for:</label>
                                     <input type="search" id="woocommerce-product-search-field-0" class="search-field" placeholder="Search products&hellip;" value="" name="s" />
                                     <input type="submit" value="Search" />
@@ -468,7 +322,7 @@
                             <!-- .widget -->
                         </div>
                         <!-- .site-search -->
-                        <a class="handheld-header-cart-link has-icon" href="cart.html" title="View your shopping cart">
+                        <a class="handheld-header-cart-link has-icon" href="{{route('cart.index')}}" title="View your shopping cart">
                             <i class="tm tm-shopping-bag"></i>
                             <span class="count">2</span>
                         </a>

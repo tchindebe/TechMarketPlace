@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function index(CategoryRepositoryInterface $repository)
     {
-        return view('user.Category.index')->layout('layouts.app');
+        return view('user.category.index')->layout('layouts.app');
     }
 
     public function store(Request $request, CategoryRepositoryInterface $repository)

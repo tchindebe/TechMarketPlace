@@ -11,4 +11,16 @@ class ServicesController extends Controller
     {
         return view('livewire.services.index');
     }
+
+
+    public function profile()
+    {
+        return view('livewire.services.profile');
+    }
+
+
+    public function user_profile()
+    {
+        return view('livewire.services.my-profile');
+    }
 }

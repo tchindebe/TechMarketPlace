@@ -64,7 +64,9 @@
 </x-jet-authentication-card>
 </x-guest-layout> --}}
 
-<x-guest-layout>
+@extends('layouts.base')
+
+@section('content')
     <div id="content" class="site-content">
         <div class="col-full">
             <div class="row">
@@ -72,7 +74,7 @@
                     <a href="home-v1.html">Home</a>
                     <span class="delimiter">
                         <i class="tm tm-breadcrumbs-arrow-right"></i>
-                    </span>My Account
+                    </span>Register
                 </nav>
                 <!-- .woocommerce-breadcrumb -->
                 <div id="primary" class="content-area">
@@ -135,6 +137,12 @@
                                                     <p class="form-row ">
                                                         <input type="submit" class="woocommerce-Button  button" name="register" value="Register">
                                                     </p>
+                                                    <p class="form-row">
+                                                        <span class="menu-item menu-item-has-children">
+                                                        <a class="woocommerce-Button button" title="Login" href="{{route('login')}}">
+                                                            Login</a>
+                                                    </span>
+                                                    </p>
                                                 </form>
                                             </div>
                                         </div>
@@ -157,4 +165,4 @@
         </div>
         <!-- .col-full -->
     </div>
-</x-guest-layout>
+@endsection
