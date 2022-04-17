@@ -92,6 +92,8 @@ Route::get('/user/show/{user}', [\App\Http\Controllers\SeedShopOrServiceControll
 Route::get('/user/shop/product/{id}', [\App\Http\Controllers\shop\ProductController::class, 'index'])->name('user.shop.product.detailProduct');
 Route::get('/user/shop/product{id}/', [\App\Http\Controllers\shop\ProductController::class, 'show'])->name('user.shop.product.productCategory');
 
+//link header
+Route::get('/allProduct', [\App\Http\Controllers\Product\ProductController::class, 'allProduct'])->name("allProduct");
 //Route service
 Route::get('/user/service/{user}', [\App\Http\Controllers\SeedShopOrServiceController::class, 'show'])->name('user.service');
 Route::get('/user/services', [\App\Http\Controllers\Services\ServicesController::class, 'index'])->name('services-home');

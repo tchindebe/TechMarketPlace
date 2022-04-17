@@ -10,7 +10,7 @@
                             <div class="slider-block column-1">
                                 <div class="home-v12-slider">
                                     <div class="home-v12-slider home-slider">
-                                        <div class="slider-1" style="background-image: url({{asset('assets/images/market.jpg')}});">
+                                        <div class="slider-1" style="background-image: url({{asset('assets/images/1-1.jpg')}});">
                                             <div class="caption">
                                                 <div class="pre-title">warehouse</div>
                                                 <div class="title">clear-out</div>
@@ -25,7 +25,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <section class="section-products-carousel" id="homev12-carousel-1">
+                            <section class="section-products-carousel" id="homev12-carousel-1" class="mt-5">
                                 <header class="section-header">
                                     <h2 class="section-title">Hot New Arrivals You might Like</h2>
                                     <nav class="custom-slick-nav"></nav>

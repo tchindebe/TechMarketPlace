@@ -64,7 +64,7 @@
                         <li class="nav-item">
                             <a href="compare.html" class="nav-link">
                                 <i class="tm tm-compare"></i>
-                                <span id="top-cart-compare-count" class="value">3</span>
+                                <span id="top-cart-compare-count" class="value">0</span>
                             </a>
                         </li>
                     </ul>
@@ -72,7 +72,7 @@
                         <li class="nav-item">
                             <a href="wishlist.html" class="nav-link">
                                 <i class="tm tm-favorites"></i>
-                                <span id="top-cart-wishlist-count" class="value">3</span>
+                                <span id="top-cart-wishlist-count" class="value">0</span>
                             </a>
                         </li>
                     </ul>
@@ -234,30 +234,27 @@
                                 <li class="menu-item animate-dropdown">
                                     <a title="ALL CATEGORIES" href="product-category.html">ALL CATEGORIES</a>
                                 </li>
-                                <li class="menu-item animate-dropdown">
-                                    <a title="COMPUTERS &amp; LAPTOPS" href="product-category.html">COMPUTERS &#038; LAPTOPS</a>
-                                </li>
-                                <li class="menu-item animate-dropdown">
-                                    <a title="CAMERAS &amp; PHOTO" href="#">CAMERAS &#038; PHOTO</a>
-                                </li>
-                                <li class="menu-item animate-dropdown">
-                                    <a title="PHONES &amp; TABLETS" href="#">PHONES &#038; TABLETS</a>
-                                </li>
-                                <li class="menu-item animate-dropdown">
-                                    <a title="GAMES  CONSOLES" href="#">GAMES  CONSOLES</a>
-                                </li>
-                                <li class="menu-item animate-dropdown">
-                                    <a title="TV &amp; AUDIO" href="product-category.html">TV &#038; AUDIO</a>
-                                </li>
-                                <li class="menu-item animate-dropdown">
-                                    <a title="CAR ELECTRONIC &amp; GPS" href="product-category.html">CAR ELECTRONIC &#038; GPS</a>
-                                </li>
-                                <li class="menu-item animate-dropdown">
-                                    <a title="Services" href="{{ route('services-home') }}">SERVICES</a>
-                                </li>
-                                <li class="techmarket-flex-more-menu-item dropdown">
+                                <li class="techmarket-flex-more-menu-item dropdown float-lg-right">
                                     <a title="..." href="#" data-toggle="dropdown" class="dropdown-toggle">...</a>
                                     <ul class="overflow-items dropdown-menu"></ul>
+                                </li>
+                                <li class="menu-item animate-dropdown float-lg-right">
+                                    <a title="TV &amp; AUDIO" href="product-category.html">ABOUT</a>
+                                </li>
+                                <li class="menu-item animate-dropdown float-lg-right">
+                                    <a title="GAMES  CONSOLES" href="#">CONTACT</a>
+                                </li>
+                                <li class="menu-item animate-dropdown float-lg-right">
+                                    <a title="CAR ELECTRONIC &amp; GPS" href="product-category.html">ALL STORES</a>
+                                </li>
+                                <li class="menu-item animate-dropdown float-lg-right">
+                                    <a title="Services" href="{{ route('services-home') }}">SERVICES</a>
+                                </li>
+                                <li class="menu-item animate-dropdown float-lg-right">
+                                    <a title="CAMERAS &amp; PHOTO" href="{{route('allProduct')}}">SHOP PRODUCTS</a>
+                                </li>
+                                <li class="menu-item animate-dropdown float-lg-right">
+                                    <a title="COMPUTERS &amp; LAPTOPS" href="product-category.html">HOME</a>
                                 </li>
                             </ul>
                         </nav>

@@ -7,6 +7,7 @@ use App\Http\Request\ProductRequest;
 use App\Models\Product;
 use App\Repository\Product\ProductRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController
 {
@@ -62,4 +63,9 @@ class ProductController
         return redirect()->back()->with('error', "An error has occurred");
     }
 
+    public function allProduct(){
+        $products  = DB::table('Products')->simplePaginate(15);
+
+        return view('/allProduct/all_product', compact('products', $products));
+    }
 }
