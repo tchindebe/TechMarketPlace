@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Product;
 use App\Models\User;
 use Livewire\Component;
+use Symfony\Component\HttpFoundation\Request;
 
 class HomeComponent extends Component
 {
@@ -23,11 +24,7 @@ class HomeComponent extends Component
             ->with('products', $products);
     }
 
-    public function about() {
-        return view('about');
-    }
 
-    public function contact() {
-        return view('contact');
-    }
+
+
 }

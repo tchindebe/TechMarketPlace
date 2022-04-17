@@ -198,6 +198,7 @@
         </div>
     </header>
     @yield('contents')
+    @if(Auth::user()->user_type === 'Service')
     <div class="post-popup pst-pj">
         <div class="post-project">
             <h3>Post a project</h3>
@@ -248,6 +249,7 @@
             <a href="#" title=""><i class="la la-times-circle-o"></i></a>
         </div>
     </div>
+    @endif
     <div class="post-popup job_post">
         <div class="post-project">
             <h3>Post a job</h3>
