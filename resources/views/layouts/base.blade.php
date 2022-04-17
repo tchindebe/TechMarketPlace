@@ -236,13 +236,13 @@
                                 </li>
                                 <li class="techmarket-flex-more-menu-item dropdown float-lg-right">
                                     <a title="..." href="#" data-toggle="dropdown" class="dropdown-toggle">...</a>
-                                    <ul class="overflow-items dropdown-menu"></ul>
+                                    <ul class="overflow-items dropdown-menu"></ul>k
                                 </li>
                                 <li class="menu-item animate-dropdown float-lg-right">
-                                    <a title="TV &amp; AUDIO" href="product-category.html">ABOUT</a>
+                                    <a title="TV &amp; AUDIO" href="{{route('about')}}">ABOUT</a>
                                 </li>
                                 <li class="menu-item animate-dropdown float-lg-right">
-                                    <a title="GAMES  CONSOLES" href="#">CONTACT</a>
+                                    <a title="GAMES  CONSOLES" href="{{route('contact')}}">CONTACT</a>
                                 </li>
                                 <li class="menu-item animate-dropdown float-lg-right">
                                     <a title="CAR ELECTRONIC &amp; GPS" href="product-category.html">ALL STORES</a>
@@ -368,9 +368,30 @@
     <div id="content" class="site-content" tabindex="-1">
         <div class="col-full">
             <div class="row">
+                @if( Route::current()->getName()  === 'about')
+                    <nav class="woocommerce-breadcrumb">
+                        <a href="/">Home</a>
+                        <span class="delimiter">
+                                <i class="tm tm-breadcrumbs-arrow-right"></i>
+                            </span>
+                        About Us
+                    </nav>
+                @endif
+
+                @if( Route::current()->getName()  === 'contact')
+                    <nav class="woocommerce-breadcrumb">
+                        <a href="/">Home</a>
+                        <span class="delimiter">
+                            <i class="tm tm-breadcrumbs-arrow-right"></i>
+                        </span>
+                        Contact
+                    </nav>
+                @endif
+
                 <div id="primary" class="content-area">
                     <main id="main" class="site-main">
                     @yield('content')
+                    </main>
                 </div>
             </div>
         </div>

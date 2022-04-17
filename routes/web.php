@@ -11,6 +11,8 @@ use App\Http\Livewire\User\UserDashboardComponemt;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeComponent::class);
+Route::get('/about', [HomeComponent::class, 'about'])->name('about');
+Route::get('/contact', [HomeComponent::class, 'contact'])->name('contact');
 
 Route::get('/shop', ShopComponent::class);
 
