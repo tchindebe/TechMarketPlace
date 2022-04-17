@@ -88,8 +88,6 @@
                                                 <h2>Register</h2>
                                             </div>
                                             <div class="card-body">
-                                                <x-jet-validation-errors class="mb-4" />
-
                                                 @if (session('status'))
                                                 <div class="mb-4 text-sm font-medium text-green-600">
                                                     {{ session('status') }}

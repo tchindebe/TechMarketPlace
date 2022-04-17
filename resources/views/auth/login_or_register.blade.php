@@ -56,9 +56,13 @@
                                             </div>
                                             <!-- .col-1 -->
                                             <div class="u-column2 col-2">
+                                                @if (session('status'))
+                                                    <div class="mb-4 text-sm font-medium text-green-600">
+                                                        {{ session('status') }}
+                                                    </div>
+                                                @endif
                                                 <h2>Register</h2>
-                                                <form method="post" action="{{route('register')}}"
-                                                      class="woocomerce-form woocommerce-form-login login">
+                                                <form method="post" action="{{route('register')}}" class="woocomerce-form woocommerce-form-login login">
                                                     @csrf
                                                     <p class="form-row form-row-wide ">
                                                         <label for="reg_email">Name user
