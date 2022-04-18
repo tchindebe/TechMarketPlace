@@ -56,11 +56,7 @@
                                             </div>
                                             <!-- .col-1 -->
                                             <div class="u-column2 col-2">
-                                                @if (session('status'))
-                                                    <div class="mb-4 text-sm font-medium text-green-600">
-                                                        {{ session('status') }}
-                                                    </div>
-                                                @endif
+                                                <x-jet-validation-errors class="mb-4" />
                                                 <h2>Register</h2>
                                                 <form method="post" action="{{route('register')}}" class="woocomerce-form woocommerce-form-login login">
                                                     @csrf
@@ -68,35 +64,35 @@
                                                         <label for="reg_email">Name user
                                                             <span class="required">*</span>
                                                         </label>
-                                                        <input type="name" value="" id="email" name="name" class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" :value="old('name')" required autofocus
+                                                        <input type="text" value="" id="email" name="name" class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" :value="old('name')" autofocus
                                                                autocomplete="name" >
                                                     </p>
                                                     <p class="form-row form-row-wide">
                                                         <label for="reg_email">Email address
                                                             <span class="required">*</span>
                                                         </label>
-                                                        <input type="email" value="" id="email" name="email" class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" :value="old('email')" required>
+                                                        <input type="email" value="" id="email" name="email" class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" :value="old('email')">
                                                     </p>
                                                     <p class="form-row form-row-wide">
                                                         <label for="reg_password">Password
                                                             <span class="required">*</span>
                                                         </label>
-                                                        <input type="password" id="reg_password" name="password" class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" required autocomplete="new-password">
+                                                        <input type="password" id="reg_password" name="password" class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" autocomplete="new-password">
                                                     </p>
                                                     <p class="form-row form-row-wide">
                                                         <label for="confirm_password">Confirm password
                                                             <span class="required">*</span>
                                                         </label>
-                                                        <input type="password" id="confirm_password" name="password_confirmation" class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" required autocomplete="new-password">
+                                                        <input type="password" id="confirm_password" name="password_confirmation" class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" autocomplete="new-password">
                                                     </p>
                                                     <p class="form-row form-row-wide">
                                                         <label for="reg_password">account type
                                                             <span class="required">*</span>
                                                         </label>
                                                         <select name="user_type" class="shadow-sm" id="reg_password">
-                                                            <option class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" required value="Client">Client</option>
-                                                            <option class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" required value="Service">Service</option>
-                                                            <option class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" required value="Boutique">Boutique</option>
+                                                            <option class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" value="Client">Client</option>
+                                                            <option class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" value="Service">Service</option>
+                                                            <option class="shadow-sm woocommerce-Input woocommerce-Input--text input-text" value="Boutique">Boutique</option>
                                                         </select>
                                                     </p>
                                                     <p class="form-row ">

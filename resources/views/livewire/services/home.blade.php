@@ -112,17 +112,19 @@
                     </div>
                     <div class="col-lg-6 col-md-8 no-pd">
                         <div class="main-ws-sec">
-                            <div class="post-topbar">
-                                <div class="user-picy">
-                                    <img src="images/resources/user-pic.png" alt="">
-                                </div>
-                                <div class="post-st">
-                                    <ul>
-                                        <li><a class="post_project" href="#" title="">Post a Project</a></li>
-                                        <li><a class="post-jb active" href="#" title="">Post a Job</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+{{--                            @if(Auth::user())--}}
+{{--                            <div class="post-topbar">--}}
+{{--                                <div class="user-picy">--}}
+{{--                                    <img src="images/resources/user-pic.png" alt="">--}}
+{{--                                </div>--}}
+{{--                                <div class="post-st">--}}
+{{--                                    <ul>--}}
+{{--                                        <li><a class="post_project" href="#" title="">Post a Project</a></li>--}}
+{{--                                        <li><a class="post-jb active" href="#" title="">Post a Job</a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            @endif--}}
                             <div class="posts-section">
                                 <div class="post-bar">
                                     <div class="post_topbar">

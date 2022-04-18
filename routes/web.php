@@ -87,6 +87,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     //Route service
     Route::get('/service/profile', [\App\Http\Controllers\Services\ServicesController::class, 'profile'])->name('service-setting');
     Route::get('/service/user', [\App\Http\Controllers\Services\ServicesController::class, 'user_profile'])->name('service-profile');
+    Route::post('/service/post/store', [\App\Http\Controllers\Services\ServicePostController::class, 'store'])->name('service.post.store');
 
 });
 

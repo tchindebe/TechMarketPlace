@@ -198,19 +198,21 @@
         </div>
     </header>
     @yield('contents')
-    @if(Auth::user()->user_type === 'Service')
+
     <div class="post-popup pst-pj">
         <div class="post-project">
             <h3>Post a project</h3>
             <div class="post-project-fields">
-                <form>
+                <form action="{{ route('service.post.store') }}" method="post" >
+                    @csrf
                     <div class="row">
+                        <input type="hidden" name="post_type" value="post_project">
                         <div class="col-lg-12">
-                            <input type="text" name="title" placeholder="Title">
+                            <input type="text" name="title" placeholder="Title"/>
                         </div>
                         <div class="col-lg-12">
                             <div class="inp-field">
-                                <select>
+                                <select name="category">
                                     <option>Category</option>
                                     <option>Category 1</option>
                                     <option>Category 2</option>
@@ -224,12 +226,12 @@
                         <div class="col-lg-12">
                             <div class="price-sec">
                                 <div class="price-br">
-                                    <input type="text" name="price1" placeholder="Price">
+                                    <input type="text" name="min_price" placeholder="Price">
                                     <i class="la la-dollar"></i>
                                 </div>
                                 <span>To</span>
                                 <div class="price-br">
-                                    <input type="text" name="price1" placeholder="Price">
+                                    <input type="text" name="max_price" placeholder="Price">
                                     <i class="la la-dollar"></i>
                                 </div>
                             </div>
@@ -249,12 +251,14 @@
             <a href="#" title=""><i class="la la-times-circle-o"></i></a>
         </div>
     </div>
-    @endif
+
     <div class="post-popup job_post">
         <div class="post-project">
             <h3>Post a job</h3>
             <div class="post-project-fields">
-                <form>
+                <form action="{{ route('service.post.store') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="post_type" value="post_project">
                     <div class="row">
                         <div class="col-lg-12">
                             <input type="text" name="title" placeholder="Title">

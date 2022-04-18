@@ -74,7 +74,6 @@
                                             </div>
                                             <div class="card-body">
                                                 <x-jet-validation-errors class="mb-4" />
-                                                <x-jet-validation-success class="mb-4" />
 
                                                 @if (session('status'))
                                                 <div class="mb-4 font-medium text-sm text-green-600">
@@ -89,7 +88,7 @@
                                                         </label>
                                                         <input type="email" class="input-text" name="email" id="email"
                                                                placeholder="Enter your email address"
-                                                               value="old('email')"
+                                                               :value="old('email')"
                                                                required autofocus>
                                                     </p>
                                                     <p class="form-row form-row-wide">

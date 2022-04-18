@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Category;
 use App\Models\Ordereds;
+use App\Models\Post;
 use App\Repository\AdapterEloquent\EloquentProfileUserAdaptor;
 use App\Repository\Admin\Orders\EloquentOrdersAdaptor;
 use App\Repository\Admin\Orders\OrderInterfaceRepository;
@@ -77,6 +78,9 @@ class AppServiceProvider extends ServiceProvider
         $categories = Category::all();
         $Allcategories = Category::all();
         $Allcategorys = Category::all();
+        $allPost = Post::with('user')->get();
+
+        dd($allPost);
 
         $orders = Ordereds::all();
 
@@ -88,5 +92,6 @@ class AppServiceProvider extends ServiceProvider
         view()->share('categories', $categories);
         view()->share('allCategories', $Allcategories);
         view()->share('allCategory', $Allcategorys);
+        view()->share('allPost', $allPost);
     }
 }
