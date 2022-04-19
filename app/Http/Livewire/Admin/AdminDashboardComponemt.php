@@ -8,6 +8,9 @@ class AdminDashboardComponemt extends Component
 {
     public function render()
     {
-        return view('livewire.admin.admin-dashboard-componemt')->layout('layouts.app');
+        $user = \App\Models\User::all()->count();
+        return view('livewire.admin.admin-dashboard-componemt')
+            ->with('usersCount', $user)
+            ->layout('layouts.app');
     }
 }
