@@ -108,7 +108,7 @@ Route::get('/user/client/{user}', [\App\Http\Controllers\SeedShopOrServiceContro
 
 
 // For Administrators
-Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function(){
+Route::middleware(['auth:sanctum', 'verified', 'auth'])->group(function(){
 
     Route::group(['prefix' =>'admin'], function (){
 

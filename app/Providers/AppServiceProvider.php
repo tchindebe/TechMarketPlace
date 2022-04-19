@@ -80,7 +80,6 @@ class AppServiceProvider extends ServiceProvider
         $Allcategorys = Category::all();
         $allPost = Post::with('user')->get();
 
-        dd($allPost);
 
         $orders = Ordereds::all();
 
