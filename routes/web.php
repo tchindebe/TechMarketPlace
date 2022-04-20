@@ -114,8 +114,11 @@ Route::middleware(['auth:sanctum', 'verified', 'auth'])->group(function(){
             Route::get('/', ProductManagerComponent::class)->name('admin.products');
         });
         Route::group(['prefix'=>'users'], function (){
-            Route::get('/', UsersManagerComponent::class)->name('admin.users');
+            Route::get('/shops', [UsersManagerComponent::class, 'shop'])->name('admin.users.shop');
+            Route::get('/customers', [UsersManagerComponent::class, 'customer'])->name('admin.users.customer');
+            Route::get('/services', [UsersManagerComponent::class, 'service'])->name('admin.users.service');
         });
+        Route::get('/changeStatus', [UsersManagerComponent::class, 'update_status'])->name('admin.user.update_status');
 
     });
 });
