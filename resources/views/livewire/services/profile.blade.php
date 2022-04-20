@@ -1,4 +1,4 @@
-@extends('layouts.adminShop')
+@extends('layouts.services_app')
 
 @section('contents')
     <section class="profile-account-setting">
@@ -8,64 +8,18 @@
                     <div class="col-lg-3">
                         <div class="acc-leftbar">
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link active" id="nav-acc-tab" data-toggle="tab" href="#nav-acc" role="tab" aria-controls="nav-acc" aria-selected="true"><i class="la la-cogs"></i>Account Setting</a>
-                                <a class="nav-item nav-link" id="nav-status-tab" data-toggle="tab" href="#nav-status" role="tab" aria-controls="nav-status" aria-selected="false"><i class="fa fa-line-chart"></i>Status</a>
+                                <a class="nav-item nav-link active" id="nav-status-tab" data-toggle="tab" href="#nav-status" role="tab" aria-controls="nav-status" aria-selected="false"><i class="fa fa-line-chart"></i>Status</a>
                                 <a class="nav-item nav-link" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false"><i class="fa fa-lock"></i>Change Password</a>
                                 <a class="nav-item nav-link" id="nav-notification-tab" data-toggle="tab" href="#nav-notification" role="tab" aria-controls="nav-notification" aria-selected="false"><i class="fa fa-flash"></i>Notifications</a>
                                 <a class="nav-item nav-link" id="nav-privcy-tab" data-toggle="tab" href="#privcy" role="tab" aria-controls="privacy" aria-selected="false"><i class="fa fa-group"></i>Requests</a>
-                                <a class="nav-item nav-link" id="security" data-toggle="tab" href="#security-login" role="tab" aria-controls="security-login" aria-selected="false"><i class="fa fa-user-secret"></i>Security and Login</a>
                                 <a class="nav-item nav-link" id="nav-privacy-tab" data-toggle="tab" href="#privacy" role="tab" aria-controls="privacy" aria-selected="false"><i class="fa fa-paw"></i>Privacy</a>
-                                <a class="nav-item nav-link" id="nav-blockking-tab" data-toggle="tab" href="#blockking" role="tab" aria-controls="blockking" aria-selected="false"><i class="fa fa-cc-diners-club"></i>Blocking</a>
                                 <a class="nav-item nav-link" id="nav-deactivate-tab" data-toggle="tab" href="#nav-deactivate" role="tab" aria-controls="nav-deactivate" aria-selected="false"><i class="fa fa-random"></i>Deactivate Account</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-9">
                         <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="nav-acc" role="tabpanel" aria-labelledby="nav-acc-tab">
-                                <div class="acc-setting">
-                                    <h3>Account Setting</h3>
-                                    <form>
-                                        <div class="notbar">
-                                            <h4>Notification Sound</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id</p>
-                                            <div class="toggle-btn">
-                                                <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                                                    <label class="custom-control-label" for="customSwitch1"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="notbar">
-                                            <h4>Notification Email</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id</p>
-                                            <div class="toggle-btn">
-                                                <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input" id="customSwitch2">
-                                                    <label class="custom-control-label" for="customSwitch2"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="notbar">
-                                            <h4>Chat Message Sound</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id</p>
-                                            <div class="toggle-btn">
-                                                <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input" id="customSwitch3">
-                                                    <label class="custom-control-label" for="customSwitch3"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="save-stngs">
-                                            <ul>
-                                                <li><button type="submit">Save Setting</button></li>
-                                                <li><button type="submit">Restore Setting</button></li>
-                                            </ul>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="nav-status" role="tabpanel" aria-labelledby="nav-status-tab">
+                            <div class="tab-pane fade show active" id="nav-status" role="tabpanel" aria-labelledby="nav-status-tab">
                                 <div class="acc-setting">
                                     <h3>Profile Status</h3>
                                     <div class="profile-bx-details">
@@ -333,86 +287,6 @@
                                                     <li><button type="submit" class="accept-req">Accept</button></li>
                                                     <li><button type="submit" class="close-req"><i class="la la-close"></i></button></li>
                                                 </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="security-login" role="tabpanel" aria-labelledby="security">
-                                <div class="privacy security">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h3>Security and Login</h3>
-                                            <hr>
-                                            <h3>Two - Step Verification</h3>
-                                            <p>Help protect your account by enabling extra layers of security.</p>
-                                            <hr>
-                                            <h3>Security question</h3><i class="la la-edit"></i>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                <label class="custom-control-label" for="customCheck1">Conform your identity with a question only you know the answer to</label>
-                                            </div>
-                                            <hr>
-                                            <h3>Security question</h3>
-                                            <p>Before can you set a new security question,</p>
-                                            <hr>
-                                            <h3>Current Question</h3>
-                                            <p>Q: Your favorite actor?</p>
-                                            <br>
-                                            <h3>New Question</h3>
-                                            <form>
-                                                <div class="form-group">
-                                                    <select class="form-control" id="exampleFormControlSelect1" style="-webkit-appearance: menulist-button;">
-                                                        <option>Please Select New Question</option>
-                                                        <option>Select Second Queston</option>
-                                                    </select>
-                                                </div>
-                                            </form>
-                                            <h3>Answer</h3>
-                                            <form>
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder=" Answer here">
-                                                </div>
-                                            </form>
-                                            <div class="checkbox">
-                                                <div class="form-check">
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                                                        <label class="custom-control-label" for="customRadio1">I understand my account will be locked if I am unable to answer this question</label>
-                                                    </div>
-                                                </div>
-                                                <div class="form-check">
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                                                        <label class="custom-control-label" for="customRadio2">Remember this device</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                        </div>
-                                    </div>
-                                    <div class="btns">
-                                        <a href="#">Save</a>
-                                        <a href="#">Cancel</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="blockking" role="tabpanel" aria-labelledby="nav-blockking-tab">
-                                <div class="helpforum">
-                                    <div class="row">
-                                        <div class="col-12 security">
-                                            <h3>Blocking</h3>
-                                            <hr>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <h4>Blocking</h4>
-                                                <p>See your list,and make changes if you'd like</p>
-                                                <div class="bloktext">
-                                                    <p>You are not bloking anyone</p>
-                                                    <p>Need to blok or report someone? Go to the profile of the person you want to blok and select "Blok or Report" from the drowp-down menu at the top of the profile summery</p>
-                                                    <p>Note: After you have blocked the person, Any previous profile views of yours and of the other person will disappear from each of your "Who's viewed your profile" sections. </p>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -88,7 +88,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/service/profile', [\App\Http\Controllers\Services\ServicesController::class, 'profile'])->name('service-setting');
     Route::get('/service/user', [\App\Http\Controllers\Services\ServicesController::class, 'user_profile'])->name('service-profile');
     Route::post('/service/post/store', [\App\Http\Controllers\Services\ServicePostController::class, 'store'])->name('service.post.store');
-
+    Route::get('/user/service/{user}', [\App\Http\Controllers\SeedShopOrServiceController::class, 'show'])->name('user.service');
+    Route::get('/user/services', [\App\Http\Controllers\Services\ServicesController::class, 'index'])->name('services-home');
 });
 
 // Route shop
@@ -98,9 +99,7 @@ Route::get('/user/shop/product{id}/', [\App\Http\Controllers\shop\ProductControl
 
 //link header
 Route::get('/allProduct', [\App\Http\Controllers\Product\ProductController::class, 'allProduct'])->name("allProduct");
-//Route service
-Route::get('/user/service/{user}', [\App\Http\Controllers\SeedShopOrServiceController::class, 'show'])->name('user.service');
-Route::get('/user/services', [\App\Http\Controllers\Services\ServicesController::class, 'index'])->name('services-home');
+
 
 
 //Route client
@@ -109,22 +108,14 @@ Route::get('/user/client/{user}', [\App\Http\Controllers\SeedShopOrServiceContro
 
 // For Administrators
 Route::middleware(['auth:sanctum', 'verified', 'auth'])->group(function(){
-
     Route::group(['prefix' =>'admin'], function (){
-
         Route::get('/dashboard', AdminDashboardComponemt::class)->name('admin.dashboard');
-
         Route::group(['prefix'=>'products'], function (){
-
             Route::get('/', ProductManagerComponent::class)->name('admin.products');
-
         });
         Route::group(['prefix'=>'users'], function (){
-
             Route::get('/', UsersManagerComponent::class)->name('admin.users');
         });
 
     });
-
-
 });

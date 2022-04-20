@@ -83,7 +83,7 @@
                         <div class="col-lg-6">
                             <div class="main-ws-sec">
                                 <div class="posts-section">
-                                    @if(Auth::user())
+                                    @if(Auth::user()->user_type === 'Service')
                                     <div class="post-topbar">
                                         <div class="user-picy">
                                             <img src="{{asset('assets/service/images/resources/user-pic.png')}}" alt="">
@@ -104,7 +104,6 @@
                                                 <img src="{{asset('assets/service/images/resources/us-pic.png')}}" alt="">
                                                 <div class="usy-name">
                                                     <h3>{{ $post->user }}</h3>
-                                                    <span><img src="{{asset('assets/service/images/clock.png')}}" alt="">3 min ago</span>
                                                 </div>
                                             </div>
                                             <div class="ed-opts">
@@ -112,11 +111,9 @@
                                                 <ul class="ed-options">
                                                     @if(Auth::user()->user_type === 'Service')
                                                         <li><a href="#" title="">Edit Post</a></li>
+                                                        <li><a href="#" title="">Delete post</a></li>
                                                     @endif
-                                                    <li><a href="#" title="">Unsaved</a></li>
-                                                    <li><a href="#" title="">Unbid</a></li>
-                                                    <li><a href="#" title="">Close</a></li>
-                                                    <li><a href="#" title="">Hide</a></li>
+                                                        <li><a href="#" title="">Share</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -132,21 +129,21 @@
                                                 <li><a href="#" title="">Full Time</a></li>
                                                 <li><span>{{ $post->min_price }} - {{ $post->max_price }} FCFA / hr</span></li>
                                             </ul>
-                                            <p>{{ $post->description }} <a href="#" title="">view more</a></p>
+                                            <p>{{ $post->description }}
                                             <ul class="skill-tags">
                                                 <li><a href="#" title="">{{ $post->skills }}</a></li>
                                             </ul>
                                         </div>
                                         <div class="job-status-bar">
-                                            <ul class="like-com">
-                                                <li>
-                                                    <a href="#" class="active"><i class="fas fa-heart"></i> Like</a>
-                                                    <img src="{{asset('assets/service/images/liked-img.png')}}" alt="">
-                                                    <span>25</span>
-                                                </li>
-                                                <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Comments 15</a></li>
-                                            </ul>
-                                            <a href="#"><i class="fas fa-eye"></i>Views 50</a>
+{{--                                            <ul class="like-com">--}}
+{{--                                                <li>--}}
+{{--                                                    <a href="#" class="active"><i class="fas fa-heart"></i> Like</a>--}}
+{{--                                                    <img src="{{asset('assets/service/images/liked-img.png')}}" alt="">--}}
+{{--                                                    <span>25</span>--}}
+{{--                                                </li>--}}
+{{--                                                <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Comments 15</a></li>--}}
+{{--                                            </ul>--}}
+{{--                                            <a href="#"><i class="fas fa-eye"></i>Views 50</a>--}}
                                         </div>
                                     </div>
                                     @endforeach

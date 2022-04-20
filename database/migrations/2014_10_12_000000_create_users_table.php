@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
+            $table->string('cover_photo_path', 2048)->nullable();
             $table->string('user_type')->comment('customer for user or customer and admin for Administrators');
             $table->timestamps();
         });

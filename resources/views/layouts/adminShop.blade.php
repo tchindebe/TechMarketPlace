@@ -487,7 +487,7 @@
             <div class="container">
                 <div class="header-data">
                     <div class="logo">
-                        <a href="index.html" title=""><img src="{{asset('assets/service/images/logo.png')}}" alt=""></a>
+                        <a href="/" title=""><img src="{{asset('assets/images/logo.png')}}" alt=""></a>
                     </div>
                     <div class="search-bar">
                         <form>
@@ -646,6 +646,9 @@
                                 <li><a href="{{ route('service-setting') }}" title="">Account Setting</a></li>
                             </ul>
                             <h3 class="tc"><a href="{{route('logout')}}" title="">Logout</a></h3>
+                            <form id="logout-form" action="{{route('logout')}}" method="post">
+                                @csrf
+                            </form>
                         </div>
                     </div>
                 </div>
