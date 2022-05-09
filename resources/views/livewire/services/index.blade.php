@@ -96,7 +96,6 @@
                                         </div>
                                     </div>
                                     @endif
-{{--                                    <div>{{ $allPost }}</div>--}}
                                     @foreach($allPost as $post)
                                         <div class="post-bar">
                                         <div class="post_topbar">
@@ -126,8 +125,14 @@
                                         <div class="job_descp">
                                             <h3>{{ $post->title }}</h3>
                                             <ul class="job-dt">
-                                                <li><a href="#" title="">Full Time</a></li>
-                                                <li><span>{{ $post->min_price }} - {{ $post->max_price }} FCFA / hr</span></li>
+                                                @if($post->post_type == 'post_Job')
+                                                    <li><a href="#" title="">{{ $post->job_type }}</a></li>
+                                                @endif
+                                                @if($post->post_type == 'post_Job')
+                                                    <li><span>{{ $post->salary_price }} FCFA </span></li>
+                                                @elseif($post->post_type == 'post_project')
+                                                    <li><span>{{ $post->min_price }} - {{ $post->max_price }} FCFA / hr </span></li>
+                                                @endif
                                             </ul>
                                             <p>{{ $post->description }}
                                             <ul class="skill-tags">

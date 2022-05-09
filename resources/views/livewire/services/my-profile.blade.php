@@ -7,8 +7,11 @@
             <div class="container">
                 <div class="row no-gutters">
                     <div class="col-lg-12 col-sm-12">
-                        <input type="file" id="file">
-                        <label for="file">Change Image</label>
+                        <form action="{{route('services.profile.cover-image')}}" id="form_cover" enctype="multipart/form-data" method="post">
+                            @csrf
+                            <input type="file" id="image_cover" name="cover_image" onchange="document.getElementById('form_cover').submit();">
+                            <label for="image_cover">Change Image</label>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -25,8 +28,11 @@
                                     <div class="user-pro-img">
                                         <img src="{{asset('assets/service/images/resources/user-pro-img.png')}}" alt="">
                                         <div class="add-dp" id="OpenImgUpload">
-                                            <input type="file" id="file">
-                                            <label for="file"><i class="fa fa-camera"></i></label>
+                                            <form action="{{ route('services.profile.profile-image') }}" id="form_profile" enctype="multipart/form-data" method="post">
+                                                @csrf
+                                                <input type="file" id="image_profile" name="profile_image" onchange="document.getElementById('form_profile').submit();">
+                                                <label for="image_profile"><i class="fa fa-camera"></i></label>
+                                            </form>
                                         </div>
                                     </div>
                                     <div class="user_pro_status">
@@ -1796,4 +1802,13 @@
             </div>
         </div>
     </main>
+    <script type="javascript">
+        document.getElementById("image_cover").onchange = function() {
+            document.getElementById("form_cover").submit();
+        };
+
+        document.getElementById("image_profile").onchange = function() {
+            document.getElementById("form_profile").submit();
+        };
+    </script>
 @endsection

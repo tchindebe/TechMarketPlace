@@ -87,9 +87,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     //Route service
     Route::get('/service/profile', [\App\Http\Controllers\Services\ServicesController::class, 'profile'])->name('service-setting');
     Route::get('/service/user', [\App\Http\Controllers\Services\ServicesController::class, 'user_profile'])->name('service-profile');
-    Route::post('/service/post/store', [\App\Http\Controllers\Services\ServicePostController::class, 'store'])->name('service.post.store');
+    Route::post('/service/user/password_change', [\App\Http\Controllers\Services\ServicesController::class, 'user_password_change'])->name('service.profile.password_change');
+    Route::post('/service/post/storeProject', [\App\Http\Controllers\Services\ServicePostController::class, 'storeProject'])->name('service.post.storeProject');
+    Route::post('/service/post/storeJob', [\App\Http\Controllers\Services\ServicePostController::class, 'storeJob'])->name('service.post.storeJob');
     Route::get('/user/service/{user}', [\App\Http\Controllers\SeedShopOrServiceController::class, 'show'])->name('user.service');
     Route::get('/user/services', [\App\Http\Controllers\Services\ServicesController::class, 'index'])->name('services-home');
+
+    Route::post('/services/profile/image-profile', [\App\Http\Controllers\Services\ServicesController::class, 'profile_image_change'])->name('services.profile.profile-image');
+    Route::post('/services/profile/cover-profile', [\App\Http\Controllers\Services\ServicesController::class, 'cover_image_change'])->name('services.profile.cover-image');
 });
 
 // Route shop

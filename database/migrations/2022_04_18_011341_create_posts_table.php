@@ -19,8 +19,10 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('category');
             $table->string('skills');
-            $table->integer('min_price');
-            $table->integer('max_price');
+            $table->bigInteger('salary_price')->nullable();
+            $table->bigInteger('min_price')->nullable();
+            $table->bigInteger('max_price')->nullable();
+            $table->string('job_type')->nullable();
             $table->text('description');
             $table->string('post_type');
             $table->timestamps();

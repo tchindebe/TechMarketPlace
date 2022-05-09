@@ -36,7 +36,7 @@ class ServicePostController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function storeProject(Request $request)
     {
         $data = $this->validate($request, [
             'post_type' => 'required',
@@ -46,6 +46,36 @@ class ServicePostController extends Controller
             'skills' => 'required',
             'min_price' => 'required',
             'max_price' => 'required',
+        ]);
+        $data['author'] =  Auth::user()->id;
+
+        if (Auth::user()->user_type = 'Service'){
+            if ($data) {
+                Post::create($data);
+                \session()->flash('info', 'Your post is set successfully');
+                return redirect()->back();
+            }
+        }
+        return redirect()->back();
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function storeJob(Request $request)
+    {
+//        dd($request);
+        $data = $this->validate($request, [
+            'post_type' => 'required',
+            'title' => 'required',
+            'category' => 'required',
+            'description' => 'required',
+            'skills' => 'required',
+            'salary_price' => 'required',
+            'job_type' => 'required',
         ]);
         $data['author'] =  Auth::user()->id;
 

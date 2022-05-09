@@ -14,15 +14,17 @@ class Post extends Model
         'title',
         'category',
         'skills',
+        'salary_price',
         'min_price',
         'max_price',
+        'job_type',
         'description',
         'post_type',
     ];
 
     public function user()
     {
-        return $this->belongsTo(User::class)->select(['id', 'username']);
+        return $this->belongsTo(User::class);
     }
 
 }
