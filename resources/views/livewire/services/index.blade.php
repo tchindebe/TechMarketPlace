@@ -83,19 +83,21 @@
                         <div class="col-lg-6">
                             <div class="main-ws-sec">
                                 <div class="posts-section">
-                                    @if(Auth::user()->user_type === 'Service')
-                                    <div class="post-topbar">
-                                        <div class="user-picy">
-                                            <img src="{{asset('assets/service/images/resources/user-pic.png')}}" alt="">
+                                    @auth
+                                        @if(Auth::user()->user_type === 'Service')
+                                        <div class="post-topbar">
+                                            <div class="user-picy">
+                                                <img src="{{asset('assets/service/images/resources/user-pic.png')}}" alt="">
+                                            </div>
+                                            <div class="post-st">
+                                                <ul>
+                                                    <li><a class="post_project" href="#" title="">Post a Project</a></li>
+                                                    <li><a class="post-jb active" href="#" title="">Post a Job</a></li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                        <div class="post-st">
-                                            <ul>
-                                                <li><a class="post_project" href="#" title="">Post a Project</a></li>
-                                                <li><a class="post-jb active" href="#" title="">Post a Job</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    @endif
+                                        @endif
+                                    @endauth
                                     @foreach($allPost as $post)
                                         <div class="post-bar">
                                         <div class="post_topbar">
@@ -108,10 +110,12 @@
                                             <div class="ed-opts">
                                                 <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
                                                 <ul class="ed-options">
-                                                    @if(Auth::user()->user_type === 'Service')
-                                                        <li><a href="#" title="">Edit Post</a></li>
-                                                        <li><a href="#" title="">Delete post</a></li>
-                                                    @endif
+                                                    @auth
+                                                        @if(Auth::user()->user_type === 'Service')
+                                                            <li><a href="#" title="">Edit Post</a></li>
+                                                            <li><a href="#" title="">Delete post</a></li>
+                                                        @endif
+                                                    @endauth
                                                         <li><a href="#" title="">Share</a></li>
                                                 </ul>
                                             </div>
@@ -139,16 +143,28 @@
                                                 <li><a href="#" title="">{{ $post->skills }}</a></li>
                                             </ul>
                                         </div>
+                                        <div class="job-status-bar post-project">
+                                            <ul class="like-com">
+                                                <li>
+                                                    <a href="#" class="active"><i class="fas fa-heart"></i> Like</a>
+                                                    <img src="{{asset('assets/service/images/liked-img.png')}}" alt="">
+                                                    <span>25</span>
+                                                </li>
+                                                <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Comments 15</a></li>
+                                            </ul>
+                                            <a href="#"><i class="fas fa-eye"></i>Views 50</a>
+                                        </div>
                                         <div class="job-status-bar">
-{{--                                            <ul class="like-com">--}}
-{{--                                                <li>--}}
-{{--                                                    <a href="#" class="active"><i class="fas fa-heart"></i> Like</a>--}}
-{{--                                                    <img src="{{asset('assets/service/images/liked-img.png')}}" alt="">--}}
-{{--                                                    <span>25</span>--}}
-{{--                                                </li>--}}
-{{--                                                <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Comments 15</a></li>--}}
-{{--                                            </ul>--}}
-{{--                                            <a href="#"><i class="fas fa-eye"></i>Views 50</a>--}}
+                                            <ul class="like-com">
+                                                <li>
+                                                    Add comment
+                                                </li>
+                                                <li>
+                                                    <div class="col-lg-12">
+                                                        <input type="text" name="title" placeholder="Title">
+                                                    </div>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                     @endforeach
