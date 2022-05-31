@@ -25,6 +25,7 @@ class EloquentOrdersAdaptor implements OrderInterfaceRepository {
             ->select('billNumber', 'subtotal', 'status')
             ->distinct()
             ->get();
+
         return $ordersByClient;
     }
 

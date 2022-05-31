@@ -12,75 +12,15 @@
         </div>
     </div>
     <main>
+        @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
         <div class="main-section">
             <div class="container">
                 <div class="main-section-data">
                     <div class="row">
-                        <div class="col-lg-3">
-                            <div class="filter-secs">
-                                <div class="filter-heading">
-                                    <h3>Filters</h3>
-                                    <a href="#" title="">Clear all filters</a>
-                                </div>
-                                <div class="paddy">
-                                    <div class="filter-dd">
-                                        <div class="filter-ttl">
-                                            <h3>Skills</h3>
-                                            <a href="#" title="">Clear</a>
-                                        </div>
-                                        <form>
-                                            <input type="text" name="search-skills" placeholder="Search skills">
-                                        </form>
-                                    </div>
-                                    <div class="filter-dd">
-                                        <div class="filter-ttl">
-                                            <h3>Availabilty</h3>
-                                            <a href="#" title="">Clear</a>
-                                        </div>
-                                        <ul class="avail-checks">
-                                            <li>
-                                                <input type="radio" name="cc" id="c1">
-                                                <label for="c1">
-                                                    <span></span>
-                                                </label>
-                                                <small>Hourly</small>
-                                            </li>
-                                            <li>
-                                                <input type="radio" name="cc" id="c2">
-                                                <label for="c2">
-                                                    <span></span>
-                                                </label>
-                                                <small>Part Time</small>
-                                            </li>
-                                            <li>
-                                                <input type="radio" name="cc" id="c3">
-                                                <label for="c3">
-                                                    <span></span>
-                                                </label>
-                                                <small>Full Time</small>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="filter-dd">
-                                        <div class="filter-ttl">
-                                            <h3>Job Type</h3>
-                                            <a href="#" title="">Clear</a>
-                                        </div>
-                                        <form class="job-tp">
-                                            <select>
-                                                <option>Select a job type</option>
-                                                <option>Select a job type</option>
-                                                <option>Select a job type</option>
-                                                <option>Select a job type</option>
-                                            </select>
-                                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                                        </form>
-                                    </div>
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-7">
                             <div class="main-ws-sec">
                                 <div class="posts-section">
                                     @if(Auth::user()->user_type === 'Service')
@@ -140,73 +80,49 @@
                                             </ul>
                                         </div>
                                         <div class="job-status-bar">
-{{--                                            <ul class="like-com">--}}
-{{--                                                <li>--}}
-{{--                                                    <a href="#" class="active"><i class="fas fa-heart"></i> Like</a>--}}
-{{--                                                    <img src="{{asset('assets/service/images/liked-img.png')}}" alt="">--}}
-{{--                                                    <span>25</span>--}}
-{{--                                                </li>--}}
-{{--                                                <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Comments 15</a></li>--}}
-{{--                                            </ul>--}}
-{{--                                            <a href="#"><i class="fas fa-eye"></i>Views 50</a>--}}
+                                            <ul class="like-com">
+                                                <li>
+                                                    <a href="#" class="active"><i class="fas fa-heart"></i> Like</a>
+                                                    <img src="{{asset('assets/service/images/liked-img.png')}}" alt="">
+                                                    <span>25</span>
+                                                </li>
+                                                <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Comments 15</a></li>
+                                            </ul>
+                                            <a href="#"><i class="fas fa-eye"></i>Views 50</a>
                                         </div>
                                     </div>
                                     @endforeach
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-5">
                             <div class="right-sidebar">
                                 <div class="widget widget-jobs">
                                     <div class="sd-title">
-                                        <h3>Top Jobs</h3>
+                                        <h3>I am artist</h3>
+                                        @if(Auth::user()->user_type === 'Service')
+                                            <a class="btn btn-primary mt-3" href="{{route('user.service.media.add')}}" title="">Add my clip video</a>
+                                        @endif
                                         <i class="la la-ellipsis-v"></i>
                                     </div>
                                     <div class="jobs-list">
-                                        <div class="job-info">
-                                            <div class="job-details">
-                                                <h3>Senior Product Designer</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                                        @foreach($mediaService  as $media)
+                                            <div class="job-info">
+                                                <div class="job-details">
+                                                    <h3>{{$media->title}}</h3>
+                                                    <p>{{$media->description}}</p><br>
+                                                    <h3 class="text-blue font-bold">{{$media->price}} XAF</h3>
+                                                </div>
+                                                <video width="100%" height="240" class="border p-1 rounded-md" controls>
+                                                    <source src="{{asset('storage') . '/' . $media->short_review}}" type="video/mp4">
+                                                    Votre explorateur ne supporte pas la balise video.
+                                                </video>
+                                                <a href="#" class="btn btn-success mt-2 font-bold">Buy now {{$media->price}} XAF</a>
                                             </div>
-                                            <div class="hr-rate">
-                                                <span>$25/hr</span>
-                                            </div>
-                                        </div>
-                                        <div class="job-info">
-                                            <div class="job-details">
-                                                <h3>Senior UI / UX Designer</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                            </div>
-                                            <div class="hr-rate">
-                                                <span>$25/hr</span>
-                                            </div>
-                                        </div>
-                                        <div class="job-info">
-                                            <div class="job-details">
-                                                <h3>Junior Seo Designer</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                            </div>
-                                            <div class="hr-rate">
-                                                <span>$25/hr</span>
-                                            </div>
-                                        </div>
-                                        <div class="job-info">
-                                            <div class="job-details">
-                                                <h3>Senior PHP Designer</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                            </div>
-                                            <div class="hr-rate">
-                                                <span>$25/hr</span>
-                                            </div>
-                                        </div>
-                                        <div class="job-info">
-                                            <div class="job-details">
-                                                <h3>Senior Developer Designer</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                            </div>
-                                            <div class="hr-rate">
-                                                <span>$25/hr</span>
-                                            </div>
+                                        @endforeach
+
+                                        <div>
+                                            <a href="#" class="btn btn-primary mt-3">More video ...</a>
                                         </div>
                                     </div>
                                 </div>

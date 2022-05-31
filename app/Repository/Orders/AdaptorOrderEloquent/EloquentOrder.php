@@ -84,8 +84,23 @@ class EloquentOrder implements OrderRepositoryInterface
 
     public function orderByProgress()
     {
+
         $orders = Ordereds::where('user_id', Auth::User()->id)
             ->where('status', 1)
+            ->get();
+
+        return $orders;
+    }
+
+    /**
+     * @param string $username
+     * @return mixed
+     */
+    public function getOrderByShop(string $username)
+    {
+        $orders = Ordereds::where('shop', $username)
+            ->select('billNumber', 'subtotal', 'status', 'firstName', 'lastName', 'user_id', 'email')
+            ->distinct()
             ->get();
 
         return $orders;

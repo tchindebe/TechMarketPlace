@@ -132,19 +132,17 @@
                                             @csrf
                                             <div class="single_variation_wrap">
                                                 <div class="woocommerce-variation-add-to-cart variations_button woocommerce-variation-add-to-cart-disabled">
-                                                    <div class="quantity">
+                                                    <div class="quantity flex">
                                                         <label for="quantity-input">Quantity</label>
                                                         <input id="quantity-input" type="number" name="quantity" value="1" title="Qty" class="input-text qty text" size="4">
                                                     </div>
-                                                    <button class="single_add_to_cart_button button alt wc-variation-selection-needed" type="submit">Add to cart</button>
+                                                    <button class="single_add_to_cart_button button alt wc-variation-selection-needed " type="submit">Add to cart</button>
                                                     <input type="hidden" value="{{ $product->id }}" name="add-to-cart">
                                                     <input type="hidden" value="{{ $product->id }}" name="product_id">
                                                 </div>
                                             </div>
                                             <!-- .single_variation_wrap -->
                                         </form>
-                                        <!-- .variations_form -->
-                                        <a class="add-to-compare-link" href="compare.html">Add to compare</a>
                                     </div>
                                     <!-- .product-actions -->
                                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Services;
 
 use App\Http\Controllers\Controller;
+use App\Repository\MediaService\MediaServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -11,9 +12,21 @@ use Illuminate\Support\Facades\Hash;
 
 class ServicesController extends Controller
 {
+    private $mediaService;
+    public function __construct(MediaServiceInterface $mediaService)
+    {
+        $this->mediaService = $mediaService;
+    }
+
     public function index()
     {
-        return view('livewire.services.index');
+        if (Auth::User()->username == "Service"){
+
+            $mediaService = $this->mediaService->showByServiceUser(Auth::user()->id);
+
+            return view('livewire.services.index', compact('mediaService'));
+        }
+        return redirect()->back();
     }
 
 

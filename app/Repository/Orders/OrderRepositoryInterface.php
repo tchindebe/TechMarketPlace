@@ -9,4 +9,5 @@ interface OrderRepositoryInterface
     public function show();
     public function orderByProgress();
     public function orderByUnpaid();
+    public function getOrderByShop(string $username);
 }

@@ -20,12 +20,13 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->timestamp('last_seen')->nullable();
-            $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('cover_photo_path', 2048)->nullable();
+            $table->integer('status')->default(0);
             $table->string('user_type')->comment('customer for user or customer and admin for Administrators');
             $table->string('account_status')->comment('enable, disable, pending')->default('pending');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Orders;
 
 use App\Http\Controllers\Controller;
 use App\Repository\Orders\OrderRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -39,8 +40,7 @@ class OrderController extends Controller
     }
 
     public function orderByProgress(){
-
-        $orders = $this->repository->orderByProgress();
+        $orders = $this->repository->getOrderByShop(Auth::User()->username);
 
         return view('user.order.index', compact('orders', $orders));
     }

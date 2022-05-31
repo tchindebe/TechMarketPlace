@@ -3,12 +3,12 @@
 use App\Http\Livewire\Admin\AdminDashboardComponemt;
 use App\Http\Livewire\Admin\ProductManagerComponent;
 use App\Http\Livewire\Admin\UsersManagerComponent;
-use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\CheckoutComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\User\UserDashboardComponemt;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Services\MediaPostController;
 
 Route::get('/', HomeComponent::class);
 Route::get('/about', [\App\Http\Controllers\AboutController::class, 'index'])->name('about');
@@ -24,7 +24,6 @@ Route::get('/login_or_register', function (){
     return view('auth.login_or_register');
 });
 
-//Route::resource('/cart', \App\Http\Controllers\CartController::class, ['index', 'store', 'update']);
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/store', [\App\Http\Controllers\CartController::class, 'store'])->name('cart.store');
 Route::get('/cart/{id}/update', [\App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
@@ -95,6 +94,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     Route::post('/services/profile/image-profile', [\App\Http\Controllers\Services\ServicesController::class, 'profile_image_change'])->name('services.profile.profile-image');
     Route::post('/services/profile/cover-profile', [\App\Http\Controllers\Services\ServicesController::class, 'cover_image_change'])->name('services.profile.cover-image');
+
+    Route::get('/services/media_video', [MediaPostController::class, 'create'])->name('user.service.media.add');
+    Route::post('/service/media-video', [MediaPostController::class, 'store'])->name('service.media.add');
 });
 
 // Route shop

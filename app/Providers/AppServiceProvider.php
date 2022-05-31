@@ -12,6 +12,8 @@ use App\Repository\Category\AdaptorEloquentCategory\AdaptorEloquentCategory;
 use App\Repository\Category\CategoryRepositoryInterface;
 use App\Repository\Chat\Customers\AdaptorEloquentChat;
 use App\Repository\Chat\Customers\ChatRepositoryInterface;
+use App\Repository\MediaService\MediaServiceEloquent;
+use App\Repository\MediaService\MediaServiceInterface;
 use App\Repository\Orders\AdaptorOrderEloquent\EloquentOrder;
 use App\Repository\Orders\OrderRepositoryInterface;
 use App\Repository\Product\AdaptorEloquentProduct\ProductEloquent;
@@ -23,7 +25,6 @@ use App\Repository\UserRepository\UserInterfaceRepository;
 use App\Repository\UserRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
-use Cart;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -65,6 +66,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             UserInterfaceRepository::class,
             UserEloquent::class
+        );
+        $this->app->bind(
+            MediaServiceInterface::class,
+            MediaServiceEloquent::class
         );
     }
 

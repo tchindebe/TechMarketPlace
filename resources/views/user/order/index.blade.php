@@ -8,8 +8,8 @@
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
     <!--row -->
-    <div class="row container-fluid">
-        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+    <div class="row container-fluid" style="margin: 2%;">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="background: white;">
             <div class="white-box" style="margin-top: 4%!important;">
                 <h3 class="box-title">Your orders</h3>
                 <div class="table-responsive">
@@ -17,6 +17,7 @@
                         <thead>
                         <tr>
                             <th>Bill Number</th>
+                            <th>Customer</th>
                             <th>Sub total</th>
                             <th>Status</th>
                         </tr>
@@ -29,6 +30,7 @@
                                         {{$orders->billNumber}}
                                     </a>
                                 </td>
+                                <td>{{$orders->lastName}}</td>
                                 <td>{{$orders->subtotal}}</td>
                                 <td>
                                     @if($orders->status == 1)

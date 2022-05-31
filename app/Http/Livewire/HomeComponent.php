@@ -23,8 +23,4 @@ class HomeComponent extends Component
             ->with('lowProduct', $lowProduct)
             ->with('products', $products);
     }
-
-
-
-
 }

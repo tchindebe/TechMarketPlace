@@ -38,6 +38,7 @@ class ServicePostController extends Controller
      */
     public function storeProject(Request $request)
     {
+
         $data = $this->validate($request, [
             'post_type' => 'required',
             'title' => 'required',

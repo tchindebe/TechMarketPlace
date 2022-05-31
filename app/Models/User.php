@@ -123,4 +123,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+    public function media()
+    {
+        return $this->hasMany(mediaService::class);
+    }
+    public function payment()
+    {
+        return $this->hasMany(payment::class);
+    }
 }
