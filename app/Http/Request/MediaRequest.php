@@ -12,6 +12,7 @@ class MediaRequest extends FormRequest
         return[
             "title" => "required",
             "price" => "required",
+            "category" => "required",
             "description" => "required",
             "short_review" => "required",
             "review" => "required",

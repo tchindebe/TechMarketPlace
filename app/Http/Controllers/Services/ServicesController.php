@@ -20,21 +20,15 @@ class ServicesController extends Controller
 
     public function index()
     {
-        if (Auth::User()->username == "Service"){
+        $mediaService = $this->mediaService->showByServiceUser();
 
-            $mediaService = $this->mediaService->showByServiceUser(Auth::user()->id);
-
-            return view('livewire.services.index', compact('mediaService'));
-        }
-        return redirect()->back();
+        return view('livewire.services.index', compact('mediaService'));
     }
-
 
     public function profile()
     {
         return view('livewire.services.profile');
     }
-
 
     public function user_profile()
     {

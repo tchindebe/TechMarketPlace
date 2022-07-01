@@ -16,6 +16,8 @@ use App\Repository\MediaService\MediaServiceEloquent;
 use App\Repository\MediaService\MediaServiceInterface;
 use App\Repository\Orders\AdaptorOrderEloquent\EloquentOrder;
 use App\Repository\Orders\OrderRepositoryInterface;
+use App\Repository\Payment\PaymentStripeInterface;
+use App\Repository\Payment\StripeEloquent;
 use App\Repository\Product\AdaptorEloquentProduct\ProductEloquent;
 use App\Repository\Product\ProductRepositoryInterface;
 use App\Repository\ProfileCustomers\AdaptorEloquentRequest\ProfilEloquent;
@@ -71,6 +73,10 @@ class AppServiceProvider extends ServiceProvider
             MediaServiceInterface::class,
             MediaServiceEloquent::class
         );
+        $this->app->bind(
+            PaymentStripeInterface::class,
+            StripeEloquent::class
+        );
     }
 
     /**
@@ -80,12 +86,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
         $categories = Category::all();
-        $Allcategories = Category::all();
-        $Allcategorys = Category::all();
+        $allCategories = Category::all();
         $allPost = Post::with('user')->get();
-
-
         $orders = Ordereds::all();
 
         $lastOrderCustomers = Ordereds::where('user_id', 3)
@@ -94,8 +98,7 @@ class AppServiceProvider extends ServiceProvider
             ->first();
 
         view()->share('categories', $categories);
-        view()->share('allCategories', $Allcategories);
-        view()->share('allCategory', $Allcategorys);
         view()->share('allPost', $allPost);
+        view()->share('allCategories', $allCategories);
     }
 }

@@ -17,8 +17,14 @@
                 <div class="main-section-data">
                     <div class="row">
                         <div class="col-lg-3">
-                            <div class="filter-secs">
+                            <div class="filter-secs p-4">
+                                <p>
 
+                                    Hi, to put a video on sale,
+                                    you must select a demo video of
+                                    less than 30 seconds which will allow
+                                    the customer to see an aspect of your video before buying.
+                                </p>
                             </div>
                         </div>
                         <div class="col-lg-6 bg-white p-10">
@@ -51,6 +57,16 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
+                                            <label for="reg_password">Category
+                                                <span class="required">*</span>
+                                            </label>
+                                            <select class="form-select" name="category" aria-label="select example">
+                                                <option value="Clip video">Clip video</option>
+                                                <option value="Oumour">Oumour</option>
+                                                <option value="Music">Music</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
                                             <input type="file" {{ (old('short_review')) }} class="form-control-file @error('short_review') is-invalid @enderror" name="short_review" id="exampleInputFile" aria-describedby="fileHelp">
                                             <small id="fileHelp" class="form-text text-muted">Demo video (30 seconds max)</small>
                                             @error('short_review')
@@ -74,8 +90,13 @@
                             </div>
                         </div>
                         <div class="col-lg-3">
-                            <div class="right-sidebar">
-
+                            <div class="filter-secs p-4">
+                                <p>
+                                    The full video will be seen as soon as the
+                                    customer has paid the necessary amount. please respect
+                                    the instructions otherwise customers will rather see your video entirely
+                                    without buying which will not be to your advantage
+                                </p>
                             </div>
                         </div>
                     </div>

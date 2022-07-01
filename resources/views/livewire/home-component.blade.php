@@ -37,6 +37,7 @@
                                         <div class="woocommerce columns-8">
                                             <div class="products">
                                                 @foreach($products as $products)
+                                                    @if($products->user->account_status == "Approved")
                                                     <div class="product">
                                                             <div class="yith-wcwl-add-to-wishlist">
                                                                 <a href="{{route('user.shop.product.detailProduct', $products->id)}}" rel="nofollow" class="add_to_wishlist"> Add to Wishlist</a>
@@ -63,6 +64,7 @@
                                                                 <a class="button add_to_cart_button" href="{{route('user.shop.product.detailProduct', $products->id)}}" rel="nofollow">Add to cart</a>
                                                             </div>
                                                         </div>
+                                                    @endif
                                                 @endforeach
                                             </div>
                                         </div>
@@ -82,12 +84,14 @@
                                     <div class="woocommerce columns-7">
                                         <div class="products">
                                             @foreach($promo as $promo)
-                                                <div class="product-category product">
+                                                @if($promo->user->account_status == "Approved")
+                                                    <div class="product-category product">
                                                     <a href="{{route('user.shop.product.detailProduct', $promo->id)}}">
                                                         <img width="300" height="300" alt="All in One PC" src="{{asset('storage') . '/' . $promo->images}}">
                                                         <h2 class="woocommerce-loop-category__title">{{$promo->sale_price}} FCFA</h2>
                                                     </a>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         </div>
                                         <!-- .products-->
@@ -100,14 +104,8 @@
                                 <div class="row">
                                     <div class="banner small-banner text-in-left">
                                         <a href="shop.html">
-                                            <div style="background-size: cover; background-position: center center; background-image: url( assets/images/banner/12-5.jpg ); height: 259px;" class="banner-bg">
+                                            <div style="background-size: cover; background-position: center center; background-image: url( assets/images/banner/cart.jpg ); height: 259px;" class="banner-bg">
                                                 <div class="caption">
-                                                    <div class="banner-info">
-                                                        <h3 class="title">Get rid of
-                                                            <br>
-                                                            <strong> Mosquitoes</strong>
-                                                            <br>in best way</h3>
-                                                    </div>
                                                     <span class="banner-action button">Shop Now</span>
                                                 </div>
                                                 <!-- .caption-->
@@ -117,45 +115,16 @@
                                     <!-- .banner-->
                                     <div class="banner large-banner large-banner-v1 text-in-left">
                                         <a href="shop.html">
-                                            <div style="background-size: cover; background-position: center center; background-image: url( assets/images/banner/12-6.jpg ); height: 259px;" class="banner-bg">
-                                                <div class="caption">
-                                                    <div class="banner-info">
-                                                        <h3 class="title">
-                                                                <span>
-                                                                    <span class="offer-amount">70
-                                                                        <span class="offer-symbol">%
-                                                                            <span class="offer-text">off</span>
-                                                                        </span>
-                                                                    </span>Live with Style
-                                                                    <br> in kitchen </span>
-                                                        </h3>
-                                                        <ul class="subtitle">
-                                                            <li>CERAMICS</li>
-                                                            <li>CUTLERY</li>
-                                                            <li>ACCESORIES</li>
-                                                            <li>CHAIRS</li>
-                                                        </ul>
-                                                    </div>
-                                                    <span class="banner-action button">Browse</span>
-                                                </div>
-                                                <!-- .caption-->
+                                            <div style="background-size: cover; background-position: center center; background-image: url( assets/images/banner/facebook.jpg ); height: 259px;" class="banner-bg">
+
                                             </div>
                                         </a>
                                     </div>
                                     <!-- .banner-->
                                     <div class="banner small-banner text-in-left">
                                         <a href="shop.html">
-                                            <div style="background-size: cover; background-position: center center; background-image: url( assets/images/banner/12-7.jpg ); height: 259px;" class="banner-bg">
-                                                <div class="caption">
-                                                    <div class="banner-info">
-                                                        <h3 class="title">
-                                                            <strong> Led Lamp</strong>
-                                                            <br> Smart 4 light profiles</h3>
-                                                    </div>
-                                                    <span class="price">$34.99</span>
-                                                    <span class="banner-action button">Buy Now</span>
-                                                </div>
-                                                <!-- .caption-->
+                                            <div style="background-size: cover; background-position: center center; background-image: url( assets/images/banner/smart.jpg ); height: 259px;" class="banner-bg">
+
                                             </div>
                                         </a>
                                     </div>
@@ -175,7 +144,8 @@
                                         <div class="woocommerce columns-8">
                                             <div class="products">
                                                 @foreach($lowProduct as $lowProduct)
-                                                    <div class="product">
+                                                    @if($lowProduct->user->account_status == "Approved")
+                                                        <div class="product">
                                                     <div class="yith-wcwl-add-to-wishlist">
                                                         <a href="{{route('user.shop.product.detailProduct', $lowProduct->id)}}" rel="nofollow" class="add_to_wishlist"> Add to Wishlist</a>
                                                     </div>
@@ -201,6 +171,7 @@
                                                         <a class="button add_to_cart_button" href="{{route('user.shop.product.detailProduct', $lowProduct->id)}}" rel="nofollow">Add to cart</a>
                                                     </div>
                                                 </div>
+                                                    @endif
                                                 @endforeach
                                             </div>
                                         </div>
@@ -222,17 +193,18 @@
                                         <div class="woocommerce columns-8">
                                             <div class="products">
                                                 @foreach($others as $others)
-                                                    <div class="product">
-                                                        <div class="yith-wcwl-add-to-wishlist">
-                                                            <a href="{{route('user.shop.product.detailProduct', $others->id)}}" rel="nofollow" class="add_to_wishlist"> Add to Wishlist</a>
-                                                        </div>
-                                                        <a href="{{route('user.shop.product.detailProduct', $others->id)}}" class="woocommerce-LoopProduct-link">
+                                                    @if($others->user->account_status == "Approved")
+                                                        <div class="product">
+                                                            <div class="yith-wcwl-add-to-wishlist">
+                                                                <a href="{{route('user.shop.product.detailProduct', $others->id)}}" rel="nofollow" class="add_to_wishlist"> Add to Wishlist</a>
+                                                            </div>
+                                                            <a href="{{route('user.shop.product.detailProduct', $others->id)}}" class="woocommerce-LoopProduct-link">
                                                             <span class="onsale">
                                                                 <span class="woocommerce-Price-amount amount">
                                                                     <span class="woocommerce-Price-currencySymbol">-</span> {{ (int)(($others->regular_price - $others->sale_price)*100/$others->regular_price) }}%</span>
                                                             </span>
-                                                            <img src="{{asset('storage') . '/' . $others->images}}" width="224" height="197" class="wp-post-image" alt="">
-                                                            <span class="price">
+                                                                <img src="{{asset('storage') . '/' . $others->images}}" width="224" height="197" class="wp-post-image" alt="">
+                                                                <span class="price">
                                                                 <ins>
                                                                     <span class="amount"> {{ $others->sale_price}} Fcfa</span>
                                                                 </ins>
@@ -241,13 +213,14 @@
                                                                 </del>
                                                                 <span class="amount"> </span>
                                                             </span>
-                                                            <!-- /.price -->
-                                                            <h2 class="woocommerce-loop-product__title">{{ $others->slug}}</h2>
-                                                        </a>
-                                                        <div class="hover-area">
-                                                            <a class="button add_to_cart_button" href="{{route('user.shop.product.detailProduct', $others->id)}}" rel="nofollow">Add to cart</a>
+                                                                <!-- /.price -->
+                                                                <h2 class="woocommerce-loop-product__title">{{ $others->slug}}</h2>
+                                                            </a>
+                                                            <div class="hover-area">
+                                                                <a class="button add_to_cart_button" href="{{route('user.shop.product.detailProduct', $others->id)}}" rel="nofollow">Add to cart</a>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    @endif
                                                 @endforeach
                                             </div>
                                         </div>
@@ -259,7 +232,7 @@
                             </section>
                             <div class="banner full-width-banner text-in-left banners-v2">
                                 <a href="shop.html">
-                                    <div style="background-size: cover; background-position: center center; background-image: url( assets/images/banner/12-8.jpg ); height: 236px;" class="banner-bg">
+                                    <div style="background-size: cover; background-position: center center; background-image: url( assets/images/banner/shop.jpg ); height: 236px;" class="banner-bg">
                                         <div class="caption">
                                             <div class="banner-info">
                                                 <h3 class="title">
@@ -268,9 +241,9 @@
                                                 <h4 class="subtitle">Discover a world of content</h4>
                                             </div>
                                             <!-- .banner-info -->
-                                            <span class="banner-action button">Browse now
+                                            <a href="{{route('register')}}" class="banner-action button">Create your shop now
                                                     <i class="feature-icon d-flex ml-4 tm tm-long-arrow-right"></i>
-                                                </span>
+                                                </a>
                                         </div>
                                         <!-- .caption -->
                                     </div>
@@ -289,38 +262,38 @@
                                             <div class="products">
                                                 @foreach($users as $users)
                                                     <div class="landscape-product product">
-                                                        <a class="woocommerce-LoopProduct-link" href="{{route('user.shop', $users->username)}}">
-                                                            <div class="media">
-                                                                @if($users->profile->logo)
-                                                                    <img class="wp-post-image" src="{{asset('storage') . '/' . $users->profile->logo}}" alt="Female">
-                                                                @endif
-                                                                @if($users->profile->logo == null)
-                                                                    <img class="wp-post-image" src="{{asset('assets/clientAsset/plugins/images/users/shop.png')}}" alt="user-img" class="img-circle">
-                                                                @endif
-                                                                <div class="media-body">
+                                                            <a class="woocommerce-LoopProduct-link" href="{{route('user.shop', $users->username)}}">
+                                                                <div class="media">
+                                                                    @if($users->profile->logo)
+                                                                        <img class="wp-post-image" src="{{asset('storage') . '/' . $users->profile->logo}}" alt="Female">
+                                                                    @endif
+                                                                    @if($users->profile->logo == null)
+                                                                        <img class="wp-post-image" src="{{asset('assets/clientAsset/plugins/images/users/shop.png')}}" alt="user-img" class="img-circle">
+                                                                    @endif
+                                                                    <div class="media-body">
                                                                     <span class="price">
                                                                         <ins>
                                                                             <span class="amount"> </span>
                                                                         </ins>
                                                                         <span class="amount">{{$users->username}}</span>
                                                                     </span>
-                                                                    <!-- .price -->
-                                                                    <h2 class="woocommerce-loop-product__title">{{$users->profile->slogan}}</h2>
-                                                                    <div class="techmarket-product-rating">
-                                                                        <div title="Rated 0 out of 5" class="star-rating">
+                                                                        <!-- .price -->
+                                                                        <h2 class="woocommerce-loop-product__title">{{$users->profile->slogan}}</h2>
+                                                                        <div class="techmarket-product-rating">
+                                                                            <div title="Rated 0 out of 5" class="star-rating">
                                                                             <span style="width:60%">
                                                                                 <strong class="rating">0</strong> out of 5</span>
+                                                                            </div>
+                                                                            <span class="review-count">(60)</span>
                                                                         </div>
-                                                                        <span class="review-count">(60)</span>
+                                                                        <!-- .techmarket-product-rating -->
                                                                     </div>
-                                                                    <!-- .techmarket-product-rating -->
+                                                                    <!-- .media-body -->
                                                                 </div>
-                                                                <!-- .media-body -->
-                                                            </div>
-                                                            <!-- .media -->
-                                                        </a>
-                                                        <!-- .woocommerce-LoopProduct-link -->
-                                                    </div>
+                                                                <!-- .media -->
+                                                            </a>
+                                                            <!-- .woocommerce-LoopProduct-link -->
+                                                        </div>
                                                 @endforeach
                                             </div>
                                         </div>

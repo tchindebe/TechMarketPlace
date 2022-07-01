@@ -6,7 +6,7 @@
         <div class="slider">
             <div class="home-v3-slider home-slider">
                 <div class="slider-1">
-                    <img src="{{asset('assets/images/slider/home-v3-img-1.png')}}" alt="">
+                    <img src="https://media.istockphoto.com/photos/woman-holding-sale-shopping-bags-consumerism-shopping-lifestyle-picture-id1254508881?k=20&m=1254508881&s=612x612&w=0&h=d6KO9oMB3cMLGSFEu5GoGbYX0RpkHSEoUCARo7UagTI=" alt="">
                     <div class="caption">
                         <div class="title">{{$user->username}}
                             <br>{{$user->profile->phone}}</div>
@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="slider-1 slider-2">
-                    <img src="{{asset('assets/images/slider/home-v1-img-2.png')}}" alt="">
+                    <img src="https://static6.depositphotos.com/1008303/565/i/600/depositphotos_5653638-stock-photo-black-woman-shopping.jpg" alt="">
                     <div class="caption">
                         <div class="title">The new-tech gift you are wishing for
                             <br>is right here</div>
@@ -44,7 +44,7 @@
             <div class="woocommerce columns-8">
                 <div class="products">
                     @foreach($user->products as $product)
-                        @if($product->SKU == 1)
+                        @if($product->SKU == 1 && $product->user->account_status == "Approved")
                             <div class="product-category product">
                                 <a href="{{route('user.shop.product.detailProduct', $product->id)}}">
                                     <img width="300" height="300" alt="All in One PC" src="{{asset('storage') . '/' . $product->images}}">
@@ -174,7 +174,7 @@
                 <ul role="tablist" class="nav justify-content-end">
                     <div style="display:none;">{{ $i = 0 }}</div>
                     <div style="display:none;">{{ $k = 1 }}</div>
-                    @foreach(Auth::user()->category as $category)
+                    @foreach($user->category as $category)
                         <div style="display:none;">{{ $i = $category->id }}</div>
                         <li class="nav-item"><a class="nav-link mr-5 @if ($k ===1) active @endif" href="#top-201{{$category->id}}" data-toggle="tab">{{$category->name}}</a></li>
                         <div style="display:none;">{{ $k++ }}</div>
@@ -183,7 +183,7 @@
             </header>
             <!-- .section-header -->
             <div class="tab-content">
-                @foreach(Auth::user()->category as $category)
+                @foreach($user->category as $category)
                     <div role="tabpanel" class="tab-pane @if ($k ===1) active @endif" id="top-201{{$category->id}}">
                         <div class="products-carousel 4-column-tabs" data-ride="tm-slick-carousel" data-wrap=".products" data-slick="{&quot;infinite&quot;:false,&quot;slidesToShow&quot;:4,&quot;slidesToScroll&quot;:4,&quot;dots&quot;:true,&quot;arrows&quot;:false,&quot;responsive&quot;:[{&quot;breakpoint&quot;:1200,&quot;settings&quot;:{&quot;slidesToShow&quot;:2,&quot;slidesToScroll&quot;:2}},{&quot;breakpoint&quot;:1700,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesToScroll&quot;:3}}]}">
                             <div class="container-fluid">

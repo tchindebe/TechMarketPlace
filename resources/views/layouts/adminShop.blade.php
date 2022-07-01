@@ -34,7 +34,7 @@
                         <div class="dropdown profile-element">
                             <span>
                                 @if(Auth::user()->profile->logo)
-                                    <img alt="image" class="img-circle" style="height: 50px; width: 50px;" src="{{asset('storage') . '/' . $users->profile->logo}}" alt="user-img" class="img-circle">
+                                    <img alt="image" class="img-circle" style="height: 50px; width: 50px;" src="{{asset('storage') . '/' . Auth::user()->profile->logo}}" alt="user-img" class="img-circle">
                                 @endif
                                 @if(Auth::user()->profile->logo == null)
                                     <img alt="image" class="img-circle" style="height: 50px; width: 50px;" src="{{asset('assets/clientAsset/plugins/images/users/shop.png')}}" alt="user-img" class="img-circle">
@@ -722,7 +722,6 @@
 @endif
 @if(Auth::user()->user_type == "Client")
     <html lang="en">
-
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

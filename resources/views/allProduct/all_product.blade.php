@@ -16,24 +16,6 @@
                             <!-- .woocommerce-breadcrumb -->
                             <div id="primary" class="content-area">
                                 <main id="main" class="site-main">
-                                    <div class="shop-archive-header">
-                                        <div class="jumbotron">
-                                            <div class="jumbotron-img">
-                                                <img width="416" height="283" alt="" src="assets/images/products/jumbo.jpg" class="jumbo-image alignright">
-                                            </div>
-                                            <div class="jumbotron-caption">
-                                                <h3 class="jumbo-title">Virtual Reality Headsets</h3>
-                                                <p class="jumbo-subtitle">Nullam dignissim elit ut urna rutrum, a fermentum mi auctor. Mauris efficitur magna orci, et dignissim lacus scelerisque sit amet. Proin malesuada tincidunt nisl ac commodo. Vivamus eleifend porttitor ex sit amet suscipit. Vestibulum at ullamcorper lacus, vel facilisis arcu. Aliquam erat volutpat.
-                                                    <br>
-                                                    <br>Maecenas in sodales nisl. Pellentesque ac nibh mi. Ut lobortis odio nulla, congue rhoncus risus facilisis eget. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                                                    <a href="#">read more <i class="tm tm-long-arrow-right"></i></a>
-                                                </p>
-                                            </div>
-                                            <!-- .jumbotron-caption -->
-                                        </div>
-                                        <!-- .jumbotron -->
-                                    </div>
-                                    <!-- .shop-archive-header -->
                                     <div class="shop-control-bar">
                                         <div class="handheld-sidebar-toggle">
                                             <button type="button" class="btn sidebar-toggler">
@@ -109,6 +91,7 @@
                                                 <div class="woocommerce columns-5">
                                                     <div class="products">
                                                         @foreach($products as $product)
+
                                                                 <div class="product first">
                                                                     <div class="yith-wcwl-add-to-wishlist">
                                                                         <a href="wishlist.html" rel="nofollow" class="add_to_wishlist"> Add to Wishlist</a>
@@ -128,6 +111,7 @@
                                                                     </div>
                                                                     <!-- .hover-area -->
                                                                 </div>
+
                                                         @endforeach
                                                     </div>
                                                     <!-- .products -->
@@ -139,41 +123,43 @@
                                                 <div class="woocommerce columns-5">
                                                     <div class="products">
                                                         @foreach($products as $productBig)
-                                                            <div class="product first">
-                                                                <div class="yith-wcwl-add-to-wishlist">
-                                                                    <a href="wishlist.html" rel="nofollow" class="add_to_wishlist"> Add to Wishlist</a>
-                                                                </div>
-                                                                <!-- .yith-wcwl-add-to-wishlist -->
-                                                                <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link" href="{{route('user.shop.product.detailProduct', $productBig->id)}}">
-                                                                    <img width="224" height="197" alt="" class="attachment-shop_catalog size-shop_catalog wp-post-image" src="{{asset('storage') . '/' . $productBig->images}}">
-                                                                    <span class="price">
+
+                                                                <div class="product first">
+                                                                    <div class="yith-wcwl-add-to-wishlist">
+                                                                        <a href="wishlist.html" rel="nofollow" class="add_to_wishlist"> Add to Wishlist</a>
+                                                                    </div>
+                                                                    <!-- .yith-wcwl-add-to-wishlist -->
+                                                                    <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link" href="{{route('user.shop.product.detailProduct', $productBig->id)}}">
+                                                                        <img width="224" height="197" alt="" class="attachment-shop_catalog size-shop_catalog wp-post-image" src="{{asset('storage') . '/' . $productBig->images}}">
+                                                                        <span class="price">
                                                                         <span class="woocommerce-Price-amount amount">
                                                                             <span class="woocommerce-Price-currencySymbol"></span>{{$productBig->sale_price}} Fcfa</span>
                                                                     </span>
-                                                                    <h2 class="woocommerce-loop-product__title">{{$productBig->name}}</h2>
-                                                                </a>
-                                                                <!-- .woocommerce-LoopProduct-link -->
-                                                                <div class="techmarket-product-rating">
-                                                                    <div title="Rated 5.00 out of 5" class="star-rating">
+                                                                        <h2 class="woocommerce-loop-product__title">{{$productBig->name}}</h2>
+                                                                    </a>
+                                                                    <!-- .woocommerce-LoopProduct-link -->
+                                                                    <div class="techmarket-product-rating">
+                                                                        <div title="Rated 5.00 out of 5" class="star-rating">
                                                                 <span style="width:100%">
                                                                             <strong class="rating">5.00</strong> out of 5</span>
-                                                                            </div>
-                                                                            <span class="review-count">(1)</span>
                                                                         </div>
-                                                                        <!-- .techmarket-product-rating -->
-                                                                        <span class="sku_wrapper">SKU:
+                                                                        <span class="review-count">(1)</span>
+                                                                    </div>
+                                                                    <!-- .techmarket-product-rating -->
+                                                                    <span class="sku_wrapper">SKU:
                                                                     <span class="sku">5487FB8/13</span>
                                                                 </span>
-                                                                <div class="woocommerce-product-details__short-description">
-                                                                    <ul>
-                                                                        <li>
-                                                                            {{$productBig->short_description}}
-                                                                        </li>
-                                                                    </ul>
+                                                                    <div class="woocommerce-product-details__short-description">
+                                                                        <ul>
+                                                                            <li>
+                                                                                {{$productBig->short_description}}
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <!-- .woocommerce-product-details__short-description -->
+                                                                    <a class="button product_type_simple add_to_cart_button" href="{{route('user.shop.product.detailProduct', $productBig->id)}}">Add to cart</a>
                                                                 </div>
-                                                                <!-- .woocommerce-product-details__short-description -->
-                                                                <a class="button product_type_simple add_to_cart_button" href="{{route('user.shop.product.detailProduct', $productBig->id)}}">Add to cart</a>
-                                                            </div>
+
                                                         @endforeach
                                                     </div>
                                                     <!-- .products -->

@@ -14,7 +14,10 @@ class SeedShopOrServiceController extends Controller
         }elseif ($user->user_type == "Client"){
             return view('/', compact('user', $user));
         }else{
-            return view('user.shop', compact('user', $user))->layout('layouts.base');
+            if ($user->account_status == "Approved"){
+                return view('user.shop', compact('user', $user))->layout('layouts.base');
+            }
+            return redirect()->back()->with('success', "This shop is not exit ! ");
         }
     }
 }

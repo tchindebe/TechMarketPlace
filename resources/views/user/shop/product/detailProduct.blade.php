@@ -1,4 +1,4 @@
-    @extends('layouts.base')
+@extends('layouts.base')
 
 @section('content')
     <div id="content" class="site-content woocommerce-active single-product full-width extended" tabindex="-1">

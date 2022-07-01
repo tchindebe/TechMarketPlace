@@ -13,6 +13,7 @@ class mediaService extends Model
         'description',
         'short_review',
         'review',
+        'category',
         'user_id',
     ];
     use HasFactory;

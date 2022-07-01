@@ -465,6 +465,8 @@
 </div>
 
 @yield('javascript')
+<script src="{{ asset('js/app.js') }}"></script>
+
 <script type="text/javascript" src="{{asset('assets/js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/tether.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/bootstrap.min.js')}}"></script>

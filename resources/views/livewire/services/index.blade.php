@@ -23,19 +23,21 @@
                         <div class="col-lg-7">
                             <div class="main-ws-sec">
                                 <div class="posts-section">
-                                    @if(Auth::user()->user_type === 'Service')
-                                    <div class="post-topbar">
-                                        <div class="user-picy">
-                                            <img src="{{asset('assets/service/images/resources/user-pic.png')}}" alt="">
+                                    @auth
+                                        @if(Auth::user()->user_type === 'Service')
+                                        <div class="post-topbar">
+                                            <div class="user-picy">
+                                                <img src="{{asset('assets/service/images/resources/user-pic.png')}}" alt="">
+                                            </div>
+                                            <div class="post-st">
+                                                <ul>
+                                                    <li><a class="post_project" href="#" title="">Post a Project</a></li>
+                                                    <li><a class="post-jb active" href="#" title="">Post a Job</a></li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                        <div class="post-st">
-                                            <ul>
-                                                <li><a class="post_project" href="#" title="">Post a Project</a></li>
-                                                <li><a class="post-jb active" href="#" title="">Post a Job</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    @endif
+                                        @endif
+                                    @endauth
                                     @foreach($allPost as $post)
                                         <div class="post-bar">
                                         <div class="post_topbar">
@@ -48,10 +50,12 @@
                                             <div class="ed-opts">
                                                 <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
                                                 <ul class="ed-options">
-                                                    @if(Auth::user()->user_type === 'Service')
-                                                        <li><a href="#" title="">Edit Post</a></li>
-                                                        <li><a href="#" title="">Delete post</a></li>
-                                                    @endif
+                                                    @auth
+                                                        @if(Auth::user()->user_type === 'Service')
+                                                            <li><a href="#" title="">Edit Post</a></li>
+                                                            <li><a href="#" title="">Delete post</a></li>
+                                                        @endif
+                                                    @endauth
                                                         <li><a href="#" title="">Share</a></li>
                                                 </ul>
                                             </div>
@@ -79,6 +83,16 @@
                                                 <li><a href="#" title="">{{ $post->skills }}</a></li>
                                             </ul>
                                         </div>
+                                        <div class="job-status-bar post-project">
+                                            <ul class="like-com">
+                                                <li>
+                                                    <a href="#" class="active"><i class="fas fa-heart"></i> Like</a>
+                                                    <img src="{{asset('assets/service/images/liked-img.png')}}" alt="">
+                                                    <span>25</span>
+                                                </li>
+                                                <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Comments 15</a></li>
+                                            </ul>
+                                        </div>
                                         <div class="job-status-bar">
                                             <ul class="like-com">
                                                 <li>
@@ -100,8 +114,10 @@
                                 <div class="widget widget-jobs">
                                     <div class="sd-title">
                                         <h3>I am artist</h3>
-                                        @if(Auth::user()->user_type === 'Service')
-                                            <a class="btn btn-primary mt-3" href="{{route('user.service.media.add')}}" title="">Add my clip video</a>
+                                        @if(Auth::user())
+                                            @if(Auth::user()->user_type === 'Service')
+                                                <a class="btn btn-primary mt-3" href="{{route('user.service.media.add')}}" title="">Add my clip video</a>
+                                            @endif
                                         @endif
                                         <i class="la la-ellipsis-v"></i>
                                     </div>
@@ -109,20 +125,18 @@
                                         @foreach($mediaService  as $media)
                                             <div class="job-info">
                                                 <div class="job-details">
-                                                    <h3>{{$media->title}}</h3>
-                                                    <p>{{$media->description}}</p><br>
-                                                    <h3 class="text-blue font-bold">{{$media->price}} XAF</h3>
+                                                    <h3>{{$media->title}} <span style="color: #0b67cd;">({{$media->category}})</span></h3>
                                                 </div>
-                                                <video width="100%" height="240" class="border p-1 rounded-md" controls>
+                                                <video width="100%" height="200" class="border p-1 rounded-md mb-2" controls>
                                                     <source src="{{asset('storage') . '/' . $media->short_review}}" type="video/mp4">
                                                     Votre explorateur ne supporte pas la balise video.
                                                 </video>
-                                                <a href="#" class="btn btn-success mt-2 font-bold">Buy now {{$media->price}} XAF</a>
+                                                <a href="{{route('payment.index', $media->id)}}" class="btn btn-success mt-2 font-bold">Watch the video {{$media->price}} XAF</a>
                                             </div>
                                         @endforeach
 
                                         <div>
-                                            <a href="#" class="btn btn-primary mt-3">More video ...</a>
+                                            <a href="{{route('media.all')}}" class="btn btn-primary mt-3">More video ...</a>
                                         </div>
                                     </div>
                                 </div>

@@ -14,6 +14,8 @@ Route::get('/', HomeComponent::class);
 Route::get('/about', [\App\Http\Controllers\AboutController::class, 'index'])->name('about');
 Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact');
 Route::post('/contact/store', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
+Route::get('/services', [\App\Http\Controllers\Services\ServicesController::class, 'index'])->name('services-home');
+
 
 Route::get('/shop', ShopComponent::class);
 
@@ -89,14 +91,23 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::post('/service/user/password_change', [\App\Http\Controllers\Services\ServicesController::class, 'user_password_change'])->name('service.profile.password_change');
     Route::post('/service/post/storeProject', [\App\Http\Controllers\Services\ServicePostController::class, 'storeProject'])->name('service.post.storeProject');
     Route::post('/service/post/storeJob', [\App\Http\Controllers\Services\ServicePostController::class, 'storeJob'])->name('service.post.storeJob');
-    Route::get('/user/service/{user}', [\App\Http\Controllers\SeedShopOrServiceController::class, 'show'])->name('user.service');
-    Route::get('/user/services', [\App\Http\Controllers\Services\ServicesController::class, 'index'])->name('services-home');
+    Route::get('/service/user/{user}', [\App\Http\Controllers\SeedShopOrServiceController::class, 'show'])->name('user.service');
 
     Route::post('/services/profile/image-profile', [\App\Http\Controllers\Services\ServicesController::class, 'profile_image_change'])->name('services.profile.profile-image');
     Route::post('/services/profile/cover-profile', [\App\Http\Controllers\Services\ServicesController::class, 'cover_image_change'])->name('services.profile.cover-image');
 
     Route::get('/services/media_video', [MediaPostController::class, 'create'])->name('user.service.media.add');
     Route::post('/service/media-video', [MediaPostController::class, 'store'])->name('service.media.add');
+    Route::get('/service/all/video', [MediaPostController::class, 'index'])->name('media.all');
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////// payment strip ////////////////////////////////////////////////
+    /// //////////////////////////////////////////////////////////////////////////////////////////////
+
+    Route::get('/payment/{id}', [\App\Http\Controllers\Payments\PaymentController::class, 'index'])->name('payment.index');
+    Route::post('/service/video', [\App\Http\Controllers\Payments\PaymentController::class, 'store'])->name('payment.store');
+
 });
 
 // Route shop

@@ -20,6 +20,7 @@ class CreateMediaServicesTable extends Migration
             $table->string('short_review');
             $table->string('review');
             $table->string('price');
+            $table->string('category');
             $table->integer('status')->default(0);
             $table->bigInteger('user_id');
             $table->timestamps();

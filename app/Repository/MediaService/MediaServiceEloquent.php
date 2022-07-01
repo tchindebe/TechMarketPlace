@@ -10,10 +10,9 @@ use Illuminate\Support\Facades\Auth;
 class MediaServiceEloquent implements MediaServiceInterface
 {
 
-    public function showByServiceUser(int $id)
+    public function showByServiceUser()
     {
-        return mediaService::where('user_id', $id)
-            ->orderBy('id', 'desc')
+        return mediaService::orderBy('id', 'desc')
             ->limit(3)
             ->get();
     }
@@ -26,12 +25,18 @@ class MediaServiceEloquent implements MediaServiceInterface
         $media = mediaService::create([
             'title' => $data['title'],
             'price' => $data['price'],
+            'category' => $data['category'],
             'description' => $data['description'],
             'short_review' => $demo,
-            'review' => $video,
+            'review' => $video   ,
             'user_id' => Auth::user()->id
         ]);
 
         return $media;
+    }
+
+    public function getById(int $id)
+    {
+        return mediaService::where('id', $id)->firstOrFail();
     }
 }

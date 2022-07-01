@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Services;
 
 use App\Http\Controllers\Controller;
 use App\Http\Request\MediaRequest;
+use App\Models\mediaService;
 use App\Repository\MediaService\MediaServiceInterface;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -23,7 +24,9 @@ class MediaPostController extends Controller
 
     public function index()
     {
-        //
+        $medias = mediaService::all();
+
+        return view('livewire.services.media_video.all', compact('medias'));
     }
 
     /**
