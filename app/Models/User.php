@@ -133,4 +133,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(payment::class);
     }
+
+    public function sponsored(){
+        return $this->hasMany(productSponsored::class);
+    }
 }

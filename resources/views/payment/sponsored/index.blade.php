@@ -1,9 +1,10 @@
-@extends('layouts.base')
+@extends('layouts.adminShop')
 
-@section('content')
-    @if(Auth::User()->user_type =="Client")
+@section('contents')
+    @if(Auth::User()->user_type =="Boutique")
         <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">
         <link href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
         <style>
             .StripeElement {
                 box-sizing: border-box;
@@ -30,13 +31,12 @@
                 background-color: #fefde5 !important;
             }
         </style>
-
         <section class="features-icons bg-light h-100">
             <div class="container">
                 <div class="row">
                     <div style="width: 100%;">
                         <div class="card-body" style="margin-top: 7%;">
-                            <form action="{{ route('payment.store') }}" method="post" id="payment-form">
+                            <form action="{{ route('payment.sponsored.store') }}" method="post" id="payment-form">
                                 @csrf
                                 <div class="row flex">
                                     <div class="form-row">
@@ -46,8 +46,8 @@
 
                                         <div id="card-errors" role="alert"></div>
                                     </div>
-                                    <button class="text-white ml-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm w-full sm:w-auto mt-3 px-2 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        Valid payment {{ (int)($media->price/656) }} €
+                                    <button class="btn btn-primary" style="margin-top: 3%;">
+                                        Valid payment {{ (int)ceil((($product->sale_price*5/100)/656)) }} €
                                     </button>
                                 </div>
                             </form>
@@ -60,6 +60,7 @@
         <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
         <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
         <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+    @endif
 @endsection
 @section('javascript')
     <script>
@@ -68,7 +69,7 @@
 
         var stripe = Stripe(stripeToken);
         var elements = stripe.elements();
-        var subscription = "{{ $media->id }}";
+        var subscription = "{{ $product->id }}";
         var clientSecret = "{{ $intentSecret }}";
         var cardholderName = "{{ Auth::user()->username }}";
         var cardholderEmail = "{{ Auth::user()->email }}";
@@ -80,7 +81,6 @@
             }
         }
 
-        // Monter notre form a l'objet Stripe
         var card = elements.create('card', {style: styleCustom });
         card.mount("#card-elements");
 
@@ -152,6 +152,5 @@
             form.submit();
         }
     </script>
-    @endif
 
 @endsection

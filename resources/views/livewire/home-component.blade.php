@@ -25,6 +25,57 @@
                                     </div>
                                 </div>
                             </div>
+                            @if($sponsored->count() > 0)
+                                <section class="section-products-carousel" id="homev12-carousel-1" class="mt-5">
+                                    <header class="section-header">
+                                        <h2 class="section-title">Sponsored Products at pri Gift</h2>
+                                        <nav class="custom-slick-nav"></nav>
+                                        <!-- .custom-slick-nav -->
+                                    </header>
+                                    <!-- .section-header -->
+                                    <div class="products-carousel" id="new-arrival-carousel" data-ride="tm-slick-carousel" data-wrap=".products" data-slick="{&quot;infinite&quot;:false,&quot;slidesToShow&quot;:8,&quot;slidesToScroll&quot;:8,&quot;dots&quot;:true,&quot;arrows&quot;:true,&quot;prevArrow&quot;:&quot;&lt;a href=\&quot;#\&quot;&gt;&lt;i class=\&quot;tm tm-arrow-left\&quot;&gt;&lt;\/i&gt;&lt;\/a&gt;&quot;,&quot;nextArrow&quot;:&quot;&lt;a href=\&quot;#\&quot;&gt;&lt;i class=\&quot;tm tm-arrow-right\&quot;&gt;&lt;\/i&gt;&lt;\/a&gt;&quot;,&quot;appendArrows&quot;:&quot;#homev12-carousel-1 .custom-slick-nav&quot;,&quot;responsive&quot;:[{&quot;breakpoint&quot;:650,&quot;settings&quot;:{&quot;slidesToShow&quot;:1,&quot;slidesToScroll&quot;:1}},{&quot;breakpoint&quot;:780,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesToScroll&quot;:3}},{&quot;breakpoint&quot;:1200,&quot;settings&quot;:{&quot;slidesToShow&quot;:4,&quot;slidesToScroll&quot;:4}},{&quot;breakpoint&quot;:1400,&quot;settings&quot;:{&quot;slidesToShow&quot;:6,&quot;slidesToScroll&quot;:6}}]}">
+                                        <div class="container-fluid">
+                                            <div class="woocommerce columns-8">
+                                                <div class="products">
+                                                    @foreach($sponsored as $sponsored)
+                                                        @if($sponsored->user->account_status == "Approved")
+                                                            <div class="product">
+                                                                <div class="yith-wcwl-add-to-wishlist">
+                                                                    <a href="{{route('user.shop.product.detailProduct', $sponsored->id)}}" rel="nofollow" class="add_to_wishlist"> Add to Wishlist</a>
+                                                                </div>
+                                                                <a href="{{route('user.shop.product.detailProduct', $sponsored->id)}}" class="woocommerce-LoopProduct-link">
+                                                                <span class="onsale">
+                                                                    <span class="woocommerce-Price-amount amount">
+                                                                        <span class="woocommerce-Price-currencySymbol">- </span>{{ (int)(($sponsored->regular_price - $sponsored->sale_price)*100/$sponsored->regular_price) }}% </span>
+                                                                </span>
+                                                                    <img src="{{asset('storage') . '/' . $sponsored->images}}" width="224" height="197" class="wp-post-image" alt="">
+                                                                    <span class="price">
+                                                                    <ins>
+                                                                        <span class="amount"> {{$sponsored->sale_price}} FCFA</span>
+                                                                    </ins>
+                                                                    <del>
+                                                                        <span class="amount">{{$sponsored->regular_price}} </span>
+                                                                    </del>
+                                                                    <span class="amount"> </span>
+                                                                </span>
+                                                                    <!-- /.price -->
+                                                                    <h2 class="woocommerce-loop-product__title">{{$sponsored->slug}}</h2>
+                                                                </a>
+                                                                <div class="hover-area">
+                                                                    <a class="button add_to_cart_button" href="{{route('user.shop.product.detailProduct', $sponsored->id)}}" rel="nofollow">Add to cart</a>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- .container-fluid -->
+                                    </div>
+                                    <!-- .products-carousel -->
+                                </section>
+                            @endif
+
                             <section class="section-products-carousel" id="homev12-carousel-1" class="mt-5">
                                 <header class="section-header">
                                     <h2 class="section-title">Hot New Arrivals You might Like</h2>
@@ -75,7 +126,8 @@
                             </section>
                             <section class="section-top-categories section-categories-carousel-v1 section-categories-carousel" id="categories-carousel-2">
                                 <header class="section-header">
-                                    <h2 class="section-title">Top promo
+                                    <h2 class="section-title">Top promo</h2>
+                                    <img src="{{asset('svg/product.svg')}}" alt="">
                                     <nav class="custom-slick-nav"></nav>
                                     <!-- .custom-slick-nav -->
                                 </header>

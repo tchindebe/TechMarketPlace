@@ -19,10 +19,10 @@ class CreateProductsTable extends Migration
             $table->string('slug');
             $table->string('short_description')->nullable();
             $table->text('description');
-            $table->decimal('regular_price');
-            $table->decimal('sale_price')->nullable();
+            $table->bigInteger('regular_price');
+            $table->bigInteger('sale_price')->nullable();
             $table->string('SKU')->nullable();
-            $table->boolean('sponsored')->default(false);
+            $table->boolean('sponsored')->default(0);
             $table->enum('stock_status', ['instock', 'outofstock']);
             $table->boolean('featured')->default(false);
             $table->unsignedInteger('quantity')->default(10);

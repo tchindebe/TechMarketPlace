@@ -17,6 +17,8 @@ use App\Repository\MediaService\MediaServiceInterface;
 use App\Repository\Orders\AdaptorOrderEloquent\EloquentOrder;
 use App\Repository\Orders\OrderRepositoryInterface;
 use App\Repository\Payment\PaymentStripeInterface;
+use App\Repository\Payment\SponsoredProduct\paymentSponsoredProductInterface;
+use App\Repository\Payment\SponsoredProduct\StripeEloquentSponsoredProduct;
 use App\Repository\Payment\StripeEloquent;
 use App\Repository\Product\AdaptorEloquentProduct\ProductEloquent;
 use App\Repository\Product\ProductRepositoryInterface;
@@ -76,6 +78,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             PaymentStripeInterface::class,
             StripeEloquent::class
+        );
+        $this->app->bind(
+            paymentSponsoredProductInterface::class,
+            StripeEloquentSponsoredProduct::class
         );
     }
 

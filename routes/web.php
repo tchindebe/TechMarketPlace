@@ -15,7 +15,7 @@ Route::get('/about', [\App\Http\Controllers\AboutController::class, 'index'])->n
 Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact');
 Route::post('/contact/store', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
 Route::get('/services', [\App\Http\Controllers\Services\ServicesController::class, 'index'])->name('services-home');
-
+Route::get('store/all', [\App\Http\Controllers\Stores\StoreController::class, 'index'])->name('store.all');
 
 Route::get('/shop', ShopComponent::class);
 
@@ -107,6 +107,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     Route::get('/payment/{id}', [\App\Http\Controllers\Payments\PaymentController::class, 'index'])->name('payment.index');
     Route::post('/service/video', [\App\Http\Controllers\Payments\PaymentController::class, 'store'])->name('payment.store');
+
+    //sponsored product/////
+
+    Route::get('/store/product/sponsored/{id}', [\App\Http\Controllers\Payments\PaymentSponsoredProductController::class, 'index'])->name('product.sponsored');
+    Route::post('/store/sponsored/payment', [\App\Http\Controllers\Payments\PaymentSponsoredProductController::class, 'store'])->name('payment.sponsored.store');
 
 });
 

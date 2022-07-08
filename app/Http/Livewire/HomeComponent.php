@@ -18,7 +18,9 @@ class HomeComponent extends Component
         $promo = Product::where('SKU', 2)->get();
         $lowProduct = Product::where('SKU', 3)->get();
         $others = Product::where('SKU', 4)->get();
-        return view('livewire.home-component')->layout('layouts.base')
+        $sponsored = Product::where('sponsored', 1)->get();
+
+        return view('livewire.home-component', compact('sponsored'))->layout('layouts.base')
             ->with('promo', $promo)
             ->with('users', $users)
             ->with('others', $others)
