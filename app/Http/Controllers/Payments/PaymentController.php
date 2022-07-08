@@ -35,11 +35,12 @@ class PaymentController extends Controller
         if (Auth::user()->user_type === "Client"){
             $media = $this->mediaInterface->getById($id);
 
-            $intentSecret =  $this->paymentStripeInterface->intentSecret($media->price);
+            $intentSecret =  $this->paymentStripeInterface->intentSecret((int)($media->price/656));
 
             return view ('payment.index', compact('media','intentSecret' ));
         }
 
+        return redirect()->back();
     }
 
     /**

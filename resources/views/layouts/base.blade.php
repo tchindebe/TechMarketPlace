@@ -36,7 +36,9 @@
                             <span>All Departments</span>
                         </button>
                         <ul id="menu-departments-menu" class="dropdown-menu yamm departments-menu-dropdown">
-
+                            @foreach($categories as $categoriess)
+                                <li class="level-0" value="{{$categoriess->id}}">{{$categoriess->slug}}</li>
+                            @endforeach
                         </ul>
                     </div>
                     <form class="navbar-search" method="get" action="home-v1.html">
@@ -109,8 +111,6 @@
                                                         </li>
                                                     @endforeach
                                                 </ul>
-
-                                                <!-- .cart_list -->
                                                 <p class="woocommerce-mini-cart__total total">
                                                     <strong>Subtotal:</strong>
                                                     <span class="woocommerce-Price-amount amount">
@@ -130,13 +130,9 @@
                                                 </p>
                                             @endif
                                         </div>
-                                        <!-- .widget_shopping_cart_content -->
                                     </div>
-
-                                    <!-- .widget_shopping_cart -->
                                 </li>
                             </ul>
-                            <!-- .dropdown-menu-mini-cart -->
                         </li>
                     </ul>
                     <ul class="header-wishlist nav navbar-nav">
@@ -245,7 +241,7 @@
                                     <a title="GAMES  CONSOLES" href="{{route('contact')}}">CONTACT</a>
                                 </li>
                                 <li class="menu-item animate-dropdown float-lg-right">
-                                    <a title="CAR ELECTRONIC &amp; GPS" href="product-category.html">ALL STORES</a>
+                                    <a title="CAR ELECTRONIC &amp; GPS" href="{{route('store.all')}}">ALL STORES</a>
                                 </li>
                                 <li class="menu-item animate-dropdown float-lg-right">
                                     <a title="Services" href="{{ route('services-home') }}">SERVICES</a>
@@ -254,7 +250,7 @@
                                     <a title="CAMERAS &amp; PHOTO" href="{{route('allProduct')}}">SHOP PRODUCTS</a>
                                 </li>
                                 <li class="menu-item animate-dropdown float-lg-right">
-                                    <a title="COMPUTERS &amp; LAPTOPS" href="product-category.html">HOME</a>
+                                    <a title="COMPUTERS &amp; LAPTOPS" href="/">HOME</a>
                                 </li>
                             </ul>
                         </nav>
@@ -334,11 +330,24 @@
                             <div class="handheld-navigation-menu">
                                 <span class="tmhm-close">Close</span>
                                 <ul id="menu-departments-menu-1" class="nav">
-                                    @foreach($allCategories as $allCategories)
-                                        <li class="highlight menu-item animate-dropdown">
-                                            <a title="{{$allCategories->slug}}" href="shop.html">{{$allCategories->slug}}</a>
-                                        </li>
-                                    @endforeach
+                                    <li class="menu-item animate-dropdown float-lg-right">
+                                        <a title="COMPUTERS &amp; LAPTOPS" href="/">HOME</a>
+                                    </li>
+                                    <li class="menu-item animate-dropdown float-lg-right">
+                                        <a title="CAMERAS &amp; PHOTO" href="{{route('allProduct')}}">SHOP PRODUCTS</a>
+                                    </li>
+                                    <li class="menu-item animate-dropdown float-lg-right">
+                                        <a title="CAR ELECTRONIC &amp; GPS" href="{{route('store.all')}}">ALL STORES</a>
+                                    </li>
+                                    <li class="menu-item animate-dropdown float-lg-right">
+                                        <a title="Services" href="{{ route('services-home') }}">SERVICES</a>
+                                    </li>
+                                    <li class="menu-item animate-dropdown float-lg-right">
+                                        <a title="GAMES  CONSOLES" href="{{route('contact')}}">CONTACT</a>
+                                    </li>
+                                    <li class="menu-item animate-dropdown float-lg-right">
+                                        <a title="TV &amp; AUDIO" href="{{route('about')}}">ABOUT</a>
+                                    </li>
                                 </ul>
                             </div>
                             <!-- .handheld-navigation-menu -->
@@ -450,7 +459,7 @@
             <!-- .footer-widgets-block -->
             <div class="site-info">
                 <div class="col-full">
-                    <div class="copyright">Copyright &copy; 2017 <a href="/">Easy Market</a>. All rights reserved.</div>
+                    <div class="copyright">Copyright &copy; 2022 <a href="/">Je boulot</a>. All rights reserved.</div>
                     <!-- .copyright -->
                     <div class="credit">Made by BBIT.</div>
                     <!-- .credit -->

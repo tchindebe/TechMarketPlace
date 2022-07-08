@@ -41,6 +41,7 @@
                             <th>Sale price</th>
                             <th>Stock</th>
                             <th>Quality</th>
+                            <th>Sponsored</th>
                             <th>Image</th>
                             <th>Action</th>
                         </tr>
@@ -64,8 +65,17 @@
                                         Others
                                     @endif
                                 </td>
+                                @if($product->sponsored == 1)
+                                    <td @if($product->quantity > 10) style="color:green; font-weight: bold;" @else style="color:red; font-weight: bold;"@endif>Yes</td>
+                                @endif
+                                @if($product->sponsored != 1)
+                                    <td @if($product->quantity > 10) style="color:darkred; font-weight: bold;" @else style="color:red; font-weight: bold;"@endif>No</td>
+                                @endif
                                 <td><img alt="image" class="img-responsive" style="width: 50px; height: 40px;" src="{{asset('storage') . '/' . $product->image}}"></td>
                                 <td>
+                                    @if($product->sponsored != 1)
+                                        <a href="{{route('product.sponsored', $product->id)}}" class="btn btn-success btn-sm " data-toggle="modal">Sponsored</a>
+                                    @endif
                                     <a href="{{route('user.product.update', $product->id)}}" class="btn btn-warning btn-sm " data-toggle="modal">Edit</a>
                                     <a href="#modal-form{{$product->id}}" data-toggle="modal" class="btn btn-danger btn-sm">Delete</a>
                                     <div id="modal-form{{$product->id}}" class="modal fade" aria-hidden="true">

@@ -25,8 +25,13 @@
                             <h5>Profile Detail</h5>
                         </div>
                         <div>
-                            <div class="ibox-content no-padding border-left-right">
-                                <img alt="image" class="img-responsive" src="{{asset('storage') . '/' . $profile->logo}}">
+                            <div class="ibox-content no-padding border-left-right justify-content-center justify-center">
+                                @if(Auth::user()->profile->logo)
+                                    <img alt="image" class="img-responsive" src="{{asset('storage') . '/' . $profile->logo}}">
+                                @endif
+                                @if(Auth::user()->profile->logo == null)
+                                    <img width="150" height="150" alt="" class="attachment-shop_catalog size-shop_catalog wp-post-image" src="{{asset('assets/clientAsset/plugins/images/users/shop.png')}}" alt="user-img" class="img-circle">
+                                @endif
                             </div>
                             <div class="ibox-content profile-content">
                                 <h4><strong>{{$profile->user->username}}</strong></h4>
