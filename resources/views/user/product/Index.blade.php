@@ -66,10 +66,10 @@
                                     @endif
                                 </td>
                                 @if($product->sponsored == 1)
-                                    <td @if($product->quantity > 10) style="color:green; font-weight: bold;" @else style="color:red; font-weight: bold;"@endif>Yes</td>
+                                    <td style="color: green;">Yes</td>
                                 @endif
                                 @if($product->sponsored != 1)
-                                    <td @if($product->quantity > 10) style="color:darkred; font-weight: bold;" @else style="color:red; font-weight: bold;"@endif>No</td>
+                                    <td style="color: red;">No</td>
                                 @endif
                                 <td><img alt="image" class="img-responsive" style="width: 50px; height: 40px;" src="{{asset('storage') . '/' . $product->image}}"></td>
                                 <td>

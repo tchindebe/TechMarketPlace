@@ -40,7 +40,7 @@ class PaymentController extends Controller
             return view ('payment.index', compact('media','intentSecret' ));
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('error', "Please You must be logged in with a customer account");
     }
 
     /**
