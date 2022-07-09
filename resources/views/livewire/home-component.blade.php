@@ -10,7 +10,7 @@
                             <div class="slider-block column-1">
                                 <div class="home-v12-slider">
                                     <div class="home-v12-slider home-slider">
-                                        <div class="slider-1" style="background-image: url({{asset('assets/images/1-1.jpg')}});">
+                                        <div class="slider-1" style="background-image: url({{asset('assets/images/banner/sale.jpg')}});">
                                             <div class="caption">
                                                 <div class="pre-title">warehouse</div>
                                                 <div class="title">clear-out</div>
@@ -155,10 +155,9 @@
                             <div class="banners banners-v2">
                                 <div class="row">
                                     <div class="banner small-banner text-in-left">
-                                        <a href="shop.html">
+                                        <a href="https://www.instagram.com/boulotje/" target="_blank">
                                             <div style="background-size: cover; background-position: center center; background-image: url( assets/images/banner/cart.jpg ); height: 259px;" class="banner-bg">
                                                 <div class="caption">
-                                                    <span class="banner-action button">Shop Now</span>
                                                 </div>
                                                 <!-- .caption-->
                                             </div>
@@ -166,7 +165,7 @@
                                     </div>
                                     <!-- .banner-->
                                     <div class="banner large-banner large-banner-v1 text-in-left">
-                                        <a href="shop.html">
+                                        <a href="https://www.facebook.com/Je-Boulot-103720499077128/" target="_blank">
                                             <div style="background-size: cover; background-position: center center; background-image: url( assets/images/banner/facebook.jpg ); height: 259px;" class="banner-bg">
 
                                             </div>
@@ -174,8 +173,8 @@
                                     </div>
                                     <!-- .banner-->
                                     <div class="banner small-banner text-in-left">
-                                        <a href="shop.html">
-                                            <div style="background-size: cover; background-position: center center; background-image: url( assets/images/banner/smart.jpg ); height: 259px;" class="banner-bg">
+                                        <a href="https://youtube.com/channel/UCAlTd5QxHkhs52tYRXgPemQ" target="_blank">
+                                            <div style="background-size: cover; background-position: center center; background-image: url( assets/images/banner/youtube.jpg ); height: 259px;" class="banner-bg">
 
                                             </div>
                                         </a>
