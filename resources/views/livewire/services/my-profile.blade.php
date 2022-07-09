@@ -2,7 +2,7 @@
 
 @section('contents')
     <section class="cover-sec">
-        <img src="{{asset('assets/service/images/resources/cover-img.jpg')}}" alt="">
+        <img class="" src="@if(!Auth::user()->profile_photo_path) {{asset('assets/service/images/resources/cover-img.jpg')}} @else {{asset('storage') . '/' . Auth::user()->cover_photo_path}} @endif" alt="" height="300">
         <div class="add-pic-box">
             <div class="container">
                 <div class="row no-gutters">
@@ -26,7 +26,7 @@
                             <div class="main-left-sidebar">
                                 <div class="user_profile">
                                     <div class="user-pro-img">
-                                        <img src="{{asset('assets/service/images/resources/user-pro-img.png')}}" alt="">
+                                        <img class="" src="@if(!Auth::user()->profile_photo_path) {{asset('assets/service/images/resources/user-pro-img.png')}} @else {{asset('storage') . '/' . Auth::user()->profile_photo_path}} @endif" alt="" height="200" width="200">
                                         <div class="add-dp" id="OpenImgUpload">
                                             <form action="{{ route('services.profile.profile-image') }}" id="form_profile" enctype="multipart/form-data" method="post">
                                                 @csrf
@@ -76,7 +76,7 @@
                                             <li data-tab="info-dd">
                                                 <a href="#" title="">
                                                     <img src="images/ic2.png" alt="">
-                                                    <span>Info</span>
+                                                    <span>Videos</span>
                                                 </a>
                                             </li>
                                             <li data-tab="saved-jobs">
@@ -634,36 +634,37 @@
                                 <div class="product-feed-tab current" id="feed-dd">
                                     @foreach($user_post as $post )
                                         <div class="posts-section">
-                                        <div class="post-bar">
-                                            <div class="post_topbar">
-                                                <div class="usy-dt">
-                                                    <img src="{{asset('assets/service/images/resources/us-pic.png')}}" alt="">
-                                                    <div class="usy-name">
-                                                        <h3>{{ Auth::user()->username }}</h3>
-                                                        <span><img src="{{asset('assets/service/images/clock.png')}}" alt="">
-                                                            {{ $post->created_at }}
-                                                        </span>
+                                            <div class="post-bar">
+                                                <div class="post_topbar">
+                                                    <div class="usy-dt">
+                                                        <img src="{{asset('assets/service/images/resources/us-pic.png')}}" alt="">
+                                                        <div class="usy-name">
+                                                            <h3>{{ Auth::user()->username }}</h3>
+                                                            <span><img src="{{asset('assets/service/images/clock.png')}}" alt="">
+                                                                {{ $post->created_at }}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ed-opts">
+                                                        <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
+                                                        <ul class="ed-options">
+                                                            <li><a href="#" title="">Edit Post</a></li>
+                                                            <li><a href="#" title="">Unsaved</a></li>
+                                                            <li><a href="#" title="">Unbid</a></li>
+                                                            <li><a href="#" title="">Close</a></li>
+                                                            <li><a href="#" title="">Hide</a></li>
+                                                        </ul>
                                                     </div>
                                                 </div>
-                                                <div class="ed-opts">
-                                                    <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-                                                    <ul class="ed-options">
-                                                        <li><a href="#" title="">Edit Post</a></li>
-                                                        <li><a href="#" title="">Unsaved</a></li>
-                                                        <li><a href="#" title="">Unbid</a></li>
-                                                        <li><a href="#" title="">Close</a></li>
-                                                        <li><a href="#" title="">Hide</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="epi-sec">
-                                                <ul class="bk-links">
+                                                <div class="epi-sec">
+                                                    <ul class="bk-links">
                                                     <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
                                                     <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
                                                 </ul>
                                             </div>
                                             <div class="job_descp">
                                                 <h3>{{ $post->title }}</h3>
+                                                <img class="pb-2 pt-2" src="{{asset('assets/service/images/resources/cover-img.jpg')}}" alt="" height="200" width="100%">
                                                 <ul class="job-dt">
                                                     <li><a href="#" title="">Full Time</a></li>
                                                     <li><span>{{ $post->min_price }} - {{ $post->max_price }} FCFA / hr</span></li>
@@ -676,7 +677,34 @@
                                                 </ul>
                                             </div>
                                             <div class="job-status-bar">
+                                                <div class="col-12">
+                                                    <h1>Comments</h1>
+                                                    @foreach($allPostComment as $comment)
+                                                        @if($comment->posts_id === $post->id )
+                                                            <div class="comment mt-4 text-justify float-left">
+                                                                {{--                                                        <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40">--}}
+                                                                {{--                                                        <h4>Jhon Doe</h4>--}}
+                                                                {{--                                                        <span>- 20 October, 2018</span>--}}
+                                                                {{--                                                        <br>--}}
+                                                                <p>{{ $comment->message }}</p>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                                <form action="{{ route('comment.store') }}" method="post">
+                                                    @csrf
+                                                    <div class="input-group mb-3">
+                                                        <input type="hidden" name="post_owner" value="{{ $post->id }}">
+                                                        <input type="text" name="message" class="form-control" placeholder="Add your comment ..." aria-label="" aria-describedby="button-addon2">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+                                                                <i class="la la-paper-plane"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
                                             </div>
+
                                         </div>
                                     </div>
                                     @endforeach
@@ -1206,43 +1234,27 @@
                                     </div>
                                 </div>
                                 <div class="product-feed-tab" id="info-dd">
-                                    <div class="user-profile-ov">
-                                        <h3><a href="#" title="" class="overview-open">Overview</a> <a href="#" title="" class="overview-open"><i class="fa fa-pencil"></i></a></h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. Nunc eu augue nec arcu efficitur faucibus. Aliquam accumsan ac magna convallis bibendum. Quisque laoreet augue eget augue fermentum scelerisque. Vivamus dignissim mollis est dictum blandit. Nam porta auctor neque sed congue. Nullam rutrum eget ex at maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget vestibulum lorem.</p>
+                                    <div class="sd-title">
+                                        <h3>I am artist</h3>
+                                        @if(Auth::user())
+                                            @if(Auth::user()->user_type === 'Service')
+                                                <a class="btn btn-primary mt-3" href="{{route('user.service.media.add')}}" title="">Add my clip video</a>
+                                            @endif
+                                        @endif
+                                        <i class="la la-ellipsis-v"></i>
                                     </div>
+                                    @foreach($mediaService  as $media)
                                     <div class="user-profile-ov st2">
-                                        <h3><a href="#" title="" class="exp-bx-open">Experience </a><a href="#" title="" class="exp-bx-open"><i class="fa fa-pencil"></i></a> <a href="#" title="" class="exp-bx-open"><i class="fa fa-plus-square"></i></a></h3>
-                                        <h4>Web designer <a href="#" title=""><i class="fa fa-pencil"></i></a></h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. </p>
-                                        <h4>UI / UX Designer <a href="#" title=""><i class="fa fa-pencil"></i></a></h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id.</p>
-                                        <h4>PHP developer <a href="#" title=""><i class="fa fa-pencil"></i></a></h4>
-                                        <p class="no-margin">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. </p>
+                                            <div class="">
+                                                <h3><a href="#" title="" class="exp-bx-open">{{$media->title}} <span style="color: #0b67cd;">({{$media->category}}) </span> </a></h3>
+                                            </div>
+                                            <video width="100%" height="200" class="shadow rounded" controls>
+                                                <source src="{{asset('storage') . '/' . $media->short_review}}" type="video/mp4">
+                                                Votre explorateur ne supporte pas la balise video.
+                                            </video>
+                                            <a href="{{route('payment.index', $media->id)}}" class="btn btn-success mt-2 font-bold">Watch the video {{$media->price}} XAF</a>
                                     </div>
-                                    <div class="user-profile-ov">
-                                        <h3><a href="#" title="" class="ed-box-open">Education</a> <a href="#" title="" class="ed-box-open"><i class="fa fa-pencil"></i></a> <a href="#" title=""><i class="fa fa-plus-square"></i></a></h3>
-                                        <h4>Master of Computer Science</h4>
-                                        <span>2015 - 2018</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. </p>
-                                    </div>
-                                    <div class="user-profile-ov">
-                                        <h3><a href="#" title="" class="lct-box-open">Location</a> <a href="#" title="" class="lct-box-open"><i class="fa fa-pencil"></i></a> <a href="#" title=""><i class="fa fa-plus-square"></i></a></h3>
-                                        <h4>India</h4>
-                                        <p>151/4 BT Chownk, Delhi </p>
-                                    </div>
-                                    <div class="user-profile-ov">
-                                        <h3><a href="#" title="" class="skills-open">Skills</a> <a href="#" title="" class="skills-open"><i class="fa fa-pencil"></i></a> <a href="#"><i class="fa fa-plus-square"></i></a></h3>
-                                        <ul>
-                                            <li><a href="#" title="">HTML</a></li>
-                                            <li><a href="#" title="">PHP</a></li>
-                                            <li><a href="#" title="">CSS</a></li>
-                                            <li><a href="#" title="">Javascript</a></li>
-                                            <li><a href="#" title="">Wordpress</a></li>
-                                            <li><a href="#" title="">Photoshop</a></li>
-                                            <li><a href="#" title="">Illustrator</a></li>
-                                            <li><a href="#" title="">Corel Draw</a></li>
-                                        </ul>
-                                    </div>
+                                    @endforeach
                                 </div>
                                 <div class="product-feed-tab" id="rewivewdata">
                                     <section></section>

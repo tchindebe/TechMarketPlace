@@ -18,6 +18,7 @@ class Post extends Model
         'min_price',
         'max_price',
         'job_type',
+        'image',
         'description',
         'post_type',
     ];
@@ -25,6 +26,11 @@ class Post extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function blogComments()
+    {
+        return $this->hasMany('\App\Models\Comment', 'posts_id', 'id');
     }
 
 }

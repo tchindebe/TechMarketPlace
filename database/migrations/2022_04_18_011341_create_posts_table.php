@@ -23,6 +23,7 @@ class CreatePostsTable extends Migration
             $table->bigInteger('min_price')->nullable();
             $table->bigInteger('max_price')->nullable();
             $table->string('job_type')->nullable();
+            $table->string('image', 2048)->nullable();
             $table->text('description');
             $table->string('post_type');
             $table->timestamps();
