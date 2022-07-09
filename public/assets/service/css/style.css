@@ -6397,7 +6397,7 @@ a:hover {
     border: 1px solid #e5e5e5;
     border-radius: 3px;
 }
-.input-group-prepend {
+.input-group-prepend_custom {
     background-color: #f3f3f3;
     color: #bfbfbf;
     text-align: center;
@@ -6690,16 +6690,16 @@ ul#myTab {
 	width:100%;
 	 height:400px;
 }
-.custom-file-input {
+.custom-file-input_custom {
   color: transparent;
   opacity: 1;
   margin-left: 140px;
   margin-bottom: 10px;
 }
-.custom-file-input::-webkit-file-upload-button {
+.custom-file-input_custom::-webkit-file-upload-button {
   visibility: hidden;
 }
-.custom-file-input::before {
+.custom-file-input_custom::before {
   content: 'Select Files';
   color: #fff;
   display: inline-block;
@@ -6713,14 +6713,14 @@ ul#myTab {
   -webkit-user-select: none;
   cursor: pointer;
 }
-.custom-file-input:hover::before {
+.custom-file-input_custom:hover::before {
   background-color: #0063D1;
   color: #fff;
 }
-.custom-file-input:active {
+.custom-file-input_custom:active {
   outline: 0;
 }
-.custom-file-input:active::before {
+.custom-file-input_custom:active::before {
   background: #0063D1;
   color: #fff;
 }

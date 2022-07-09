@@ -181,6 +181,18 @@
                             <textarea name="description" placeholder="Description"></textarea>
                         </div>
                         <div class="col-lg-12">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
                             <ul>
                                 <li><button class="active" type="submit" value="post">Post</button></li>
                                 <li><a href="#" title="">Cancel</a></li>
