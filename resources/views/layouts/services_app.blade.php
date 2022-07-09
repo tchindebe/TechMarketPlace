@@ -49,10 +49,9 @@
                     </ul>
                 </nav>
                 <div class="user-account">
-
                     @if(auth()->user())
                         <div class="user-info">
-                            <img src="{{asset('assets/service/images/resources/user.png')}}" alt="">
+                            <img src="@if(!Auth::user()->profile_photo_path) {{asset('assets/service/images/resources/user.png')}} @else {{asset('storage') . '/' . Auth::user()->profile_photo_path}} @endif" alt="" height="30" width="30">
                             <i class="la la-sort-down"></i>
                         </div>
                     @else
@@ -86,11 +85,12 @@
     </header>
     @yield('contents')
 
+    @if(auth()->user())
     <div class="post-popup pst-pj">
         <div class="post-project">
             <h3>Post a project</h3>
             <div class="post-project-fields">
-                <form action="{{ route('service.post.storeProject') }}" method="post" >
+                <form action="{{ route('service.post.storeProject') }}" method="post" enctype="multipart/form-data" >
                     @csrf
                     <div class="row">
                         <input type="hidden" name="post_type" value="post_project">
@@ -123,6 +123,17 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-12 pb-4">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" name="image" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-lg-12">
                             <textarea name="description" placeholder="Description"></textarea>
                         </div>
@@ -143,7 +154,7 @@
         <div class="post-project">
             <h3>Post a job</h3>
             <div class="post-project-fields">
-                <form action="{{ route('service.post.storeJob') }}" method="post" >
+                <form action="{{ route('service.post.storeJob') }}" method="post" enctype="multipart/form-data" >
                     @csrf
                     <input type="hidden" name="post_type" value="post_Job">
                     <div class="row">
@@ -177,21 +188,20 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-12">
-                            <textarea name="description" placeholder="Description"></textarea>
-                        </div>
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 pb-4">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                    <input type="file" name="image" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
                                     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                 </div>
                             </div>
                         </div>
-
+                        <div class="col-lg-12">
+                            <textarea name="description" placeholder="Description"></textarea>
+                        </div>
                         <div class="col-lg-12">
                             <ul>
                                 <li><button class="active" type="submit" value="post">Post</button></li>
@@ -204,6 +214,8 @@
             <a href="#" title=""><i class="la la-times-circle-o"></i></a>
         </div>
     </div>
+    @endif
+
 </div>
 <script type="text/javascript" src="{{asset('assets/service/js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/service/js/popper.js')}}"></script>

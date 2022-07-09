@@ -17,6 +17,11 @@ Route::post('/contact/store', [\App\Http\Controllers\ContactController::class, '
 Route::get('/services', [\App\Http\Controllers\Services\ServicesController::class, 'index'])->name('services-home');
 Route::get('store/all', [\App\Http\Controllers\Stores\StoreController::class, 'index'])->name('store.all');
 
+
+//Comment routes
+Route::post('/service/comment/create', [\App\Http\Controllers\CommentController::class, 'store'])->name('comment.store');
+
+
 Route::get('/shop', ShopComponent::class);
 
 Route::get('/login_or_register', function (){

@@ -96,7 +96,7 @@
 	.usy-dt .reply {
 		width: 450px;
 	}
-	
+
 }
 
 
@@ -149,7 +149,7 @@
 	.comment_box form button {padding: 0 15px;}
 	.job-details {width: 80%;}
 	.cover-sec {height: 200px;}
-	.cover-sec img {height: 100%;object-fit: cover;}
+	.cover-sec img {height: 300px;object-fit: cover;}
 	.star-descp > ul {width: 100%;margin-top: 10px;}
 	.like-com li {margin-right: 5px;}
 	.bk-links {width: 100%;margin-top: 15px;}
@@ -210,14 +210,16 @@
 }
     .appliedjob ul{
     	display:block;
-} 
+}
     .close{
 	    display: none;
 }
 }
 
 @media (max-width: 410px) {
-	.post-st ul li a {font-size: 12px;padding: 0 6px;}
+    .logo {width: 100%;text-align: center;}
+
+    .post-st ul li a {font-size: 12px;padding: 0 6px;}
 	.like-com li a {font-size: 12px;}
 	.job_descp h3 {font-size: 16px;}
 	.pf-gallery ul li {padding: 3px;}

@@ -48,6 +48,11 @@ class ServicePostController extends Controller
             'min_price' => 'required',
             'max_price' => 'required',
         ]);
+
+        if ($request->file('image')){
+            $data['image'] = $request->file('image')->store('images/posts', 'public');
+        }
+
         $data['author'] =  Auth::user()->id;
 
         if (Auth::user()->user_type = 'Service'){
@@ -68,7 +73,6 @@ class ServicePostController extends Controller
      */
     public function storeJob(Request $request)
     {
-//        dd($request);
         $data = $this->validate($request, [
             'post_type' => 'required',
             'title' => 'required',
@@ -78,7 +82,12 @@ class ServicePostController extends Controller
             'salary_price' => 'required',
             'job_type' => 'required',
         ]);
+
         $data['author'] =  Auth::user()->id;
+
+        if ($request->file('image')){
+            $data['image'] = $request->file('image')->store('images/posts', 'public');
+        }
 
         if (Auth::user()->user_type = 'Service'){
             if ($data) {

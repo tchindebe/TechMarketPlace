@@ -32,10 +32,13 @@ class ServicesController extends Controller
 
     public function user_profile()
     {
+        $mediaService = $this->mediaService->showByServiceUser();
+
         $user_posts = DB::table('posts')->where('author', Auth::user()->id)->get();
 //        dd($user_posts);
         return view('livewire.services.my-profile')
-            ->with('user_post', $user_posts);
+            ->with('user_post', $user_posts)
+            ->with('mediaService', $mediaService);
     }
 
     public function user_password_change(Request $request)
@@ -70,11 +73,13 @@ class ServicesController extends Controller
 
             $file = $request->file('profile_image');
 
-            $destination = public_path()."\medias\profile_".str_replace(' ', '', auth()->user()->username);
+            $user = Auth::user();
 
-            if (!is_dir($destination)) {  mkdir($destination,777,true);  }
-            File::put($destination, $request->file('profile_image'));
-            return response()->download($destination.$file);
+            $user->profile_photo_path = $file->store('images/profile/cover', 'public');
+
+            $user->save();
+
+            return redirect()->back();
         }
     }
 
@@ -85,11 +90,13 @@ class ServicesController extends Controller
 
             $file = $request->file('cover_image');
 
-            $destination = public_path()."\medias\profile_".str_replace(' ', '', auth()->user()->username);
+            $user = Auth::user();
 
-            if (!is_dir($destination)) {  mkdir($destination,777,true);  }
-            File::put($destination, $request->file('cover_image'));
-            return response()->download($destination.$file);
+            $user->cover_photo_path = $file->store('images/profile/cover', 'public');
+
+            $user->save();
+
+            return redirect()->back();
         }
     }
 }

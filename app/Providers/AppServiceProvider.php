@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\Comments;
 use App\Models\Ordereds;
 use App\Models\Post;
 use App\Repository\AdapterEloquent\EloquentProfileUserAdaptor;
@@ -29,6 +30,7 @@ use App\Repository\UserRepository\UserInterfaceRepository;
 use App\Repository\UserRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
+use function GuzzleHttp\Promise\all;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -97,6 +99,7 @@ class AppServiceProvider extends ServiceProvider
         $allCategories = Category::all();
         $allPost = Post::with('user')->get();
         $orders = Ordereds::all();
+        $allPostComment = Comments::all();
 
         $lastOrderCustomers = Ordereds::where('user_id', 3)
             ->where('status', 0)
@@ -106,5 +109,6 @@ class AppServiceProvider extends ServiceProvider
         view()->share('categories', $categories);
         view()->share('allPost', $allPost);
         view()->share('allCategories', $allCategories);
+        view()->share('allPostComment', $allPostComment);
     }
 }
