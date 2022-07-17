@@ -2,6 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
     mode: 'jit',
+    content: ['./src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'],
     purge: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './vendor/laravel/jetstream/**/*.blade.php',
@@ -21,5 +22,6 @@ module.exports = {
         require('@tailwindcss/forms'),
         require('@tailwindcss/typography'),
         require('tailwindcss-plugins/pagination'),
+        require('tw-elements/dist/plugin'),
     ],
 };

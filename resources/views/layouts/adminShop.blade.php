@@ -70,7 +70,7 @@
                         <a href="{{route('user.order.index')}}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Orders</span></a>
                     </li>
                     <li>
-                        <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right">16/24</span></a>
+                        <a href="{{route('shop.messenger.index')}}"><i class="fa fa-envelope"></i> <span class="nav-label">Messenger </span><span class="label label-warning pull-right">16/24</span></a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Forms</span><span class="fa arrow"></span></a>
@@ -104,7 +104,7 @@
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                                <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+                                <i class="fa fa-envelope"></i>  <span class="label label-warning">{{Auth::user()->chats->where('status', 0)->count()}}</span>
                             </a>
                             <ul class="dropdown-menu dropdown-messages">
                                 <li>
@@ -768,13 +768,22 @@
                             @if(Cart::getContent()->count())
                                 <li>
                                     <a class="text-center" href="{{route('livewire.checkout')}}"> <strong>Checkout</strong> <i class="fa fa-angle-right"></i> </a>
+
                                 </li>
                             @endif
 
                         </ul>
                         <!-- /.dropdown-tasks -->
                     </li>
-                    <li class="right-side-toggle"> <a class="waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li>
+
+                    <li class="right-side-toggle">
+                        <a class="waves-effect waves-light" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fa fa-sign-out"></i>
+                            <form id="logout-form" action="{{route('logout')}}" method="post">
+                                @csrf
+                            </form>
+                        </a>
+                    </li>
                     <!-- /.dropdown -->
                 </ul>
             </div>
@@ -782,7 +791,7 @@
         </nav>
         <!-- Left navbar-header -->
         <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse slimscrollsidebar">
+            <div class="sidebar-nav navbar-collapse ">
                 <div class="user-profile">
                     <div class="dropdown user-pro-body">
                         <div>
@@ -811,14 +820,13 @@
                         <div class="input-group custom-search-form">
                             <input type="text" class="form-control" placeholder="Search...">
                             <span class="input-group-btn">
-            <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
-            </span> </div>
-                        <!-- /input-group -->
+                                <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
+                            </span>
+                        </div>
                     </li>
                     <li>
                         <div class="hide-menu t-earning">
-                            <div id="sparkline2dash" class="m-b-10"></div><small class="db">TOTAL EARNINGS - JUNE 2017</small>
-                            <h3 class="m-t-0 m-b-0">$2,478.00</h3></div>
+                            <div id="sparkline2dash" class="m-b-10"></div><small class="db"></small>
                     </li>
                     <li class="nav-small-cap m-t-10">--- Main Menu</li>
 
@@ -856,7 +864,7 @@
                     @yield('contents')
             </main>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2022 &copy; Elite Admin brought to you by themedesigner.in </footer>
+            <footer class="footer text-center" style="margin-top: 5%!important;"> 2022 &copy; Elite Admin brought to you by themedesigner.in </footer>
         </div>
         <!-- /#page-wrapper -->
     </div>

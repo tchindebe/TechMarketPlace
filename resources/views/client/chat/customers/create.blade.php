@@ -27,25 +27,25 @@
                             <input class="form-control p-20" type="text" placeholder="Search Contact">
                         </div>
                         <ul class="chatonline style-none ">
-                            @foreach($users as $users)
-                                <li @if($users->id == $userById->id) style="background-color: #e4e7e8" @endif>
-                                    <a href="{{route('client.chat.customers.create', $users->id)}}">
-                                        @if($users->profile->logo)
-                                            <img src="{{asset('storage') . '/' . $users->profile->logo}}" alt="user-img" class="img-circle">
-                                        @endif
-                                        @if($users->profile->logo == null)
-                                            <img src="{{asset('assets/clientAsset/plugins/images/users/shop.png')}}" alt="user-img" class="img-circle">
-                                        @endif
-                                        <span>
-                                            <span>{{$users->username}}</span>
-                                            @if(Cache::has('user-is-online-' . $users->id))
-                                                <span style="font-size: 10px;" class="text-success">Online</span>
-                                            @else
-                                                <span class="text-danger" style="font-size: 10px;">Offline</span>
+                                @if($users->user_type != 'Client')
+                                    <li @if($users->id == $userById->id) style="background-color: #e4e7e8" @endif>
+                                        <a href="{{route('client.chat.customers.create', $users->id)}}">
+                                            @if($users->profile->logo)
+                                                <img src="{{asset('storage') . '/' . $users->profile->logo}}" alt="user-img" width="40" height="40"  class="img-circle">
                                             @endif
-                                        </span>
-                                    </a>
-                                </li>
+                                            @if($users->profile->logo == null)
+                                                <img src="{{asset('assets/clientAsset/plugins/images/users/shop.png')}}" alt="user-img" class="img-circle">
+                                            @endif
+                                            <span>
+                                                <span>{{$users->username}}</span>
+                                                @if(Cache::has('user-is-online-' . $users->id))
+                                                    <span style="font-size: 10px;" class="text-success">Online</span>
+                                                @else
+                                                    <span class="text-danger" style="font-size: 10px;">Offline</span>
+                                                @endif
+                                            </span>
+                                        </a>
+                                    </li>
                             @endforeach
                         </ul>
                     </div>
@@ -90,10 +90,18 @@
                                     <li>
                                         <div class="chat-image">
                                             @if($userById->profile->logo)
-                                                <img src="{{asset('storage') . '/' . $userById->profile->logo}}" alt="Female">
+                                                <img src="{{asset('storage') . '/' . $userById->profile->logo}}" height="25" alt="Female">
                                             @endif
                                             @if($userById->profile->logo == null)
                                                 <img src="{{asset('assets/clientAsset/plugins/images/users/shop.png')}}" alt="user-img" class="img-circle">
+                                            @endif
+
+                                            @if($users->profile->logo == null)
+                                                @if($users->user_type == "Client")
+                                                    <img src="{{asset('assets/clientAsset/plugins/images/users/profile.jpg')}}" alt="user-img">
+                                                @elseif($users->user_type != "Client")
+                                                    <img src="{{asset('assets/clientAsset/plugins/images/users/shop.png')}}" alt="user-img">
+                                                @endif
                                             @endif
                                         </div>
                                         <div class="chat-body">

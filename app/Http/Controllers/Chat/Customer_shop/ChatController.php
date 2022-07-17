@@ -16,8 +16,7 @@ class ChatController extends Controller
 {
 
     public function index($id, ChatRepositoryInterface $repository){
-        $users = User::where('id', '!=', Auth::User()->id)
-            ->where('user_type', 'Boutique')->get();
+        $users = User::where('id', '!=', Auth::User()->id)->get();
 
 //        foreach ($users as $user) {
 //            if (Cache::has('user-is-online-' . $user->id))
@@ -31,7 +30,7 @@ class ChatController extends Controller
 
     public function create($id, ChatRepositoryInterface $repository, UserInterfaceRepository $userRepository){
 
-        $users = $userRepository->getUserByIdAndByType(Auth::User()->id, "Boutique");
+        $users = $userRepository->getUserByIdAndByType(Auth::User()->id);
 
         $userById = $userRepository->getById($id);
 

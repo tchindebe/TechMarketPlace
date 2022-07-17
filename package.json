@@ -20,5 +20,8 @@
         "postcss-import": "^14.0.1",
         "tailwindcss": "^2.2.2",
         "tailwindcss-plugins": "^0.3.0"
+    },
+    "dependencies": {
+        "tw-elements": "^1.0.0-alpha12"
     }
 }

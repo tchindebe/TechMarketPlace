@@ -4,10 +4,10 @@
     <div class="row">
         <div class="col-lg-8">
             @if(session('success'))
-                <div class="alert alert-success">{{ session('success') }}</div>
+                <div class="alert alert-success mt-2">{{ session('success') }}</div>
             @endif
             @if(session('error'))
-                <div class="alert alert-danger">{{ session('error') }}</div>
+                <div class="alert alert-danger mt-2">{{ session('error') }}</div>
             @endif
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
@@ -18,15 +18,6 @@
                         </a>
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-wrench"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#">Config option 1</a>
-                            </li>
-                            <li><a href="#">Config option 2</a>
-                            </li>
-                        </ul>
-                        <a class="close-link">
-                            <i class="fa fa-times"></i>
                         </a>
                     </div>
                 </div>
@@ -65,61 +56,56 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-wrench"></i>
                         </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#">Config option 1</a>
-                            </li>
-                            <li><a href="#">Config option 2</a>
-                            </li>
-                        </ul>
-                        <a class="close-link">
-                            <i class="fa fa-times"></i>
-                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="wrapper wrapper-content animated fadeInRight">
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Table category for you, you have <strong style="color: green;">{{Auth::user()->category->count()}}</strong> Category(s)</h5>
-                    <div class="ibox-tools">
-                        <a class="collapse-link">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-wrench"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#">Config option 1</a>
-                            </li>
-                            <li><a href="#">Config option 2</a>
-                            </li>
-                        </ul>
-                        <a class="close-link">
-                            <i class="fa fa-times"></i>
-                        </a>
+    <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>List of all your Categories <span class="tet-green-600">({{Auth::user()->category->count()}})</span></h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="ibox-content">
-                    <table class="table table-striped table-bordered table-hover dataTables-example" >
-                        <thead>
-                            <tr>
-                                <th>Name category</th>
-                                <th>Slug Category</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach(Auth::user()->category as $category)
-                                <tr class="gradeX">
-                                    <td>{{$category->name}}</td>
-                                    <td>{{$category->slug}}</td>
-                                    <td>
-                                        <a href="#modal-form{{$category->id}}" class="btn btn-warning btn-sm " data-toggle="modal">Edit</a>
-                                        <div id="modal-form{{$category->id}}" class="modal fade" aria-hidden="true">
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-sm-9 m-b-xs">
+                                <div data-toggle="buttons" class="btn-group">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="input-group"><input type="text" placeholder="Search" class="input-sm form-control">
+                                    <span class="input-group-btn">
+                                    <button type="button" class="btn btn-sm btn-primary"> Go!</button>
+                                </span></div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Name category</th>
+                                    <th>Slug Category</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach(Auth::user()->category as $category)
+                                    <tr>
+                                        <td>{{$category->name}}</td>
+                                        <td>{{$category->slug}}</td>
+                                        <td>
+                                            <a href="#modal-form{{$category->id}}" class="btn btn-warning btn-sm " data-toggle="modal">Edit</a>
+                                            <div id="modal-form{{$category->id}}" class="modal fade" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-body">
@@ -141,12 +127,16 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                            <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>

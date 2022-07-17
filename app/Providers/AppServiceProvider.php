@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\Chat;
 use App\Models\Comments;
 use App\Models\Ordereds;
 use App\Models\Post;
@@ -21,6 +22,8 @@ use App\Repository\Payment\PaymentStripeInterface;
 use App\Repository\Payment\SponsoredProduct\paymentSponsoredProductInterface;
 use App\Repository\Payment\SponsoredProduct\StripeEloquentSponsoredProduct;
 use App\Repository\Payment\StripeEloquent;
+use App\Repository\Payment\User\PaymentShopInterface;
+use App\Repository\Payment\User\StripeEloquentShop;
 use App\Repository\Product\AdaptorEloquentProduct\ProductEloquent;
 use App\Repository\Product\ProductRepositoryInterface;
 use App\Repository\ProfileCustomers\AdaptorEloquentRequest\ProfilEloquent;
@@ -85,6 +88,10 @@ class AppServiceProvider extends ServiceProvider
             paymentSponsoredProductInterface::class,
             StripeEloquentSponsoredProduct::class
         );
+        $this->app->bind(
+            PaymentShopInterface::class,
+            StripeEloquentShop::class
+        );
     }
 
     /**
@@ -98,14 +105,15 @@ class AppServiceProvider extends ServiceProvider
         $categories = Category::all();
         $allCategories = Category::all();
         $allPost = Post::with('user')->get();
-        $orders = Ordereds::all();
         $allPostComment = Comments::all();
 
-        $lastOrderCustomers = Ordereds::where('user_id', 3)
-            ->where('status', 0)
-            ->latest()
-            ->first();
+        if (Auth::user()){
+            $messageReceive = Chat::where('to', Auth::user()->id)
+                ->where('status', 0)
+                ->get();
 
+            view()->share('messageReceive', $messageReceive);
+        }
         view()->share('categories', $categories);
         view()->share('allPost', $allPost);
         view()->share('allCategories', $allCategories);

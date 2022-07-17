@@ -32,6 +32,7 @@ class User extends Authenticatable
         'password',
         'profile_photo_path',
         'user_type',
+        'account_status',
     ];
 
     /**
@@ -136,5 +137,13 @@ class User extends Authenticatable
 
     public function sponsored(){
         return $this->hasMany(productSponsored::class);
+    }
+
+    public function subscriptionStripe(){
+        return $this->hasMany(Subcription_stripe::class);
+    }
+
+    public function subcriptionShop(){
+        return $this->hasMany(subcriptionShop::class);
     }
 }

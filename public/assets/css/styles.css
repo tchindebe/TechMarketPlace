@@ -9381,7 +9381,7 @@ ul.select-row-icon li a.selected i.whn-hov {
 }
 /*
  Use the following CSS code if you want to have a class per icon.
- Instead of a list of all class selectors, you can use the generic [class*="icon-"] selector, but it's slower: 
+ Instead of a list of all class selectors, you can use the generic [class*="icon-"] selector, but it's slower:
 */
 .icon-user,
 .icon-people,
@@ -14323,8 +14323,8 @@ ul.select-row-icon li a.selected i.whn-hov {
 .icon-weather-windgust:before {
   content: "\e054";
 }
-/***************************** 
-    Stylish tabs page 
+/*****************************
+    Stylish tabs page
 *****************************/
 .sttabs {
   position: relative;
@@ -15089,8 +15089,8 @@ ul.select-row-icon li a.selected i.whn-hov {
     margin-right: 0;
   }
 }
-/***************************** 
-    Stylish tolltip page 
+/*****************************
+    Stylish tolltip page
 *****************************/
 .mytooltip {
   display: inline;

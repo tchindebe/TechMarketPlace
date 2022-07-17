@@ -26,7 +26,7 @@
                                 </div>
                             </div>
                             @if($sponsored->count() > 0)
-                                <section class="section-products-carousel" id="homev12-carousel-1" class="mt-5">
+                                <section class="section-products-carousel pt-2" id="homev12-carousel-1" class="mt-5">
                                     <header class="section-header">
                                         <h2 class="section-title">Sponsored Products at pri Gift</h2>
                                         <nav class="custom-slick-nav"></nav>
@@ -51,8 +51,8 @@
                                                                     <img src="{{asset('storage') . '/' . $sponsored->images}}" width="224" height="197" class="wp-post-image" alt="">
                                                                     <span class="price">
                                                                     <ins>
-                                                                        <span class="amount"> {{$sponsored->sale_price}} FCFA</span>
-                                                                    </ins>
+                                                                        <span class="amount"> {{$sponsored->sale_price}} <br> FCFA</span>
+                                                                    </ins><br>
                                                                     <del>
                                                                         <span class="amount">{{$sponsored->regular_price}} </span>
                                                                     </del>
@@ -89,7 +89,7 @@
                                             <div class="products">
                                                 @foreach($products as $products)
                                                     @if($products->user->account_status == "Approved")
-                                                    <div class="product">
+                                                        <div class="product">
                                                             <div class="yith-wcwl-add-to-wishlist">
                                                                 <a href="{{route('user.shop.product.detailProduct', $products->id)}}" rel="nofollow" class="add_to_wishlist"> Add to Wishlist</a>
                                                             </div>
@@ -101,8 +101,8 @@
                                                                 <img src="{{asset('storage') . '/' . $products->images}}" width="224" height="197" class="wp-post-image" alt="">
                                                                 <span class="price">
                                                                     <ins>
-                                                                        <span class="amount"> {{$products->sale_price}} FCFA</span>
-                                                                    </ins>
+                                                                        <span class="amount"> {{$products->sale_price}} <br> FCFA</span>
+                                                                    </ins><br>
                                                                     <del>
                                                                         <span class="amount">{{$products->regular_price}} </span>
                                                                     </del>
@@ -138,11 +138,11 @@
                                             @foreach($promo as $promo)
                                                 @if($promo->user->account_status == "Approved")
                                                     <div class="product-category product">
-                                                    <a href="{{route('user.shop.product.detailProduct', $promo->id)}}">
-                                                        <img width="300" height="300" alt="All in One PC" src="{{asset('storage') . '/' . $promo->images}}">
-                                                        <h2 class="woocommerce-loop-category__title">{{$promo->sale_price}} FCFA</h2>
-                                                    </a>
-                                                </div>
+                                                        <a href="{{route('user.shop.product.detailProduct', $promo->id)}}">
+                                                            <img width="300" height="300" alt="All in One PC" src="{{asset('storage') . '/' . $promo->images}}">
+                                                            <h2 class="woocommerce-loop-category__title">{{$promo->sale_price}} FCFA</h2>
+                                                        </a>
+                                                    </div>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -197,16 +197,16 @@
                                                 @foreach($lowProduct as $lowProduct)
                                                     @if($lowProduct->user->account_status == "Approved")
                                                         <div class="product">
-                                                    <div class="yith-wcwl-add-to-wishlist">
-                                                        <a href="{{route('user.shop.product.detailProduct', $lowProduct->id)}}" rel="nofollow" class="add_to_wishlist"> Add to Wishlist</a>
-                                                    </div>
-                                                    <a href="{{route('user.shop.product.detailProduct', $lowProduct->id)}}" class="woocommerce-LoopProduct-link">
+                                                            <div class="yith-wcwl-add-to-wishlist">
+                                                                <a href="{{route('user.shop.product.detailProduct', $lowProduct->id)}}" rel="nofollow" class="add_to_wishlist"> Add to Wishlist</a>
+                                                            </div>
+                                                            <a href="{{route('user.shop.product.detailProduct', $lowProduct->id)}}" class="woocommerce-LoopProduct-link">
                                                             <span class="onsale">
                                                                 <span class="woocommerce-Price-amount amount">
                                                                     <span class="woocommerce-Price-currencySymbol">-</span> {{ (int)(($lowProduct->regular_price - $lowProduct->sale_price)*100/$lowProduct->regular_price) }}%</span>
                                                             </span>
-                                                        <img src="{{asset('storage') . '/' . $lowProduct->images}}" width="224" height="197" class="wp-post-image" alt="">
-                                                        <span class="price">
+                                                                <img src="{{asset('storage') . '/' . $lowProduct->images}}" width="224" height="197" class="wp-post-image" alt="">
+                                                                <span class="price">
                                                                 <ins>
                                                                     <span class="amount"> {{ $lowProduct->sale_price}} Fcfa</span>
                                                                 </ins>
@@ -215,13 +215,13 @@
                                                                 </del>
                                                                 <span class="amount"> </span>
                                                             </span>
-                                                        <!-- /.price -->
-                                                        <h2 class="woocommerce-loop-product__title">{{ $lowProduct->slug}}</h2>
-                                                    </a>
-                                                    <div class="hover-area">
-                                                        <a class="button add_to_cart_button" href="{{route('user.shop.product.detailProduct', $lowProduct->id)}}" rel="nofollow">Add to cart</a>
-                                                    </div>
-                                                </div>
+                                                                <!-- /.price -->
+                                                                <h2 class="woocommerce-loop-product__title">{{ $lowProduct->slug}}</h2>
+                                                            </a>
+                                                            <div class="hover-area">
+                                                                <a class="button add_to_cart_button" href="{{route('user.shop.product.detailProduct', $lowProduct->id)}}" rel="nofollow">Add to cart</a>
+                                                            </div>
+                                                        </div>
                                                     @endif
                                                 @endforeach
                                             </div>
@@ -293,8 +293,8 @@
                                             </div>
                                             <!-- .banner-info -->
                                             <a href="{{route('register')}}" class="banner-action button">Create your shop now
-                                                    <i class="feature-icon d-flex ml-4 tm tm-long-arrow-right"></i>
-                                                </a>
+                                                <i class="feature-icon d-flex ml-4 tm tm-long-arrow-right"></i>
+                                            </a>
                                         </div>
                                         <!-- .caption -->
                                     </div>
@@ -313,38 +313,38 @@
                                             <div class="products">
                                                 @foreach($users as $users)
                                                     <div class="landscape-product product">
-                                                            <a class="woocommerce-LoopProduct-link" href="{{route('user.shop', $users->username)}}">
-                                                                <div class="media">
-                                                                    @if($users->profile->logo)
-                                                                        <img class="wp-post-image" src="{{asset('storage') . '/' . $users->profile->logo}}" alt="Female">
-                                                                    @endif
-                                                                    @if($users->profile->logo == null)
-                                                                        <img class="wp-post-image" src="{{asset('assets/clientAsset/plugins/images/users/shop.png')}}" alt="user-img" class="img-circle">
-                                                                    @endif
-                                                                    <div class="media-body">
+                                                        <a class="woocommerce-LoopProduct-link" href="{{route('user.shop', $users->username)}}">
+                                                            <div class="media">
+                                                                @if($users->profile->logo)
+                                                                    <img class="wp-post-image" src="{{asset('storage') . '/' . $users->profile->logo}}" alt="Female">
+                                                                @endif
+                                                                @if($users->profile->logo == null)
+                                                                    <img class="wp-post-image" src="{{asset('assets/clientAsset/plugins/images/users/shop.png')}}" alt="user-img" class="img-circle">
+                                                                @endif
+                                                                <div class="media-body">
                                                                     <span class="price">
                                                                         <ins>
                                                                             <span class="amount"> </span>
                                                                         </ins>
                                                                         <span class="amount">{{$users->username}}</span>
                                                                     </span>
-                                                                        <!-- .price -->
-                                                                        <h2 class="woocommerce-loop-product__title">{{$users->profile->slogan}}</h2>
-                                                                        <div class="techmarket-product-rating">
-                                                                            <div title="Rated 0 out of 5" class="star-rating">
+                                                                    <!-- .price -->
+                                                                    <h2 class="woocommerce-loop-product__title">{{$users->profile->slogan}}</h2>
+                                                                    <div class="techmarket-product-rating">
+                                                                        <div title="Rated 0 out of 5" class="star-rating">
                                                                             <span style="width:60%">
                                                                                 <strong class="rating">0</strong> out of 5</span>
-                                                                            </div>
-                                                                            <span class="review-count">(60)</span>
                                                                         </div>
-                                                                        <!-- .techmarket-product-rating -->
+                                                                        <span class="review-count">(60)</span>
                                                                     </div>
-                                                                    <!-- .media-body -->
+                                                                    <!-- .techmarket-product-rating -->
                                                                 </div>
-                                                                <!-- .media -->
-                                                            </a>
-                                                            <!-- .woocommerce-LoopProduct-link -->
-                                                        </div>
+                                                                <!-- .media-body -->
+                                                            </div>
+                                                            <!-- .media -->
+                                                        </a>
+                                                        <!-- .woocommerce-LoopProduct-link -->
+                                                    </div>
                                                 @endforeach
                                             </div>
                                         </div>
@@ -366,5 +366,4 @@
         </div>
 
     </div>
-
 @endsection

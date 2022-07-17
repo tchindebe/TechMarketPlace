@@ -9,6 +9,8 @@ use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\User\UserDashboardComponemt;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Services\MediaPostController;
+use App\Http\Livewire\Admin\PaymentManagerComponent;
+use App\Http\Livewire\Admin\MessengerManagerComponent;
 
 Route::get('/', HomeComponent::class);
 Route::get('/about', [\App\Http\Controllers\AboutController::class, 'index'])->name('about');
@@ -47,17 +49,22 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::post('/user/profile/{id}', [\App\Http\Controllers\ProfileController::class, 'update'])->name('user.profile.update');
 
     //Route Category
-    Route::get('/user/Category', [\App\Http\Controllers\CategoryController::class, 'index'])->name('user.Category.index');
-    Route::post('/user/Category', [\App\Http\Controllers\CategoryController::class, 'store'])->name('Category.store');
-    Route::post('user/category', [\App\Http\Controllers\CategoryController::class, 'update'])->name('category.update');
+    Route::get('/shop/Category', [\App\Http\Controllers\CategoryController::class, 'index'])->name('user.Category.index');
+    Route::post('/shop/Category', [\App\Http\Controllers\CategoryController::class, 'store'])->name('Category.store');
+    Route::post('shop/category', [\App\Http\Controllers\CategoryController::class, 'update'])->name('category.update');
 
     //Route products
-    Route::get('/user/product', [\App\Http\Controllers\Product\ProductController::class, 'index'])->name('user.product.index');
-    Route::get('/user/product/create', [\App\Http\Controllers\Product\ProductController::class, 'create'])->name('user.product.create');
-    Route::post('/user/product/create', [\App\Http\Controllers\Product\ProductController::class, 'store'])->name('product.store');
-    Route::get('/user/product/update/{id}', [\App\Http\Controllers\Product\ProductController::class, 'show'])->name('user.product.update');
-    Route::post('/user/product/update', [\App\Http\Controllers\Product\ProductController::class, 'update'])->name('product.update');
-    Route::get('/user/product/delete/{id}', [\App\Http\Controllers\Product\ProductController::class, 'delete'])->name('product/delete');
+    Route::get('/shop/product', [\App\Http\Controllers\Product\ProductController::class, 'index'])->name('user.product.index');
+    Route::get('/shop/product/create', [\App\Http\Controllers\Product\ProductController::class, 'create'])->name('user.product.create');
+    Route::post('/shop/product/create', [\App\Http\Controllers\Product\ProductController::class, 'store'])->name('product.store');
+    Route::get('/shop/product/update/{id}', [\App\Http\Controllers\Product\ProductController::class, 'show'])->name('user.product.update');
+    Route::post('/shop/product/update', [\App\Http\Controllers\Product\ProductController::class, 'update'])->name('product.update');
+    Route::get('/shop/product/delete/{id}', [\App\Http\Controllers\Product\ProductController::class, 'delete'])->name('product/delete');
+
+    //Route Messenger in shop
+    Route::get('/shop/messenger', [\App\Http\Controllers\Chat\shop\MessengerController::class, 'index'])->name('shop.messenger.index');
+    Route::get('/shop/messenger/{username}', [\App\Http\Controllers\Chat\shop\MessengerController::class, 'getByUsername'])->name('shop.messenger.chat');
+    Route::post('/shop/messenger/send/{id}', [\App\Http\Controllers\Chat\shop\MessengerController::class, 'sendMessage'])->name('shop.messenger.send');
 
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             //////////////////////////////////////////   Routes customers  /////////////////////////////////////////////////////
@@ -115,8 +122,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     //sponsored product/////
 
-    Route::get('/store/product/sponsored/{id}', [\App\Http\Controllers\Payments\PaymentSponsoredProductController::class, 'index'])->name('product.sponsored');
+    Route::get('/store/product/sponsored/{id}', [\App\Http\Controllers\Payments\PaymentSponsoredProductController::class, 'index'])->name('product.sponsored.store');
     Route::post('/store/sponsored/payment', [\App\Http\Controllers\Payments\PaymentSponsoredProductController::class, 'store'])->name('payment.sponsored.store');
+
+    Route::get('/store/payment', [\App\Http\Controllers\Payments\PaymentShopController::class, "index"])->name('payment.shop.spending');
+    Route::post('/store/payment', [\App\Http\Controllers\Payments\PaymentShopController::class, 'store'])->name('payment.store.spending.validate');
 
 });
 
@@ -140,11 +150,25 @@ Route::middleware(['auth:sanctum', 'verified', 'auth'])->group(function(){
         Route::get('/dashboard', AdminDashboardComponemt::class)->name('admin.dashboard');
         Route::group(['prefix'=>'products'], function (){
             Route::get('/', ProductManagerComponent::class)->name('admin.products');
+            Route::get('/product/sponsored/{id}', [ProductManagerComponent::class, 'sponsored'])->name('product.sponsored');
+            Route::get('/of sponsored/{id}', [ProductManagerComponent::class, 'ofsponsored'])->name('product.ofsponsored');
+            Route::get('/product/detele/{id}', [ProductManagerComponent::class, 'delete'])->name('product.delete');
         });
         Route::group(['prefix'=>'users'], function (){
             Route::get('/shops', [UsersManagerComponent::class, 'shop'])->name('admin.users.shop');
             Route::get('/customers', [UsersManagerComponent::class, 'customer'])->name('admin.users.customer');
             Route::get('/services', [UsersManagerComponent::class, 'service'])->name('admin.users.service');
+            Route::get('/user/{id}/{status}', [UsersManagerComponent::class, 'update_status'])->name('status.update');
+        });
+        Route::group(['prefix' => 'payment'], function (){
+            Route::get('/sponsored/product', [PaymentManagerComponent::class, 'sponsored'])->name('admin.payment.sponsored');
+            Route::get('/shop', [PaymentManagerComponent::class, 'shop'])->name('admin.payment.shop');
+            Route::get('/service_account', [PaymentManagerComponent::class, 'service_Account'])->name('admin.payment.media');
+        });
+        Route::group(['prefix' => 'messenger'], function (){
+            Route::get('/messenger', [MessengerManagerComponent::class, 'index'])->name('admin.messenger.all');
+            Route::get('/messenger/{username}', [MessengerManagerComponent::class, 'getById'])->name('admin.messenger.getBy.User');
+            Route::post('/messenger/{id}', [MessengerManagerComponent::class, 'sendMessage'])->name('admin.messenger.send');
         });
         Route::get('/changeStatus', [UsersManagerComponent::class, 'update_status'])->name('admin.user.update_status');
 

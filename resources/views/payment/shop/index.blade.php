@@ -1,6 +1,6 @@
-@extends('layouts.adminShop')
+@extends('layouts.base')
 
-@section('contents')
+@section('content')
     @if(Auth::User()->user_type =="Boutique")
         <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">
         <link href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="container">
                         <div class="card-body md:container" style="margin-top: 7%;">
-                            <form action="{{ route('payment.sponsored.store') }}" method="post" id="payment-form">
+                            <form action="{{ route('payment.store.spending.validate') }}" method="post" id="payment-form">
                                 @csrf
                                 <div class="row flex md:container md:mr-10">
                                     <div class="form-row">
@@ -47,7 +47,7 @@
                                         <div id="card-errors" role="alert"></div>
                                     </div>
                                     <button class="btn btn-primary" style="margin-top: 3%;">
-                                        Valid payment {{ (int)ceil((($product->sale_price*5/100)/656)) }} €
+                                        Valid payment {{ ($amount) }} €
                                     </button>
                                 </div>
                             </form>
@@ -69,7 +69,6 @@
 
         var stripe = Stripe(stripeToken);
         var elements = stripe.elements();
-        var subscription = "{{ $product->id }}";
         var clientSecret = "{{ $intentSecret }}";
         var cardholderName = "{{ Auth::user()->username }}";
         var cardholderEmail = "{{ Auth::user()->email }}";
@@ -127,7 +126,6 @@
             var InputIntentId = document.createElement('input');
             var InputIntentPaymentMethod = document.createElement('input');
             var InputIntentStatus = document.createElement('input');
-            var InputSubscription = document.createElement('input');
 
             InputIntentId.setAttribute('type', 'hidden');
             InputIntentId.setAttribute('name', 'stripeIntentId');
@@ -141,14 +139,10 @@
             InputIntentStatus.setAttribute('name', 'stripeIntentStatus');
             InputIntentStatus.setAttribute('value', intent.status);
 
-            InputSubscription.setAttribute('type', 'hidden');
-            InputSubscription.setAttribute('name', 'subscription');
-            InputSubscription.setAttribute('value', subscription);
 
             form.appendChild(InputIntentId);
             form.appendChild(InputIntentPaymentMethod);
             form.appendChild(InputIntentStatus);
-            form.appendChild(InputSubscription);
             form.submit();
         }
     </script>

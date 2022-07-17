@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
-use http\Client\Curl\User;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Livewire\Component;
@@ -41,9 +41,15 @@ class UsersManagerComponent extends Component
             ->layout('layouts.app');
     }
 
-    public function update_status(Request $request)
+    public function update_status($id, $status)
     {
+        User::where('id', $id)
+            ->first()
+            ->update([
+                'account_status' => $status
+            ]);
 
+        return redirect()->back()->with('success', "The user has been successfully ".$status);
     }
 
 }

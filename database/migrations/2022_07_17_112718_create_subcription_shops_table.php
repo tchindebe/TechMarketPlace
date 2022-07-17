@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubcriptionStripesTable extends Migration
+class CreateSubcriptionShopsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateSubcriptionStripesTable extends Migration
      */
     public function up()
     {
-        Schema::create('subcription_stripes', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('subcription_shops', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('stripe_id')->unique()->nullable();
@@ -28,8 +28,6 @@ class CreateSubcriptionStripesTable extends Migration
             $table->timestamp('trial_ends_at')->nullable();
             $table->timestamp('ends_at')->nullable();
             $table->timestamps();
-
-            $table->index(['user_id', 'stripe_status']);
         });
     }
 
@@ -40,6 +38,6 @@ class CreateSubcriptionStripesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subcription_stripes');
+        Schema::dropIfExists('subcription_shops');
     }
 }

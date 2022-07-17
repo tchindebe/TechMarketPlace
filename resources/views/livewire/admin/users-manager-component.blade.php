@@ -2,35 +2,40 @@
 
 @section('content')
 <div class="py-12">
+    @if(session('success'))
+        <div class="px-4 my-3 py-6 bg-green-600 text-white opacity-75 font-bold rounded-md">{{ session('success') }}</div>
+    @endif
+    @if(session('error'))
+        <div class="px-4 bg-red-600 text-white opacity-75 py-6 font-bold rounded-md">{{ session('error') }}</div>
+    @endif
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
         <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="w-full overflow-x-auto">
                 <div class="p-4">
                     <label for="table-search" class="sr-only">Search</label>
                     <div class="relative mt-1">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                            <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                            <svg class="w-5 h-5 text-gray-500 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                         </div>
-                        <input type="text" id="table-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items">
+                        <input type="text" id="table-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5" placeholder="Search for items">
                     </div>
                 </div>
                 <table class="w-full whitespace-no-wrap">
                     <thead>
-                    <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                    <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b d">
                         <th class="px-4 py-3">Client</th>
                         <th class="px-4 py-3">Role</th>
                         <th class="px-4 py-3">Status</th>
-                        <th class="px-4 py-3">Date</th>
+                        <th class="px-4 py-3">Created at</th>
                         <th scope="col" class="px-6 py-3">
                             <span class="sr-only">Edit</span>
                         </th>
                     </tr>
                     </thead>
-                    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                    <tbody class="bg-white divide-y ">
                     @foreach($users as $user)
                         @if($user->user_type != 'admin')
-                            <tr class="text-gray-700 dark:text-gray-400">
+                            <tr class="text-gray-700 ">
                                 <td class="px-4 py-3">
                                     <div class="flex items-center text-sm">
                                         <!-- Avatar with inset shadow -->
@@ -47,22 +52,22 @@
                                     {{ $user->user_type }}
                                 </td>
                                 <td class="px-4 py-3 text-xs">
-                                    @if($user->account_status === 'pending')
-                                        <span class="px-2 py-1 font-semibold leading-yellow text-yellow-700 bg-yellow-100 rounded-full dark:bg-yellow-700 dark:text-yellow-100">
+                                    @if($user->account_status == 'Pending')
+                                        <span class="px-2 py-1 font-semibold leading-yellow text-yellow-700 bg-yellow-100 rounded-full ">
                                             Pending
                                         </span>
-                                    @elseif($user->account_status === 'enable')
-                                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                    @elseif($user->account_status == 'Approved')
+                                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full ">
                                             Approved
                                         </span>
                                     @else
-                                        <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100">
+                                        <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full ">
                                             Disable
                                         </span>
                                     @endif
                                 </td>
                                 <td class="px-4 py-3 text-sm">
-                                    6/10/2020
+                                    {{$user->created_at}}
                                 </td>
                                 <td class="px-6 py-4 text-right">
                                     <div class=" relative inline-block text-left dropdown">
@@ -76,8 +81,9 @@
                                         <div class="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95">
                                             <div class=" right-0 w-26 mt-1 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none" aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                                 <div class="py-1">
-                                                    <a href="javascript:void(0)" tabindex="3" class="text-gray-700 flex justify-between w-full px-2 py-2 text-sm leading-5 text-left"  role="menuitem" >Enable</a>
-                                                    <a href="javascript:void(0)" tabindex="3" class="text-gray-700 flex justify-between w-full px-2 py-2 text-sm leading-5 text-left"  role="menuitem" >Disable</a>
+                                                    <a href="{{route('status.update', ['id' => $user->id, 'status' => "Pending"])}}" tabindex="3" class="text-gray-700 flex justify-between w-full px-2 py-2 text-sm leading-5 text-left"  role="menuitem" >Pending</a>
+                                                    <a href="{{route('status.update', ['id' => $user->id, 'status' => "Approved"])}}" tabindex="3" class="text-gray-700 flex justify-between w-full px-2 py-2 text-sm leading-5 text-left"  role="menuitem" >Approved</a>
+                                                    <a href="{{route('status.update', ['id' => $user->id, 'status' => "Disable"])}}" tabindex="3" class="text-gray-700 flex justify-between w-full px-2 py-2 text-sm leading-5 text-left"  role="menuitem" >Disable</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -96,7 +102,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class=" px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+            <div class=" px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t ">
                     {{ $users->links() }}
             </div>
         </div>

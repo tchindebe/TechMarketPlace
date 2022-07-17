@@ -17,5 +17,10 @@ class Subcription_stripe extends Model
         'quantity',
         'article_id',
         'type',
+        'price',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

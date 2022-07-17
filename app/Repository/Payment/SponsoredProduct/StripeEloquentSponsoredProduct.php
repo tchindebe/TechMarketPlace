@@ -26,7 +26,7 @@ class StripeEloquentSponsoredProduct implements paymentSponsoredProductInterface
             "name" => Auth::user()->username,
             "product_id" => $product->id,
             "transaction_type" => $resource['stripeBrand'],
-            "prise" => (int)($product->sale_prise*5/100),
+            "prise" => (int)($product->sale_price*5/100),
         ]);
 
         $product->update([
@@ -57,7 +57,7 @@ class StripeEloquentSponsoredProduct implements paymentSponsoredProductInterface
                 'stripeId' => $data['charges']['data'][0]['id'],
                 'stripeStatus' => $data['charges']['data'][0]['status'],
                 'stripeToken' => $data['client_secret'],
-                'amount' => $product->sale_price*5/100
+                'amount' => ceil($product->sale_price*5/100)
             ];
         }
 

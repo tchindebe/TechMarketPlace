@@ -27,4 +27,8 @@ class Product extends Model
 
         return $this->belongsTo(Ordereds::class);
     }
+
+    public function sponsoreds(){
+        return $this->hasMany(productSponsored::class);
+    }
 }

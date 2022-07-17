@@ -18,13 +18,20 @@ class UserDashboardComponemt extends Component
 
     public function render()
     {
-        $order = $this->orderInterfaceRepository->show();
+        if (Auth::user()->account_status == "Approved"){
+            $order = $this->orderInterfaceRepository->show();
 
-        $ordersByClient = $this->orderInterfaceRepository->showByClient(Auth::User()->id);
+            $ordersByClient = $this->orderInterfaceRepository->showByClient(Auth::User()->id);
 
-        return view('livewire.user.user-dashboard-componemt', compact('order', $order))
-            ->with('ordersByClient', $ordersByClient)
-            ->layout('layouts.adminShop');
+            return view('livewire.user.user-dashboard-componemt', compact('order', $order))
+                ->with('ordersByClient', $ordersByClient)
+                ->layout('layouts.adminShop');
+        }elseif (Auth::user()->account_status == "Pending"){
+            return view('IsInvalid.pending')->layout('layouts.base');
+        }else{
+            return view('IsInvalid.disable')->layout('layouts.base');
+        }
+
     }
 
     public function showByBill($bill,$subtotal){

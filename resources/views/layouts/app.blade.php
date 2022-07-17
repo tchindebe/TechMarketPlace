@@ -17,6 +17,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
     <script src="{{asset('assets/admin/js/charts-lines.js')}}" defer></script>
     <script src="{{asset('assets/admin/js/charts-pie.js')}}" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
 
 </head>
 <body>
@@ -24,7 +38,7 @@
     <!-- Desktop sidebar -->
     <aside class="z-20 hidden w-64 overflow-y-auto bg-white md:block flex-shrink-0">
         <div class="py-4 text-gray-500">
-            <a class="ml-6 text-lg font-bold text-gray-800" href="#">Easy</a>
+            <a class="ml-6 text-lg font-bold text-blue-700 " href="#">Admin dashboard</a>
             <ul class="mt-6">
                 <li class="relative px-6 py-3">
                     @if( Route::currentRouteName() == 'admin.dashboard')
@@ -45,59 +59,61 @@
                     </a>
                 </li>
                 <li class="relative px-6 py-3">
-                    <button class="inline-flex items-center focus:outline-none justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                            @click="togglePagesMenu"
-                            aria-haspopup="true">
-                        <span class="inline-flex items-center">
-                            <svg class="w-5 h-5"
-                                 aria-hidden="true"
-                                 fill="none"
-                                 stroke-linecap="round"
-                                 stroke-linejoin="round"
-                                 stroke-width="2"
-                                 viewBox="0 0 24 24"
-                                 stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                            </svg>
-                            <span class="ml-4">Users</span>
-                        </span>
-                        <svg class="w-4 h-4"
-                             aria-hidden="true"
-                             fill="currentColor"
-                             viewBox="0 0 20 20">
-                            <path
-                                fill-rule="evenodd"
-                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                clip-rule="evenodd"
-                            ></path>
-                        </svg>
-                    </button>
-                    <template x-if="isPagesMenuOpen">
-                        <ul x-transition:enter="transition-all ease-in-out duration-300"
-                            x-transition:enter-start="opacity-25 max-h-0"
-                            x-transition:enter-end="opacity-100 max-h-xl"
-                            x-transition:leave="transition-all ease-in-out duration-300"
-                            x-transition:leave-start="opacity-100 max-h-xl"
-                            x-transition:leave-end="opacity-0 max-h-0"
-                            class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900"
-                            aria-label="submenu">
-                            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                <a class="inline-flex items-center w-full text-sm font-semibold {{ Route::currentRouteName()=='admin.users.shop' ? 'text-gray-800' : '' }} transition-colors duration-150 hover:text-gray-800" href="{{ route('admin.users.shop') }}">
-                                    <span class="ml-4">Shop Users</span>
-                                </a>
-                            </li>
-                            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                <a class="inline-flex items-center w-full text-sm font-semibold {{ Route::currentRouteName()=='admin.users.service' ? 'text-gray-800' : '' }} transition-colors duration-150 hover:text-gray-800" href="{{ route('admin.users.service') }}">
-                                    <span class="ml-4">Services Users</span>
-                                </a>
-                            </li>
-                            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                <a class="inline-flex items-center w-full text-sm font-semibold {{ Route::currentRouteName()=='admin.users.customer' ? 'text-gray-800' : '' }} transition-colors duration-150 hover:text-gray-800" href="{{ route('admin.users.customer') }}">
-                                    <span class="ml-4">Customer Users</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </template>
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item rounded-none bg-white">
+                            <h2 class="accordion-header mb-0" id="flush-headingOne">
+                                <button class="accordion-button
+                                        inline-flex items-center
+                                        text-gray-800
+                                        focus:outline-none
+                                        justify-between w-full text-sm font-semibold
+                                        transition-colors duration-150 hover:text-gray-800"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
+                                        aria-expanded="false" aria-controls="flush-collapseTwo">
+                                    <span class="inline-flex items-center text-gray-500">
+                                        <svg class="w-5 h-5"
+                                             aria-hidden="true"
+                                             fill="none"
+                                             stroke-linecap="round"
+                                             stroke-linejoin="round"
+                                             stroke-width="2"
+                                             viewBox="0 0 24 24"
+                                             stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                        </svg>
+                                        <span class="ml-4 text-gray-700">Users</span>
+                                    </span>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                 aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                <ul x-transition:enter="transition-all ease-in-out duration-300"
+                                    x-transition:enter-start="opacity-25 max-h-0"
+                                    x-transition:enter-end="opacity-100 max-h-xl"
+                                    x-transition:leave="transition-all ease-in-out duration-300"
+                                    x-transition:leave-start="opacity-100 max-h-xl"
+                                    x-transition:leave-end="opacity-0 max-h-0"
+                                    class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 "
+                                    aria-label="submenu">
+                                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                                        <a class="inline-flex items-center w-full text-sm font-semibold {{ Route::currentRouteName()=='admin.users.shop' ? 'text-gray-800' : '' }} transition-colors duration-150 hover:text-gray-800" href="{{ route('admin.users.shop') }}">
+                                            <span class="ml-4">Shop Users</span>
+                                        </a>
+                                    </li>
+                                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                                        <a class="inline-flex items-center w-full text-sm font-semibold {{ Route::currentRouteName()=='admin.users.service' ? 'text-gray-800' : '' }} transition-colors duration-150 hover:text-gray-800" href="{{ route('admin.users.service') }}">
+                                            <span class="ml-4">Services Users</span>
+                                        </a>
+                                    </li>
+                                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                                        <a class="inline-flex items-center w-full text-sm font-semibold {{ Route::currentRouteName()=='admin.users.customer' ? 'text-gray-800' : '' }} transition-colors duration-150 hover:text-gray-800" href="{{ route('admin.users.customer') }}">
+                                            <span class="ml-4">Customer Users</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
                 </li>
                 <li class="relative px-6 py-3">
                     @if( Route::currentRouteName() == 'admin.products')
@@ -133,7 +149,59 @@
                     </a>
                 </li>
                 <li class="relative px-6 py-3">
-                    <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item rounded-none bg-white">
+                            <h2 class="accordion-header mb-0" id="flush-headingOne">
+                                <button class="accordion-button
+                                        inline-flex items-center focus:outline-none
+                                        justify-between w-full text-sm font-semibold
+                                        transition-colors duration-150 hover:text-gray-800"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                        aria-expanded="false" aria-controls="flush-collapseOne">
+                                    <span class="inline-flex items-center text-gray-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M14.121 15.536c-1.171 1.952-3.07 1.952-4.242 0-1.172-1.953-1.172-5.119 0-7.072 1.171-1.952 3.07-1.952 4.242 0M8 10.5h4m-4 3h4m9-1.5a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span class="ml-4 text-gray-500">Payments</span>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                 aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                <ul x-transition:enter="transition-all ease-in-out duration-300"
+                                    x-transition:enter-start="opacity-25 max-h-0"
+                                    x-transition:enter-end="opacity-100 max-h-xl"
+                                    x-transition:leave="transition-all ease-in-out duration-300"
+                                    x-transition:leave-start="opacity-100 max-h-xl"
+                                    x-transition:leave-end="opacity-0 max-h-0"
+                                    class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 "
+                                    aria-label="submenu">
+                                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 ">
+                                        <a class="inline-flex items-center w-full text-sm font-semibold {{ Route::currentRouteName()=='admin.payment.sponsored' ? 'text-gray-800' : '' }} transition-colors duration-150 hover:text-gray-800" href="{{ route('admin.payment.sponsored') }}">
+                                            <span class="ml-4">Sponsored products</span>
+                                        </a>
+                                    </li>
+                                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 ">
+                                        <a class="inline-flex items-center w-full text-sm font-semibold {{ Route::currentRouteName()=='admin.payment.shop' ? 'text-gray-800' : '' }} transition-colors duration-150 hover:text-gray-800" href="{{ route('admin.payment.shop') }}">
+                                            <span class="ml-4">Shop account</span>
+                                        </a>
+                                    </li>
+                                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800">
+                                        <a class="inline-flex items-center w-full text-sm font-semibold {{ Route::currentRouteName()=='admin.users.customer' ? 'text-gray-800' : '' }} transition-colors duration-150 hover:text-gray-800" href="{{ route('admin.users.customer') }}">
+                                            <span class="ml-4">Service account</span>
+                                        </a>
+                                    </li>
+                                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800">
+                                        <a class="inline-flex items-center w-full text-sm font-semibold {{ Route::currentRouteName()=='admin.users.customer' ? 'text-gray-800' : '' }} transition-colors duration-150 hover:text-gray-800" href="{{ route('admin.users.customer') }}">
+                                            <span class="ml-4">Service media</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                        </div>
+
+                    </div>
+                </li>
+                <li class="relative px-6 py-3">
+                    <a class="inline-flex items-center w-full text-sm {{ Route::currentRouteName()=='admin.messenger.all' ? 'text-gray-800' : '' }} font-semibold transition-colors duration-150 hover:text-gray-800" href="{{route('admin.messenger.all')}}">
                         <svg class="w-5 h-5"
                              aria-hidden="true"
                              fill="none"
@@ -180,8 +248,8 @@
         @keydown.escape="closeSideMenu"
     >
         <div class="py-4 text-gray-500">
-            <a class="ml-6 text-lg font-bold text-gray-800" href="#">
-                Easy
+            <a class="ml-6 text-lg font-bold text-blue-700" href="#">
+                Admin dashboard
             </a>
             <ul class="mt-6">
                 <li class="relative px-6 py-3">
@@ -202,24 +270,63 @@
                         <span class="ml-4">Dashboard</span>
                     </a>
                 </li>
-{{--                <li class="relative px-6 py-3">--}}
-{{--                    @if( Route::currentRouteName() == 'admin.users')--}}
-{{--                        <span class="absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>--}}
-{{--                    @endif--}}
-{{--                    <a class="inline-flex items-center w-full text-sm font-semibold {{ Route::currentRouteName()=='admin.users' ? 'text-gray-800' : '' }} transition-colors duration-150 hover:text-gray-800" href="{{ route('admin.users') }}">--}}
-{{--                        <svg class="w-5 h-5"--}}
-{{--                             aria-hidden="true"--}}
-{{--                             fill="none"--}}
-{{--                             stroke-linecap="round"--}}
-{{--                             stroke-linejoin="round"--}}
-{{--                             stroke-width="2"--}}
-{{--                             viewBox="0 0 24 24"--}}
-{{--                             stroke="currentColor">--}}
-{{--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />--}}
-{{--                        </svg>--}}
-{{--                        <span class="ml-4">Users</span>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
+                <li class="relative px-6 py-3">
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item rounded-none bg-white">
+                            <h2 class="accordion-header mb-0" id="flush-headingOne">
+                                <button class="accordion-button
+                                        inline-flex items-center
+                                        text-gray-800
+                                        focus:outline-none
+                                        justify-between w-full text-sm font-semibold
+                                        transition-colors duration-150 hover:text-gray-800"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
+                                        aria-expanded="false" aria-controls="flush-collapseTwo">
+                                    <span class="inline-flex items-center text-gray-500">
+                                        <svg class="w-5 h-5"
+                                             aria-hidden="true"
+                                             fill="none"
+                                             stroke-linecap="round"
+                                             stroke-linejoin="round"
+                                             stroke-width="2"
+                                             viewBox="0 0 24 24"
+                                             stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                        </svg>
+                                        <span class="ml-4 text-gray-700">Users</span>
+                                    </span>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                 aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                <ul x-transition:enter="transition-all ease-in-out duration-300"
+                                    x-transition:enter-start="opacity-25 max-h-0"
+                                    x-transition:enter-end="opacity-100 max-h-xl"
+                                    x-transition:leave="transition-all ease-in-out duration-300"
+                                    x-transition:leave-start="opacity-100 max-h-xl"
+                                    x-transition:leave-end="opacity-0 max-h-0"
+                                    class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 "
+                                    aria-label="submenu">
+                                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                                        <a class="inline-flex items-center w-full text-sm font-semibold {{ Route::currentRouteName()=='admin.users.shop' ? 'text-gray-800' : '' }} transition-colors duration-150 hover:text-gray-800" href="{{ route('admin.users.shop') }}">
+                                            <span class="ml-4">Shop Users</span>
+                                        </a>
+                                    </li>
+                                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                                        <a class="inline-flex items-center w-full text-sm font-semibold {{ Route::currentRouteName()=='admin.users.service' ? 'text-gray-800' : '' }} transition-colors duration-150 hover:text-gray-800" href="{{ route('admin.users.service') }}">
+                                            <span class="ml-4">Services Users</span>
+                                        </a>
+                                    </li>
+                                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                                        <a class="inline-flex items-center w-full text-sm font-semibold {{ Route::currentRouteName()=='admin.users.customer' ? 'text-gray-800' : '' }} transition-colors duration-150 hover:text-gray-800" href="{{ route('admin.users.customer') }}">
+                                            <span class="ml-4">Customer Users</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                </li>
                 <li class="relative px-6 py-3">
                     @if( Route::currentRouteName() == 'admin.products')
                         <span class="absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
@@ -254,7 +361,54 @@
                     </a>
                 </li>
                 <li class="relative px-6 py-3">
-                    <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item rounded-none bg-white">
+                            <h2 class="accordion-header mb-0" id="flush-headingOne">
+                                <button class="accordion-button
+                                        inline-flex items-center focus:outline-none
+                                        justify-between w-full text-sm font-semibold
+                                        transition-colors duration-150 hover:text-gray-800"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                        aria-expanded="false" aria-controls="flush-collapseOne">
+                                    <span class="inline-flex items-center text-gray-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M14.121 15.536c-1.171 1.952-3.07 1.952-4.242 0-1.172-1.953-1.172-5.119 0-7.072 1.171-1.952 3.07-1.952 4.242 0M8 10.5h4m-4 3h4m9-1.5a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span class="ml-4 text-gray-500">Payments</span>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                 aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                <ul x-transition:enter="transition-all ease-in-out duration-300"
+                                    x-transition:enter-start="opacity-25 max-h-0"
+                                    x-transition:enter-end="opacity-100 max-h-xl"
+                                    x-transition:leave="transition-all ease-in-out duration-300"
+                                    x-transition:leave-start="opacity-100 max-h-xl"
+                                    x-transition:leave-end="opacity-0 max-h-0"
+                                    class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 "
+                                    aria-label="submenu">
+                                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 ">
+                                        <a class="inline-flex items-center w-full text-sm font-semibold {{ Route::currentRouteName()=='admin.users.shop' ? 'text-gray-800' : '' }} transition-colors duration-150 hover:text-gray-800" href="{{ route('admin.users.shop') }}">
+                                            <span class="ml-4">Sponsored products</span>
+                                        </a>
+                                    </li>
+                                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 ">
+                                        <a class="inline-flex items-center w-full text-sm font-semibold {{ Route::currentRouteName()=='admin.users.service' ? 'text-gray-800' : '' }} transition-colors duration-150 hover:text-gray-800" href="{{ route('admin.users.service') }}">
+                                            <span class="ml-4">Shop account</span>
+                                        </a>
+                                    </li>
+                                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800">
+                                        <a class="inline-flex items-center w-full text-sm font-semibold {{ Route::currentRouteName()=='admin.users.customer' ? 'text-gray-800' : '' }} transition-colors duration-150 hover:text-gray-800" href="{{ route('admin.users.customer') }}">
+                                            <span class="ml-4">Service account</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                </li>
+                <li class="relative px-6 py-3">
+                    <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="{{route('admin.messenger.all')}}">
                         <svg class="w-5 h-5"
                              aria-hidden="true"
                              fill="none"
@@ -402,19 +556,22 @@
                                     </a>
                                 </li>
                                 <li class="flex">
-                                    <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800" href="#">
-                                        <svg class="w-4 h-4 mr-3"
-                                             aria-hidden="true"
-                                             fill="none"
-                                             stroke-linecap="round"
-                                             stroke-linejoin="round"
-                                             stroke-width="2"
-                                             viewBox="0 0 24 24"
-                                             stroke="currentColor">
-                                            <path d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
-                                        </svg>
-                                        <span>Log out</span>
-                                    </a>
+                                    <form action="{{route('logout')}}" method="post">
+                                        @csrf
+                                        <button type="submit" class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800">
+                                            <svg class="w-4 h-4 mr-3"
+                                                 aria-hidden="true"
+                                                 fill="none"
+                                                 stroke-linecap="round"
+                                                 stroke-linejoin="round"
+                                                 stroke-width="2"
+                                                 viewBox="0 0 24 24"
+                                                 stroke="currentColor">
+                                                <path d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+                                            </svg>
+                                            <span>Log out</span>
+                                        </button>
+                                    </form>
                                 </li>
                             </ul>
                         </template>

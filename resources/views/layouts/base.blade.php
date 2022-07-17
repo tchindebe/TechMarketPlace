@@ -138,13 +138,13 @@
                     <ul class="header-wishlist nav navbar-nav">
                         @if (Route::has('login'))
                             @auth
-                                @if (Auth::user()->user_type === 'admin')
+                                @if (Auth::user()->user_type === 'Admin')
                                     <li class="menu-item menu-item-has-children animate-dropdown dropdown">
                                         <a title="My Account" data-toggle="dropdown" class="dropdown-toggle" href="#">
                                             {{Auth::user()->username}}
                                             <span class="caret"></span>
                                         </a>
-                                        <ul role="menu" class="dropdown-menu">
+                                        <ul role="menu" class="dropdown-menu px-2">
                                             <li class="menu-item animate-dropdown">
                                                 <a title="Dashboard" href="{{route('admin.dashboard')}}">Dashboard</a>
                                             </li>
@@ -277,7 +277,7 @@
                                     @auth
                                         @if (Auth::user()->user_type === 'admin')
                                         <li class="my-account">
-                                            <a href="{{ route('admin.dashboard') }}" class="has-icon">
+                                            <a href="{{route('admin.dashboard')}}" class="has-icon">
                                                 <i class="tm tm-login-register"></i>
                                             </a>
                                         </li>

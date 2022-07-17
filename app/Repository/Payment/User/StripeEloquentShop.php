@@ -1,35 +1,38 @@
 <?php
 
 
-namespace App\Repository\Payment;
+namespace App\Repository\Payment\User;
 
 
-use App\Models\mediaService;
-use App\Models\Subcription_stripe;
+use App\Models\Product;
+use App\Models\productSponsored;
+use App\Models\subcriptionShop;
+use App\Repository\Payment\SponsoredProduct\ServiceStripeSponsoredProduct;
 use Illuminate\Support\Facades\Auth;
 use Stripe\Exception\ApiErrorException;
 
-class StripeEloquent implements PaymentStripeInterface
+class StripeEloquentShop implements PaymentShopInterface
 {
     private $serviceStripe;
-    public function __construct(ServiceStripe $serviceStripe)
+    public function __construct(ServiceStripeShop $serviceStripe)
     {
         $this->serviceStripe = $serviceStripe;
     }
 
-    public function create_subscription(array $resource, mediaService $media)
+    public function create_subscription(array $resource, $amount)
     {
-        $payment = new Subcription_stripe();
+        $payment = new subcriptionShop();
 
         $payment->create([
             "user_id" => Auth::user()->id,
             "name" => Auth::user()->username,
-            "stripe_status" => $resource['stripeStatus'],
             "transaction_type" => $resource['stripeBrand'],
-            "quantity" => 1,
-            "article_id" => $media->id,
-            "type" => $resource['stripeBrand'],
-            "prise" => $resource['amount'],
+            "stripe_status" => $resource['stripeBrand'],
+            "prise" => $amount
+        ]);
+
+        Auth::user()->update([
+            'account_status' => 'Approved'
         ]);
     }
 
@@ -43,10 +46,10 @@ class StripeEloquent implements PaymentStripeInterface
         } catch (ApiErrorException $e) {}
     }
 
-    public function stripe(array $stripeParameter, mediaService $media)
+    public function stripe(array $stripeParameter, $amount)
     {
         $resource = null;
-        $data = $this->serviceStripe->stripe($stripeParameter, $media);
+        $data = $this->serviceStripe->stripe($stripeParameter, $amount);
 
         if($data) {
             $resource = [
@@ -56,11 +59,10 @@ class StripeEloquent implements PaymentStripeInterface
                 'stripeId' => $data['charges']['data'][0]['id'],
                 'stripeStatus' => $data['charges']['data'][0]['status'],
                 'stripeToken' => $data['client_secret'],
-                'amount' => $media->price
+                'amount' => $amount
             ];
         }
 
         return $resource;
     }
-
 }
